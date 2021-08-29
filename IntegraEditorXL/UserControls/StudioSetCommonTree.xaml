@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.StudioSetCommonTree"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="200" d:Background="White">
+    
+    <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+
+        
+        
+        <xl:LinkButton Content="Common"/>
+        <xl:LinkButton Content="Master EQ"/>
+        
+        <TreeViewItem Header="Effects" IsExpanded="True">
+            
+
+            <xl:LinkButton Content="Chorus"/>
+            <xl:LinkButton Content="Reverb"/>
+            <xl:LinkButton Content="Motional Surround"/>
+
+        </TreeViewItem>
+
+        
+
+        <TreeViewItem Header="Partials" IsExpanded="True">
+            <xl:LinkButton Content="Part View"/>
+            <xl:LinkButton Content="Part EQ"/>
+            <xl:LinkButton Content="Part MIDI"/>
+        </TreeViewItem>
+    </StackPanel>
+</UserControl>

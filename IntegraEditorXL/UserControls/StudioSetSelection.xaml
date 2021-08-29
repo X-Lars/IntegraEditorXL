@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.StudioSetSelection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="80" d:DesignWidth="200" d:Background="White"
+             DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+        <converters:InversedComparisonConverter x:Key="Compare"/>
+    </UserControl.Resources>
+    
+    <GroupBox Header="Selected Studio Set"
+              d:Visibility="Visible"
+              Visibility="{Binding Integra.StudioSets.IsInitialized, Converter={StaticResource VisibilityConverter}, FallbackValue=Collapsed}">
+        
+        <StackPanel>
+        
+            <ComboBox x:Name="StudioSetsComboBox" 
+                      DataContext="{Binding Integra}"
+                      ItemsSource="{Binding StudioSets}"
+                      SelectedIndex="{Binding SelectedStudioSet}">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=ID, StringFormat='00'}" />
+                            <TextBlock Text=":"/>
+                            <TextBlock Text="{Binding Path=Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+            </ComboBox>
+
+            <Button Command="{Binding SelectStudioSetCommand}"
+                    CommandParameter="{Binding SelectedIndex, ElementName=StudioSetsComboBox}"
+                    Content="Select"
+                    DataContext="{Binding Integra}"
+                    >
+                <Button.IsEnabled>
+                    <MultiBinding Converter="{StaticResource Compare}">
+                        <Binding ElementName="StudioSetsComboBox" Path="SelectedIndex"/>
+                        <Binding Path="Integra.StudioSet.SelectedIndex" RelativeSource="{RelativeSource AncestorType=Window}"/>
+                    </MultiBinding>
+                </Button.IsEnabled>
+            </Button>
+            
+        </StackPanel>
+    </GroupBox>
+</UserControl>

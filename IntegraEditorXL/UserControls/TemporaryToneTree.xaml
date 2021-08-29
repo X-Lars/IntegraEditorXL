@@ -1,0 +1,83 @@
+﻿<!-- Show tone edit links based on the type of tone -->
+<UserControl x:Class="IntegraEditorXL.UserControls.TemporaryToneTree"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:core="clr-namespace:IntegraXL.Core;assembly=IntegraXL"
+             xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="200"
+             d:Background="White">
+    
+    <UserControl.Resources>
+        <converters:ComparisonVisibilityConverter x:Key="ComparisonConverter" />
+    </UserControl.Resources>
+
+    <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+
+        <TreeViewItem Header="SuperNATURAL Acoustic Tone"
+                      IsExpanded="True"
+                      d:Visibility="Visible"
+                      Visibility="{Binding Integra.StudioSet.Part.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALAcousticTone}, FallbackValue=Collapsed}">
+            
+            <StackPanel>
+                <xl:LinkButton>Common</xl:LinkButton>
+                <xl:LinkButton >MFX</xl:LinkButton>
+            </StackPanel>
+        </TreeViewItem>
+        
+        <TreeViewItem Header="SuperNATURAL Synth Tone"
+                      IsExpanded="True"
+                      d:Visibility="Visible"
+                      Visibility="{Binding Integra.StudioSet.Part.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALSynthTone}, FallbackValue=Collapsed}">
+            <StackPanel>
+                <xl:LinkButton>Common</xl:LinkButton>
+                <xl:LinkButton>MFX</xl:LinkButton>
+                <xl:LinkButton>Partial 1</xl:LinkButton>
+                <xl:LinkButton>Partial 2</xl:LinkButton>
+                <xl:LinkButton>Partial 3</xl:LinkButton>
+            </StackPanel>
+        </TreeViewItem>
+        <TreeViewItem Header="SuperNATURAL Drum Kit"
+                      IsExpanded="True"
+                      d:Visibility="Visible"
+                      Visibility="{Binding Integra.StudioSet.Part.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALDrumkit}, FallbackValue=Collapsed}">
+            <StackPanel>
+                <xl:LinkButton>Common</xl:LinkButton>
+                <xl:LinkButton >MFX</xl:LinkButton>
+                <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
+                <xl:LinkButton Content="Notes"/>
+            </StackPanel>
+        </TreeViewItem>
+        <TreeViewItem Header="PCM Synth Tone"
+                      IsExpanded="True"
+                      d:Visibility="Visible"
+                      Visibility="{Binding Integra.StudioSet.Part.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMSynthTone}, FallbackValue=Collapsed}">
+            <StackPanel>
+                <xl:LinkButton>Common</xl:LinkButton>
+                <xl:LinkButton>Common 2</xl:LinkButton>
+                <xl:LinkButton >MFX</xl:LinkButton>
+                <xl:LinkButton>Partial Mix Table</xl:LinkButton>
+                <xl:LinkButton>Partial 1</xl:LinkButton>
+                <xl:LinkButton>Partial 2</xl:LinkButton>
+                <xl:LinkButton>Partial 3</xl:LinkButton>
+                <xl:LinkButton>Partial 4</xl:LinkButton>
+            </StackPanel>
+        </TreeViewItem>
+        <TreeViewItem Header="PCM Drum Kit"
+                      IsExpanded="True"
+                      d:Visibility="Visible"
+                      Visibility="{Binding Integra.StudioSet.Part.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMDrumkit}, FallbackValue=Collapsed}">
+            <StackPanel>
+                <xl:LinkButton >MFX</xl:LinkButton>
+                <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
+                <xl:LinkButton>Common</xl:LinkButton>
+                <xl:LinkButton Content="Notes"/>
+                <xl:LinkButton>Common 2</xl:LinkButton>
+            </StackPanel>
+        </TreeViewItem>
+    </StackPanel>
+</UserControl>

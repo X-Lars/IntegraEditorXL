@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.ToneSelection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:core="clr-namespace:IntegraXL.Core;assembly=IntegraXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="300"
+             d:Background="White">
+
+    <Grid>
+
+        <xl:FilteredDataGrid AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             ItemsSource="{Binding ToneBank}"
+                             SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Integra.StudioSet.Part.BankSelect}"
+                             SelectionMode="Single">
+            
+            <xl:FilteredDataGrid.Columns>
+                
+                <xl:FilteredDataGridTextColumn Binding="{Binding Path=ID, StringFormat='0000'}"
+                                               Filter="False"
+                                               Header="ID"
+                                               MinWidth="36"/>
+
+                <xl:FilteredDataGridTextColumn Binding="{Binding Path=Name}"
+                                               Filter="True"
+                                               Header="Name"
+                                               MinWidth="200"/>
+
+                <xl:FilteredDataGridTextColumn Binding="{Binding Path=Category}"
+                                               Filter="True"
+                                               Header="Category"
+                                               MinWidth="100"/>
+
+            </xl:FilteredDataGrid.Columns>
+        </xl:FilteredDataGrid>
+    </Grid>
+    
+</UserControl>

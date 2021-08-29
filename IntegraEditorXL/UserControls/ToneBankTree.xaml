@@ -1,0 +1,202 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.ToneBankTree"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="360" d:DesignWidth="200"
+             d:Background="White">
+    
+    <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                IsEnabled="{Binding Integra.IsInitialized, FallbackValue=False}" d:IsEnabled="True">
+
+        <GroupBox Header="SuperNATURAL">
+
+            <StackPanel>
+
+                <TreeViewItem Header="Presets" IsExpanded="True">
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:SNAPresetToneBank}"
+                                   Content="Acoustic Tones"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:SNSPresetToneBank}"
+                                   Content="Synth Tones"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:SNDPresetToneBank}"
+                                   Content="Drum Kits"/>
+
+                </TreeViewItem>
+
+                <TreeViewItem Header="User" IsExpanded="True">
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:SNAUserToneBank}"
+                                   Content="Acoustic Tones"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:SNSUserToneBank}"
+                                   Content="Synth Tones"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:SNDUserToneBank}"
+                                   Content="Drum Kits"/>
+
+                </TreeViewItem>
+
+                <TreeViewItem Header="Expansions" IsExpanded="False">
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:ExSN01ToneBank}"
+                                   Content="ExSN 01: SuperNATURAL Ethnic"
+                                   IsEnabled="{Binding Integra.VirtualSlots[13]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:ExSN02ToneBank}"
+                                   Content="ExSN 02: SuperNATURAL Woodwinds"
+                                   IsEnabled="{Binding Integra.VirtualSlots[14]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:ExSN03ToneBank}"
+                                   Content="ExSN 03: SuperNATURAL Session"
+                                   IsEnabled="{Binding Integra.VirtualSlots[15]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:ExSN04ToneBank}"
+                                   Content="ExSN 04: SuperNATURAL Acoustic Guitar"
+                                   IsEnabled="{Binding Integra.VirtualSlots[16]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:ExSN05ToneBank}"
+                                   Content="ExSN 05: SuperNATURAL Brass"
+                                   IsEnabled="{Binding Integra.VirtualSlots[17]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                                   CommandParameter="{x:Type models:ExSN06ToneBank}"
+                                   Content="ExSN 06: SuperNATURAL SFX"
+                                   IsEnabled="{Binding Integra.VirtualSlots[18]}"/>
+
+                </TreeViewItem>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="PCM">
+
+            <StackPanel>
+
+                <TreeViewItem Header="Presets" IsExpanded="True">
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:PCMPresetToneBank}"
+                               Content="Tones"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:PCMPresetDrumKits}"
+                               Content="Drum Kits"/>
+
+                </TreeViewItem>
+
+                <TreeViewItem Header="User" IsExpanded="True">
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:PCMUserToneBank}"
+                               Content="Tones"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:PCMUserDrumKits}"
+                               Content="Drum Kits"/>
+
+                </TreeViewItem>
+
+                <TreeViewItem Header="Expansions" IsExpanded="False">
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX01ToneBank}"
+                               Content="SRX 01: Dynamic Drums"
+                               IsEnabled="{Binding Integra.VirtualSlots[1]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX02ToneBank}"
+                               Content="SRX 02: Concert Piano"
+                               IsEnabled="{Binding Integra.VirtualSlots[2]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX03ToneBank}"
+                               Content="SRX 03: Studio SRX"
+                               IsEnabled="{Binding Integra.VirtualSlots[3]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX04ToneBank}"
+                               Content="SRX 04: Symphonique Strings"
+                               IsEnabled="{Binding Integra.VirtualSlots[4]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX05ToneBank}"
+                               Content="SRX 05: Supreme Dance"
+                               IsEnabled="{Binding Integra.VirtualSlots[5]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX06ToneBank}"
+                               Content="SRX 06: Complete Orchestra"
+                               IsEnabled="{Binding Integra.VirtualSlots[6]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX07ToneBank}"
+                               Content="SRX 07: Ultimate Keys"
+                               IsEnabled="{Binding Integra.VirtualSlots[7]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX08ToneBank}"
+                               Content="SRX 08: Platinum Trax"
+                               IsEnabled="{Binding Integra.VirtualSlots[8]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX09ToneBank}"
+                               Content="SRX 09: World Collection"
+                               IsEnabled="{Binding Integra.VirtualSlots[9]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX10ToneBank}"
+                               Content="SRX 10: Big Brass Ensemble"
+                               IsEnabled="{Binding Integra.VirtualSlots[10]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX11ToneBank}"
+                               Content="SRX 11: Complete Piano"
+                               IsEnabled="{Binding Integra.VirtualSlots[11]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:SRX12ToneBank}"
+                               Content="SRX 12: Classic Electric Pianos"
+                               IsEnabled="{Binding Integra.VirtualSlots[12]}"/>
+
+                    <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                               CommandParameter="{x:Type models:ExPCMTonebank}"
+                               Content="ExPCM: HQ GM2 + HQ PCM Sound"
+                               IsEnabled="{Binding Integra.VirtualSlots[19]}"/>
+
+                </TreeViewItem>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="GM2">
+
+            <StackPanel>
+
+                <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                           CommandParameter="{x:Type models:GM2ToneBank}"
+                           Content="Tones"/>
+
+                <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
+                           CommandParameter="{x:Type models:GM2DrumKits}"
+                           Content="Drum Kits"/>
+
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.VirtualSlots"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="240" d:DesignWidth="250" d:Background="White">
+    
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+    </UserControl.Resources>
+    
+    <GroupBox DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+              Header="Virtual Slots"
+              Visibility="{Binding Integra.IsInitialized, FallbackValue=Collapsed, Converter={StaticResource VisibilityConverter}}" d:Visibility="Visible">
+
+        <Grid DataContext="{Binding Integra.VirtualSlots}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/> <!-- SLOTS -->
+                <RowDefinition Height="Auto"/> <!-- BUTTONS -->
+                <RowDefinition Height="Auto"/> <!-- DEFAULTS -->
+            </Grid.RowDefinitions>
+
+            <!-- SLOTS -->
+            <Grid Grid.Column="0" Grid.Row="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/> <!-- LABELS -->
+                    <ColumnDefinition Width="*"/>    <!-- SLOTS -->
+                    <ColumnDefinition Width="24"/>   <!-- INDICATORS -->
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/> <!-- SLOT A -->
+                    <RowDefinition Height="Auto"/> <!-- SLOT B -->
+                    <RowDefinition Height="Auto"/> <!-- SLOT C -->
+                    <RowDefinition Height="Auto"/> <!-- SLOT D -->
+                </Grid.RowDefinitions>
+
+                <!-- LABELS -->
+                <Label Grid.Column="0" Grid.Row="0" Content="Slot A"/>
+                <Label Grid.Column="0" Grid.Row="1" Content="Slot B"/>
+                <Label Grid.Column="0" Grid.Row="2" Content="Slot C"/>
+                <Label Grid.Column="0" Grid.Row="3" Content="Slot D"/>
+
+                <!-- SLOTS -->
+                <ComboBox Grid.Column="1" Grid.Row="0"
+                          ItemsSource="{Binding Expansions}"
+                          SelectedItem="{Binding SlotA}"/>
+
+                <ComboBox Grid.Column="1" Grid.Row="1"
+                          ItemsSource="{Binding Expansions}"
+                          SelectedItem="{Binding SlotB}"/>
+
+                <ComboBox Grid.Column="1" Grid.Row="2"
+                          ItemsSource="{Binding Expansions}"
+                          SelectedItem="{Binding SlotC}"/>
+
+                <ComboBox Grid.Column="1" Grid.Row="3"
+                          ItemsSource="{Binding Expansions}"
+                          SelectedItem="{Binding SlotD}"/>
+
+                <!-- INDICATORS -->
+                <Label Grid.Column="2" Grid.Row="0" Content="*" Visibility="{Binding SlotAIsDirty, Converter={StaticResource VisibilityConverter}}"/>
+                <Label Grid.Column="2" Grid.Row="1" Content="*" Visibility="{Binding SlotBIsDirty, Converter={StaticResource VisibilityConverter}}"/>
+                <Label Grid.Column="2" Grid.Row="2" Content="*" Visibility="{Binding SlotCIsDirty, Converter={StaticResource VisibilityConverter}}"/>
+                <Label Grid.Column="2" Grid.Row="3" Content="*" Visibility="{Binding SlotDIsDirty, Converter={StaticResource VisibilityConverter}}"/>
+
+            </Grid>
+
+            <!-- BUTTONS -->
+            <Grid Grid.Column="0" Grid.Row="1">
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" 
+                        Command="{Binding LoadCommand}" 
+                        Content="Load"/>
+                
+                <Button Grid.Column="1" 
+                        Command="{Binding UnloadCommand}" 
+                        Content="Unload"/>
+                
+                <Button Grid.Column="2" 
+                        Command="{Binding SetDefaultCommand}" 
+                        Content="Set Default"/>
+                
+            </Grid>
+            
+            <!-- DEFAULTS -->
+            <Grid Grid.Column="0" Grid.Row="2"
+                  DataContext="{Binding DefaultExpansions}">
+                
+                <TreeViewItem Header="Defaults" 
+                              IsExpanded="False" d:IsExpanded="True">
+                    
+                    <TextBlock Text="{Binding SlotA}" d:Text="Off"/>
+                    <TextBlock Text="{Binding SlotB}" d:Text="Off"/>
+                    <TextBlock Text="{Binding SlotC}" d:Text="Off"/>
+                    <TextBlock Text="{Binding SlotD}" d:Text="Off"/>
+
+                </TreeViewItem>
+            </Grid>
+        </Grid>
+    </GroupBox>
+</UserControl>
