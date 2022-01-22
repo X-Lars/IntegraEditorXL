@@ -1,16 +1,14 @@
 ﻿using ControlsXL;
+using IntegraEditorXL.Common.Commands;
 using IntegraEditorXL.UserControls;
 using IntegraXL;
-using IntegraXL.Common;
 using IntegraXL.Core;
 using IntegraXL.Interfaces;
 using StylesXL;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace IntegraEditorXL
@@ -48,10 +46,10 @@ namespace IntegraEditorXL
 
         public ICommand ShowToneBankCommand
         {
-            get => new UICommandParameterized<Type>((x) => ShowToneBank(x));
+            get => new UICommandParameterized<IntegraToneBanks>((x) => ShowToneBank(x));
         }
 
-        private void ShowToneBank(Type x)
+        private void ShowToneBank(IntegraToneBanks x)
         {
             ActiveContent.Children.Clear();
             ActiveContent.Children.Add(new ToneSelection(x));
@@ -59,14 +57,14 @@ namespace IntegraEditorXL
 
         private async void MainWindowLoaded(object sender, RoutedEventArgs e)
         {
-            IIntegraOutputDevice midiOutputDevice = new MidiXLOutputDevice(1);
-            IIntegraInputDevice  midiInputDevice  = new MidiXLInputDevice(0);
+            IMIDIOutputDevice midiOutputDevice = new MidiXLOutputDevice(1);
+            IMIDIInputDevice  midiInputDevice  = new MidiXLInputDevice(0);
             
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
             _Dialog = DialogManager.ProgressDialog("Connecting INTEGRA-7", "Please wait...", "", true);
 
-            IntegraConnection connection = await DeviceConnectionManager.Connect(midiOutputDevice, midiInputDevice);
+            IntegraConnection connection = await IntegraConnectionManager.CreateConnection(midiOutputDevice, midiInputDevice);
 
             _Dialog.Close();
 

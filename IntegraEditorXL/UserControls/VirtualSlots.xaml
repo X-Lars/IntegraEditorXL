@@ -89,14 +89,14 @@
                         Content="Unload"/>
                 
                 <Button Grid.Column="2" 
-                        Command="{Binding SetDefaultCommand}" 
+                        Command="{Binding SetStartupCommand}" 
                         Content="Set Default"/>
                 
             </Grid>
             
             <!-- DEFAULTS -->
             <Grid Grid.Column="0" Grid.Row="2"
-                  DataContext="{Binding DefaultExpansions}">
+                  DataContext="{Binding StartupExpansions}">
                 
                 <TreeViewItem Header="Defaults" 
                               IsExpanded="False" d:IsExpanded="True">

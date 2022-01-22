@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
@@ -10,8 +10,11 @@
     <Reference Include="ControlsXL">
       <HintPath>D:\ControlsXL\ControlsXL\ControlsXL\bin\Release\net5.0-windows\ControlsXL.dll</HintPath>
     </Reference>
+    <Reference Include="IntegraControlsXL">
+      <HintPath>..\..\IntegraControlsXL\IntegraControlsXL\IntegraControlsXL\bin\Debug\net5.0-windows\IntegraControlsXL.dll</HintPath>
+    </Reference>
     <Reference Include="IntegraXL">
-      <HintPath>..\..\IntegraXL\IntegraXL\IntegraXL\bin\Debug\net5.0\IntegraXL.dll</HintPath>
+      <HintPath>..\..\Integra\IntegraXL\IntegraXL\bin\Debug\net6.0\IntegraXL.dll</HintPath>
     </Reference>
     <Reference Include="MidiXL">
       <HintPath>D:\MidiXL\MidiXL\MidiXL\bin\Release\MidiXL.dll</HintPath>

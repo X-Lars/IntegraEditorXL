@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:core="clr-namespace:IntegraXL.Core;assembly=IntegraXL"
              mc:Ignorable="d" 
              d:DesignHeight="360" d:DesignWidth="200"
              d:Background="White">
@@ -20,15 +21,15 @@
                 <TreeViewItem Header="Presets" IsExpanded="True">
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:SNAPresetToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SNAPresetTone}"
                                    Content="Acoustic Tones"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:SNSPresetToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SNSPresetTone}"
                                    Content="Synth Tones"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:SNDPresetToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SNDPresetDrum}"
                                    Content="Drum Kits"/>
 
                 </TreeViewItem>

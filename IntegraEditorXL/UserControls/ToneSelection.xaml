@@ -11,12 +11,17 @@
              d:Background="White">
 
     <Grid>
-
-        <xl:FilteredDataGrid AutoGenerateColumns="False"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="{Binding ToneBank.Name, FallbackValue='Loading tonebank, please wait...'}"/>
+        <xl:FilteredDataGrid Grid.Row="1" AutoGenerateColumns="False"
                              IsReadOnly="True"
                              ItemsSource="{Binding ToneBank}"
-                             SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Integra.StudioSet.Part.BankSelect}"
-                             SelectionMode="Single">
+                             SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Integra.SelectedTone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             SelectionMode="Single"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto">
             
             <xl:FilteredDataGrid.Columns>
                 

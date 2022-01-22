@@ -1,6 +1,6 @@
-﻿using IntegraXL.Collections;
-using IntegraXL.Core;
+﻿using IntegraXL.Core;
 using IntegraXL.Models;
+using IntegraXL.Templates;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,29 +25,29 @@ namespace IntegraEditorXL.UserControls
     /// </summary>
     public partial class ToneSelection : UserControl, INotifyPropertyChanged
     {
-        private IntegraToneBanks _SelectedToneBank = IntegraToneBanks.SNAPresetTone;
+        //private IntegraToneBanks _SelectedToneBank = IntegraToneBanks.SNAPresetTone;
 
-        private IntegraToneCollection _ToneBank;
+        private IntegraToneBank _ToneBank;
 
-        public ToneSelection(Type toneBank)
+        public ToneSelection(IntegraToneBanks toneBank)
         {
             InitializeComponent();
             DataContext = this;
             InitializeToneBank(toneBank);
         }
 
-        private async void InitializeToneBank(Type type)
+        private async void InitializeToneBank(IntegraToneBanks tonebank)
         {
-            ToneBank = await ((MainWindow)Application.Current.MainWindow).Integra.ToneBank(type);
+            ToneBank = await ((MainWindow)Application.Current.MainWindow).Integra.GetToneBank(tonebank);
             //NotifyPropertyChanged(nameof(ToneBank));
         }
-        
-        public IntegraToneCollection ToneBank
+
+        public IntegraToneBank ToneBank
         {
             get => _ToneBank;
             set
             {
-                if(_ToneBank != value)
+                if (_ToneBank != value)
                 {
                     _ToneBank = value;
                     NotifyPropertyChanged();
@@ -55,18 +55,18 @@ namespace IntegraEditorXL.UserControls
             }
         }
 
-        public IntegraToneBanks SelectedToneBank
-        {
-            get => _SelectedToneBank;
-            set
-            {
-                if (_SelectedToneBank != value)
-                {
-                    _SelectedToneBank = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
+        //public IntegraToneBanks SelectedToneBank
+        //{
+        //    get => _SelectedToneBank;
+        //    set
+        //    {
+        //        if (_SelectedToneBank != value)
+        //        {
+        //            _SelectedToneBank = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
 
         #region Interfaces: INotifyPropertyChanged
 

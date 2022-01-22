@@ -6,14 +6,14 @@
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="200"
-             d:Background="White">
+             d:Background="White"
+             DataContext="{Binding Integra.SelectedTone, RelativeSource={RelativeSource AncestorType=Window}}">
 
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
     </UserControl.Resources>
 
-    <GroupBox DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Integra.StudioSet.Part, IsAsync=True}"
-              Header="Selected Tone">
+    <GroupBox Header="Selected Tone">
 
         <StackPanel>
 
@@ -39,30 +39,36 @@
                            Grid.ColumnSpan="3" 
                            Grid.Row="0" 
                            Padding="2"
-                           Text="{Binding Tone.ToneBank, FallbackValue=Loading...}"/>
+                           d:Text="Tone Bank"
+                           Text="{Binding ToneBank, FallbackValue=Loading...}"
+                           VerticalAlignment="Center"/>
 
             <!-- TONE DESCRIPTION -->
                 <TextBlock Grid.Column="0" 
                            Grid.Row="1" 
                            Padding="2"
-                           Text="{Binding Tone.ID, StringFormat='0000'}"/>
+                           d:Text="0000"
+                           Text="{Binding ID, StringFormat='0000'}"/>
 
                 <TextBlock FontWeight="Bold"
                            Grid.Column="1" 
                            Grid.Row="1" 
                            Padding="2"
-                           Text="{Binding Tone.Name}"/>
+                           d:Text="Tone Name"
+                           Text="{Binding Name}"/>
 
                 <TextBlock Grid.Column="2" 
+                           Grid.ColumnSpan="2"
                            Grid.Row="1" 
                            HorizontalAlignment="Right"
                            Padding="2"
-                           Text="{Binding Tone.Category, StringFormat='[{0}]'}"/>
+                           d:Text="[Category]"
+                           Text="{Binding Category, StringFormat='[{0}]'}"/>
 
             <!-- ADD TO FAVORITES BUTTON -->
                 <xl:VectorButton Command="{Binding AddFavorite, RelativeSource={RelativeSource AncestorType=Window}}"
                                  Grid.Column="3" 
-                                 Grid.Row="1"
+                                 Grid.Row="0"
                                  Height="23"
                                  HorizontalAlignment="Center" 
                                  Vector="F1 M 26.9167,38L 31.6667,38L 31.6667,45.9167L 39.5833,45.9167L 39.5833,50.6667L 31.6667,50.6667L 31.6667,58.5833L 26.9167,58.5833L 26.9167,50.6667L 19,50.6667L 19,45.9167L 26.9167,45.9167L 26.9167,38 Z M 17.4167,33.25L 32.9107,33.25L 38,19L 43.0893,33.25L 58.5833,33.25L 45.6798,42.4944L 51.4583,57L 41.1666,50.9461L 41.1666,44.3333L 33.25,44.3333L 33.25,36.4167L 25.3333,36.4167L 25.3333,38.9319L 17.4167,33.25 Z"
@@ -71,24 +77,30 @@
 
             <!-- TONE BANK SELECT INFO -->
                 <StackPanel Grid.Column="0" 
-                            Grid.ColumnSpan="3"
+                            Grid.ColumnSpan="4"
                             Grid.Row="2"  
                             Orientation="Horizontal">
 
-                    <TextBlock FontSize="10">
+                    <TextBlock FontSize="8" TextTrimming="CharacterEllipsis">
                     
                         <Run Text="MSB: "/>
-                        <Run Text="{Binding Tone.MSB, Mode=OneWay}"/>
+                        <d:Run Text="127"/>
+                        <Run Text="{Binding MSB, Mode=OneWay}"/>
                         <Run Text=", LSB: "/>
-                        <Run Text="{Binding Tone.LSB, Mode=OneWay}"/>
+                        <d:Run Text="127"/>
+                        <Run Text="{Binding LSB, Mode=OneWay}"/>
                         <Run Text=", PC: "/>
-                        <Run Text="{Binding Tone.PC, Mode=OneWay}"/>
+                        <d:Run Text="127"/>
+                        <Run Text="{Binding PC, Mode=OneWay}"/>
                         <Run Text=" [" FontWeight="Light"/>
-                        <Run Text="{Binding Tone.MSB, StringFormat='0x{0:X2}', Mode=OneWay}" FontWeight="Light"/>
+                        <d:Run Text="0x00"/>
+                        <Run Text="{Binding MSB, StringFormat='0x{0:X2}', Mode=OneWay}" FontWeight="Light"/>
                         <Run Text=", " FontWeight="Light"/>
-                        <Run Text="{Binding Tone.LSB, StringFormat='0x{0:X2}', Mode=OneWay}" FontWeight="Light"/>
+                        <d:Run Text="0x00"/>
+                        <Run Text="{Binding LSB, StringFormat='0x{0:X2}', Mode=OneWay}" FontWeight="Light"/>
                         <Run Text=", " FontWeight="Light"/>
-                        <Run Text="{Binding Tone.PC, StringFormat='0x{0:X2}', Mode=OneWay}" FontWeight="Light"/>
+                        <d:Run Text="0x00"/>
+                        <Run Text="{Binding PC, StringFormat='0x{0:X2}', Mode=OneWay}" FontWeight="Light"/>
                         <Run Text="]" FontWeight="Light"/>
 
                     </TextBlock>

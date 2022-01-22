@@ -23,7 +23,7 @@
             <ComboBox x:Name="StudioSetsComboBox" 
                       DataContext="{Binding Integra}"
                       ItemsSource="{Binding StudioSets}"
-                      SelectedIndex="{Binding SelectedStudioSet}">
+                      SelectedIndex="{Binding Setup.StudioSetPC}">
 
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -37,7 +37,7 @@
 
             </ComboBox>
 
-            <Button Command="{Binding SelectStudioSetCommand}"
+            <!--<Button Command="{Binding SelectStudioSetCommand}"
                     CommandParameter="{Binding SelectedIndex, ElementName=StudioSetsComboBox}"
                     Content="Select"
                     DataContext="{Binding Integra}"
@@ -45,10 +45,10 @@
                 <Button.IsEnabled>
                     <MultiBinding Converter="{StaticResource Compare}">
                         <Binding ElementName="StudioSetsComboBox" Path="SelectedIndex"/>
-                        <Binding Path="Integra.StudioSet.SelectedIndex" RelativeSource="{RelativeSource AncestorType=Window}"/>
+                        <Binding Path="Integra.SelectedStudioSet" RelativeSource="{RelativeSource AncestorType=Window}"/>
                     </MultiBinding>
                 </Button.IsEnabled>
-            </Button>
+            </Button>-->
             
         </StackPanel>
     </GroupBox>

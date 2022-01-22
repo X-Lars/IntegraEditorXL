@@ -7,136 +7,150 @@
         xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
         xmlns:uc="clr-namespace:IntegraEditorXL.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="768" Width="1024">
+        Title="MainWindow" Height="768" Width="1024"
+        d:DataContext="{d:DesignInstance Type=local:MainWindow}">
 
     <Grid>
-    <DockPanel>
+        <DockPanel>
 
-        <StatusBar DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-                   DockPanel.Dock="Bottom">
+            <StatusBar DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                       DockPanel.Dock="Bottom">
 
-            <StatusBar.ItemsPanel>
-                <ItemsPanelTemplate>
-                    
-                    <StackPanel HorizontalAlignment="Right" 
-                                Orientation="Horizontal"/>
-                    
-                </ItemsPanelTemplate>
-            </StatusBar.ItemsPanel>
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate>
 
-            <StatusBarItem>
+                        <StackPanel HorizontalAlignment="Right" 
+                                    Orientation="Horizontal"/>
 
-                <TextBlock Text="{Binding Integra.Status.Description}"/>
+                    </ItemsPanelTemplate>
+                </StatusBar.ItemsPanel>
 
-            </StatusBarItem>
+                <StatusBarItem>
+
+                    <TextBlock Text="{Binding Integra.Status.Description}"/>
+
+                </StatusBarItem>
+
+                <StatusBarItem>
+
+                    <TextBlock Text="{Binding Integra.Status.Message}"/>
+
+                </StatusBarItem>
+
+                <StatusBarItem>
+
+                    <ProgressBar Height="10"
+                                 Value="{Binding Integra.Status.Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                 VerticalAlignment="Center"
+                                 Width="250"/>
+
+                </StatusBarItem>
+
+                <StatusBarItem>
+
+                    <TextBlock Text="{Binding Integra.Status.Text}"
+                               Width="50"/>
+
+                </StatusBarItem>
+            </StatusBar>
+
+            <!-- SIDE BAR: MAIN-->
+            <xl:Sidebar DockPanel.Dock="Left"
+                        DockPosition="Left"
+                        Header="Favorites"
+                        SelectedIndex="1"
+                        VisibleSections="5"
+                        Width="250">
+
+                <xl:Sidebar.CommonContent>
+                    <StackPanel/>
+                </xl:Sidebar.CommonContent>
+
+                <xl:Sidebar.Sections>
+
+                    <xl:SidebarSection Header="Studio Set">
+                        <StackPanel>
+
+                            <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                           CommandParameter="{x:Type uc:StudioSetOverview}"
+                                           Content="Overview"/>
+
+                            <uc:StudioSetCommonTree/>
+
+                        </StackPanel>
+                    </xl:SidebarSection>
+
+                    <xl:SidebarSection Header="Temporary Tone">
+                        <StackPanel>
+                            <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                           CommandParameter="{x:Type uc:SelectedTones}"
+                                           Content="Overview"/>
+                            
+                            <uc:TemporaryToneTree/>
+                        </StackPanel>
+                    </xl:SidebarSection>
+
+                    <xl:SidebarSection Header="Tone Banks">
+                        <uc:ToneBankTree/>
+                    </xl:SidebarSection>
+
+                    <xl:SidebarSection Header="System">
+
+                    </xl:SidebarSection>
+
+                    <xl:SidebarSection Header="Database">
+
+                    </xl:SidebarSection>
+
+                    <xl:SidebarSection Header="Utilities">
+                        <StackPanel>
+                            <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                               CommandParameter="{x:Type uc:Keyboard}"
+                                               Content="Keyboard"/>
+                        </StackPanel>
+                    </xl:SidebarSection>
+
+                    <xl:SidebarSection Header="Settings">
+
+                    </xl:SidebarSection>
+
+                </xl:Sidebar.Sections>
+
+            </xl:Sidebar>
+
+            <!-- SIDE BAR: CONTEXT -->
+            <xl:Sidebar DockPanel.Dock="Right"
+                        DockPosition="Right"
+                        ShowCommonArea="False"
+                        ShowSections="False"
+                        Width="250">
+
+                <xl:Sidebar.Sections>
+
+                    <xl:SidebarSection Header="Context Menu">
+
+                        <StackPanel>
+
+                            <uc:StudioSetSelection/>
+                            <uc:PartSelection/>
+                            <uc:VirtualSlots/>
+                            <uc:SelectedTone/>
+
+                        </StackPanel>
+                    </xl:SidebarSection>
+                </xl:Sidebar.Sections>
+            </xl:Sidebar>
+
+
+            <!-- CONTENT -->
+            <Grid x:Name="ActiveContent" 
+                  Background="Gray"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  ScrollViewer.CanContentScroll="True">
+
+            </Grid>
             
-            <StatusBarItem>
-                
-                <TextBlock Text="{Binding Integra.Status.Message}"/>
-                
-            </StatusBarItem>
-            
-            <StatusBarItem>
-
-                <ProgressBar Height="10"
-                             Value="{Binding Integra.Status.Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                             VerticalAlignment="Center"
-                             Width="250"/>
-
-            </StatusBarItem>
-
-            <StatusBarItem>
-
-                <TextBlock Text="{Binding Integra.Status.Text}"
-                           Width="50"/>
-
-            </StatusBarItem>
-        </StatusBar>
-
-        <!-- SIDE BAR: MAIN-->
-        <xl:Sidebar DockPanel.Dock="Left"
-                    DockPosition="Left"
-                    Header="Favorites"
-                    SelectedIndex="0"
-                    VisibleSections="5"
-                    Width="250">
-
-            <xl:Sidebar.CommonContent>
-                <StackPanel/>
-            </xl:Sidebar.CommonContent>
-
-            <xl:Sidebar.Sections>
-                
-                <xl:SidebarSection Header="Studio Set">
-                    <StackPanel>
-                        
-                        <xl:LinkButton Command="{Binding ShowControlCommand}"
-                                       CommandParameter="{x:Type uc:StudioSetOverview}"
-                                       Content="Overview"/>
-                        
-                        <uc:StudioSetCommonTree/>
-                        
-                    </StackPanel>
-                </xl:SidebarSection>
-                
-                <xl:SidebarSection Header="Temporary Tone">
-                    <uc:TemporaryToneTree/>
-                </xl:SidebarSection>
-                
-                <xl:SidebarSection Header="Tone Banks">
-                    <uc:ToneBankTree/>
-                </xl:SidebarSection>
-
-                <xl:SidebarSection Header="System">
-                    
-                </xl:SidebarSection>
-                
-                <xl:SidebarSection Header="Database">
-
-                </xl:SidebarSection>
-                
-                <xl:SidebarSection Header="Utilities">
-                    
-                </xl:SidebarSection>
-                
-                <xl:SidebarSection Header="Settings">
-                    
-                </xl:SidebarSection>
-                
-            </xl:Sidebar.Sections>
-            
-        </xl:Sidebar>
-        
-        <!-- SIDE BAR: CONTEXT -->
-        <xl:Sidebar DockPanel.Dock="Right"
-                    DockPosition="Right"
-                    ShowCommonArea="False"
-                    ShowSections="False"
-                    Width="250">
-
-            <xl:Sidebar.Sections>
-                
-                <xl:SidebarSection Header="Context Menu">
-                    
-                    <StackPanel>
-                        
-                        <uc:StudioSetSelection/>
-                        <uc:PartSelection/>
-                        <uc:SelectedTone/>
-                        <uc:VirtualSlots/>
-                        
-                    </StackPanel>
-                </xl:SidebarSection>
-            </xl:Sidebar.Sections>
-        </xl:Sidebar>
-
-        
-        <!-- CONTENT -->
-        <Grid x:Name="ActiveContent" 
-              Background="Gray">
-            
-        </Grid>
         </DockPanel>
-    <xl:Dialog/>
+        <xl:Dialog/>
     </Grid>
 </Window>

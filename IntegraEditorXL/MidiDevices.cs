@@ -5,7 +5,7 @@ using System;
 
 namespace IntegraEditorXL
 {
-    public class MidiXLOutputDevice : IIntegraOutputDevice
+    public class MidiXLOutputDevice : IMIDIOutputDevice
     {
         private MidiOutputDevice _MidiOutputDevice;
 
@@ -38,10 +38,15 @@ namespace IntegraEditorXL
             _MidiOutputDevice.Send(new SystemExclusiveMessage(data));
         }
 
+        public void SendNoteOn(int channel, int note, int velocity)
+        {
+            _MidiOutputDevice.Send(new NoteOnMessage((MidiChannels)channel, note, velocity));
+        }
+
         #endregion
     }
 
-    public class MidiXLInputDevice : IIntegraInputDevice
+    public class MidiXLInputDevice : IMIDIInputDevice
     {
         private MidiInputDevice _MidiInputDevice;
 

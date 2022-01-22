@@ -7,33 +7,90 @@
              xmlns:uc="clr-namespace:IntegraEditorXL.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             d:Background="White">
+             d:Background="White"
+             DataContext="{Binding Integra.StudioSet, RelativeSource={RelativeSource AncestorType=Window}}">
     
-    <Grid DataContext="{Binding Integra.StudioSet, RelativeSource={RelativeSource AncestorType=Window}}">
-        
-        <StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <ListBox ItemsSource="{Binding Parts}"
+                     SelectedIndex="{Binding Integra.SelectedPart, RelativeSource={RelativeSource AncestorType=Window}}"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                     ScrollViewer.CanContentScroll="True">
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Part}"
+                                   VerticalAlignment="Top"
+                                   VerticalContentAlignment="Top"/>
+                            <uc:ToneInfo DataContext="{Binding Tone}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                    
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+            <!--<StackPanel Orientation="Horizontal">
                 <Label Content="Part 01"/>
-                <uc:ToneInfo DataContext="{Binding Parts[0], IsAsync=True}"/>
+                <uc:ToneInfo DataContext="{Binding Parts[0].Tone}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Part 02"/>
-                <uc:ToneInfo DataContext="{Binding Parts[1], IsAsync=True}"/>
+                <uc:ToneInfo DataContext="{Binding Parts[1].Tone}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Part 03"/>
-                <Label Content="{Binding Parts[2].Tone.Name}"/>
+                <uc:ToneInfo DataContext="{Binding Parts[2].Tone}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Part 04"/>
-                <Label Content="{Binding Parts[3].Tone.Name}"/>
+                <uc:ToneInfo DataContext="{Binding Parts[3].Tone}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Part 05"/>
-                <Label Content="{Binding Parts[4].Tone.Name}"/>
+                <uc:ToneInfo DataContext="{Binding Parts[4].Tone}"/>
             </StackPanel>
-        </StackPanel>
-        
-    </Grid>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Part 06"/>
+                <uc:ToneInfo DataContext="{Binding Parts[5].Tone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Part 07"/>
+                <uc:ToneInfo DataContext="{Binding Parts[6].Tone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Part 08"/>
+                <uc:ToneInfo DataContext="{Binding Parts[7].Tone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Part 09"/>
+                <uc:ToneInfo DataContext="{Binding Parts[8].Tone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Part 10"/>
+                <uc:ToneInfo DataContext="{Binding Parts[9].Tone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Part 11"/>
+                <uc:ToneInfo DataContext="{Binding Parts[10].Tone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Part 12"/>
+                <uc:ToneInfo DataContext="{Binding Parts[11].Tone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Part 13"/>
+                <uc:ToneInfo DataContext="{Binding Parts[12].Tone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Part 14"/>
+                <uc:ToneInfo DataContext="{Binding Parts[13].Tone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Part 15"/>
+                <uc:ToneInfo DataContext="{Binding Parts[14].Tone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Part 16"/>
+                <uc:ToneInfo DataContext="{Binding Parts[15].Tone}"/>
+            </StackPanel>-->
     
 </UserControl>
