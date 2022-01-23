@@ -107,8 +107,9 @@
                 </StackPanel>
             </Grid>
 
-            <ToggleButton x:Name="PreviewButton" 
-                          IsChecked="{Binding Integra.Preview, RelativeSource={RelativeSource AncestorType=Window}}">
+            <ToggleButton x:Name="PreviewButton"
+                          Command="{Binding Integra.PreviewCommand, RelativeSource={RelativeSource AncestorType=Window}}">
+                          <!--IsChecked="{Binding Integra.Preview, RelativeSource={RelativeSource AncestorType=Window}}">-->
                 
                 <ToggleButton.Style>
                     <Style TargetType="{x:Type ToggleButton}">

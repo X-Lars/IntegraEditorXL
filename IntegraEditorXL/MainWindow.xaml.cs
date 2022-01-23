@@ -27,7 +27,7 @@ namespace IntegraEditorXL
 
             DataContext = this;
 
-            StyleManager.Appearance = ControlAppearance.Flat;
+            StyleManager.Appearance = ControlAppearance.Default;
             StyleManager.Style = ControlStyle.Default;
 
             Loaded += MainWindowLoaded;

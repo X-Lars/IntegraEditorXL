@@ -21,7 +21,7 @@
         <TreeViewItem Header="SuperNATURAL Acoustic Tone"
                       IsExpanded="True"
                       d:Visibility="Visible"
-                      Visibility="{Binding Integra.StudioSet.Part.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALAcousticTone}, FallbackValue=Collapsed}">
+                      Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALAcousticTone}, FallbackValue=Collapsed}">
             
             <StackPanel>
                 <xl:LinkButton>Common</xl:LinkButton>
@@ -32,7 +32,7 @@
         <TreeViewItem Header="SuperNATURAL Synth Tone"
                       IsExpanded="True"
                       d:Visibility="Visible"
-                      Visibility="{Binding Integra.StudioSet.Part.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALSynthTone}, FallbackValue=Collapsed}">
+                      Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALSynthTone}, FallbackValue=Collapsed}">
             <StackPanel>
                 <xl:LinkButton>Common</xl:LinkButton>
                 <xl:LinkButton>MFX</xl:LinkButton>
@@ -44,7 +44,7 @@
         <TreeViewItem Header="SuperNATURAL Drum Kit"
                       IsExpanded="True"
                       d:Visibility="Visible"
-                      Visibility="{Binding Integra.StudioSet.Part.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALDrumkit}, FallbackValue=Collapsed}">
+                      Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALDrumkit}, FallbackValue=Collapsed}">
             <StackPanel>
                 <xl:LinkButton>Common</xl:LinkButton>
                 <xl:LinkButton >MFX</xl:LinkButton>
@@ -55,7 +55,7 @@
         <TreeViewItem Header="PCM Synth Tone"
                       IsExpanded="True"
                       d:Visibility="Visible"
-                      Visibility="{Binding Integra.StudioSet.Part.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMSynthTone}, FallbackValue=Collapsed}">
+                      Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMSynthTone}, FallbackValue=Collapsed}">
             <StackPanel>
                 <xl:LinkButton>Common</xl:LinkButton>
                 <xl:LinkButton>Common 2</xl:LinkButton>
@@ -70,7 +70,7 @@
         <TreeViewItem Header="PCM Drum Kit"
                       IsExpanded="True"
                       d:Visibility="Visible"
-                      Visibility="{Binding Integra.StudioSet.Part.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMDrumkit}, FallbackValue=Collapsed}">
+                      Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMDrumkit}, FallbackValue=Collapsed}">
             <StackPanel>
                 <xl:LinkButton >MFX</xl:LinkButton>
                 <xl:LinkButton>Common Comp/EQ</xl:LinkButton>

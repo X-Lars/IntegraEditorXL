@@ -3,17 +3,16 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                xmlns:core="clr-namespace:IntegraXL.Core;assembly=IntegraXL"
                 xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
-                xmlns:uc="clr-namespace:IntegraEditorXL.UserControls"
+                xmlns:sx="clr-namespace:StylesXL;assembly=StylesXL"
                 mc:Ignorable="d" 
-                d:DesignHeight="200" d:DesignWidth="200"
+                d:DesignHeight="64" d:DesignWidth="200"
                 d:Background="White"
                 DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
 
     <UserControl.Resources>
         <converters:ComparisonConverter x:Key="ComparisonConverter"/>
-        <converters:EqualityConverter x:Key="EqualityConverter"/>
+        
         <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
     </UserControl.Resources>
 
@@ -22,70 +21,28 @@
         
         <StackPanel>
 
-            <!--<Grid HorizontalAlignment="Center">
+            <ListView BorderThickness="0" 
+                      SelectedIndex="{Binding SelectedPart}"
+                      SelectionMode="Single"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+                <ListView.ItemContainerStyle>
+                    
+                    <Style TargetType="{x:Type ListViewItem}">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <RadioButton Padding="2" Grid.Column="0" Grid.Row="0" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="01" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=0}"/>
-                <RadioButton Padding="2" Grid.Column="1" Grid.Row="0" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="02" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=1}"/>
-                <RadioButton Padding="2" Grid.Column="2" Grid.Row="0" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="03" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=2}"/>
-                <RadioButton Padding="2" Grid.Column="3" Grid.Row="0" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="04" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=3}"/>
-                <RadioButton Padding="2" Grid.Column="4" Grid.Row="0" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="05" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=4}"/>
-                <RadioButton Padding="2" Grid.Column="5" Grid.Row="0" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="06" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=5}"/>
-                <RadioButton Padding="2" Grid.Column="6" Grid.Row="0" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="07" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=6}"/>
-                <RadioButton Padding="2" Grid.Column="7" Grid.Row="0" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="08" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=7}"/>
-                <RadioButton Padding="2" Grid.Column="0" Grid.Row="1" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="09" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=8}"/>
-                <RadioButton Padding="2" Grid.Column="1" Grid.Row="1" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="10" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=9}"/>
-                <RadioButton Padding="2" Grid.Column="2" Grid.Row="1" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="11" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=10}"/>
-                <RadioButton Padding="2" Grid.Column="3" Grid.Row="1" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="12" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=11}"/>
-                <RadioButton Padding="2" Grid.Column="4" Grid.Row="1" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="13" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=12}"/>
-                <RadioButton Padding="2" Grid.Column="5" Grid.Row="1" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="14" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=13}"/>
-                <RadioButton Padding="2" Grid.Column="6" Grid.Row="1" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="15" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=14}"/>
-                <RadioButton Padding="2" Grid.Column="7" Grid.Row="1" GroupName="PartGroup" Style="{StaticResource {x:Type ToggleButton}}" Content="16" IsChecked="{Binding SelectedPart, Converter={StaticResource EqualityConverter}, ConverterParameter=15}"/>
-
-            </Grid>-->
-            <ListBox BorderThickness="0"
-                     SelectedIndex="{Binding SelectedPart}"
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        
-                        <ToggleButton IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
-                        
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-                
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        
-                        <Setter Property="BorderBrush" Value="Gray"/>
-                        <Setter Property="BorderThickness" Value="0.5"/>
-                        <Setter Property="Margin" Value="0"/>
+                        <Setter Property="Background" Value="{sx:StyleManager Key={x:Static sx:Brushes.Control}}"/>
+                        <Setter Property="BorderBrush" Value="{sx:StyleManager Key={x:Static sx:Brushes.Border}}"/>
+                        <Setter Property="BorderThickness" Value="{sx:StyleManager Key={x:Static sx:Layout.BorderThickness}}"/>
+                        <Setter Property="Margin" Value=".5"/>
                         <Setter Property="Padding" Value="0"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
                         
                     </Style>
-                </ListBox.ItemContainerStyle>
-                
-                <ListBox.ItemsPanel>
                     
+                </ListView.ItemContainerStyle>
+
+                <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         
                         <WrapPanel Height="40" 
@@ -96,26 +53,26 @@
                                    Width="160"/>
                         
                     </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                
-                <ListBoxItem Content="01"/>
-                <ListBoxItem Content="02"/>
-                <ListBoxItem Content="03"/>
-                <ListBoxItem Content="04"/>
-                <ListBoxItem Content="05"/>
-                <ListBoxItem Content="06"/>
-                <ListBoxItem Content="07"/>
-                <ListBoxItem Content="08"/>
-                <ListBoxItem Content="09"/>
-                <ListBoxItem Content="10"/>
-                <ListBoxItem Content="11"/>
-                <ListBoxItem Content="12"/>
-                <ListBoxItem Content="13"/>
-                <ListBoxItem Content="14"/>
-                <ListBoxItem Content="15"/>
-                <ListBoxItem Content="16"/>
-                
-            </ListBox>
+                </ListView.ItemsPanel>
+               
+                <ListViewItem Content="01"/>
+                <ListViewItem Content="02"/>
+                <ListViewItem Content="03"/>
+                <ListViewItem Content="04"/>
+                <ListViewItem Content="05"/>
+                <ListViewItem Content="06"/>
+                <ListViewItem Content="07"/>
+                <ListViewItem Content="08"/>
+                <ListViewItem Content="09"/>
+                <ListViewItem Content="10"/>
+                <ListViewItem Content="11"/>
+                <ListViewItem Content="12"/>
+                <ListViewItem Content="13"/>
+                <ListViewItem Content="14"/>
+                <ListViewItem Content="15"/>
+                <ListViewItem Content="16"/>
+
+            </ListView>
         </StackPanel>
     </GroupBox>
 </UserControl>

@@ -37,15 +37,15 @@
                 <TreeViewItem Header="User" IsExpanded="True">
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:SNAUserToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SNAUserTone}"
                                    Content="Acoustic Tones"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:SNSUserToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SNSUserTone}"
                                    Content="Synth Tones"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:SNDUserToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SNDUserDrum}"
                                    Content="Drum Kits"/>
 
                 </TreeViewItem>
@@ -53,32 +53,32 @@
                 <TreeViewItem Header="Expansions" IsExpanded="False">
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:ExSN01ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.ExSN01Tone}"
                                    Content="ExSN 01: SuperNATURAL Ethnic"
                                    IsEnabled="{Binding Integra.VirtualSlots[13]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:ExSN02ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.ExSN02Tone}"
                                    Content="ExSN 02: SuperNATURAL Woodwinds"
                                    IsEnabled="{Binding Integra.VirtualSlots[14]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:ExSN03ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.ExSN03Tone}"
                                    Content="ExSN 03: SuperNATURAL Session"
                                    IsEnabled="{Binding Integra.VirtualSlots[15]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:ExSN04ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.ExSN04Tone}"
                                    Content="ExSN 04: SuperNATURAL Acoustic Guitar"
                                    IsEnabled="{Binding Integra.VirtualSlots[16]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:ExSN05ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.ExSN05Tone}"
                                    Content="ExSN 05: SuperNATURAL Brass"
                                    IsEnabled="{Binding Integra.VirtualSlots[17]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Type models:ExSN06ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.ExSN06Drum}"
                                    Content="ExSN 06: SuperNATURAL SFX"
                                    IsEnabled="{Binding Integra.VirtualSlots[18]}"/>
 
@@ -93,11 +93,11 @@
                 <TreeViewItem Header="Presets" IsExpanded="True">
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:PCMPresetToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.PCMPresetTone}"
                                Content="Tones"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:PCMPresetDrumKits}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.PCMPresetDrum}"
                                Content="Drum Kits"/>
 
                 </TreeViewItem>
@@ -105,11 +105,11 @@
                 <TreeViewItem Header="User" IsExpanded="True">
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:PCMUserToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.PCMUserTone}"
                                Content="Tones"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:PCMUserDrumKits}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.PCMUserDrum}"
                                Content="Drum Kits"/>
 
                 </TreeViewItem>
@@ -117,67 +117,67 @@
                 <TreeViewItem Header="Expansions" IsExpanded="False">
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX01ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX01Tone}"
                                Content="SRX 01: Dynamic Drums"
                                IsEnabled="{Binding Integra.VirtualSlots[1]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX02ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX02Tone}"
                                Content="SRX 02: Concert Piano"
                                IsEnabled="{Binding Integra.VirtualSlots[2]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX03ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX03Tone}"
                                Content="SRX 03: Studio SRX"
                                IsEnabled="{Binding Integra.VirtualSlots[3]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX04ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX04Tone}"
                                Content="SRX 04: Symphonique Strings"
                                IsEnabled="{Binding Integra.VirtualSlots[4]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX05ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX05Tone}"
                                Content="SRX 05: Supreme Dance"
                                IsEnabled="{Binding Integra.VirtualSlots[5]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX06ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX06Tone}"
                                Content="SRX 06: Complete Orchestra"
                                IsEnabled="{Binding Integra.VirtualSlots[6]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX07ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX07Tone}"
                                Content="SRX 07: Ultimate Keys"
                                IsEnabled="{Binding Integra.VirtualSlots[7]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX08ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX08Tone}"
                                Content="SRX 08: Platinum Trax"
                                IsEnabled="{Binding Integra.VirtualSlots[8]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX09ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX09Tone}"
                                Content="SRX 09: World Collection"
                                IsEnabled="{Binding Integra.VirtualSlots[9]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX10ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX10Tone}"
                                Content="SRX 10: Big Brass Ensemble"
                                IsEnabled="{Binding Integra.VirtualSlots[10]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX11ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX11Tone}"
                                Content="SRX 11: Complete Piano"
                                IsEnabled="{Binding Integra.VirtualSlots[11]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:SRX12ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.SRX12Tone}"
                                Content="SRX 12: Classic Electric Pianos"
                                IsEnabled="{Binding Integra.VirtualSlots[12]}"/>
 
                     <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                               CommandParameter="{x:Type models:ExPCMTonebank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.ExPCMTone}"
                                Content="ExPCM: HQ GM2 + HQ PCM Sound"
                                IsEnabled="{Binding Integra.VirtualSlots[19]}"/>
 
@@ -190,11 +190,11 @@
             <StackPanel>
 
                 <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                           CommandParameter="{x:Type models:GM2ToneBank}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.GM2Tone}"
                            Content="Tones"/>
 
                 <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                           CommandParameter="{x:Type models:GM2DrumKits}"
+                                   CommandParameter="{x:Static core:IntegraToneBanks.GM2Drum}"
                            Content="Drum Kits"/>
 
             </StackPanel>
