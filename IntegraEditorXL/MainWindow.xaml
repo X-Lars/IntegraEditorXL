@@ -58,7 +58,7 @@
             <xl:Sidebar DockPanel.Dock="Left"
                         DockPosition="Left"
                         Header="Favorites"
-                        SelectedIndex="1"
+                        SelectedIndex="0"
                         VisibleSections="5"
                         Width="250">
 

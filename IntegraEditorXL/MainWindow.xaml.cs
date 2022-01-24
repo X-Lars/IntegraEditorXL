@@ -4,9 +4,11 @@ using IntegraEditorXL.UserControls;
 using IntegraXL;
 using IntegraXL.Core;
 using IntegraXL.Interfaces;
+using IntegraXL.Models;
 using StylesXL;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -75,7 +77,12 @@ namespace IntegraEditorXL
                 Integra = await Integra.CreateInstance(connection);
                 //NotifyPropertyChanged(nameof(Integra));
                 _Dialog.Close();
+
+                TemporaryTone tone = await Integra.GetModel<TemporaryTone>(Parts.Part01);
+
+                Debug.Print("COMPLETE MAIN WINDOW");
             }
+
         }
 
         public Integra Integra 

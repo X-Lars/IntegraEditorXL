@@ -1,0 +1,230 @@
+﻿<UserControl x:Class="IntegraEditorXL.Views.StudioSetCommonReverb"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:local="clr-namespace:IntegraEditorXL.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding Integra.StudioSet, RelativeSource={RelativeSource AncestorType=Window}}">
+    
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+
+            <GroupBox Header="General">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" VerticalAlignment="Center">Reverb Switch</Label>
+                    <Label Grid.Row="1" VerticalAlignment="Center">Reverb Type</Label>
+                    <Label Grid.Row="2" VerticalAlignment="Center">Reverb Level</Label>
+                    <Label Grid.Row="3" VerticalAlignment="Center">Reverb Output Assing</Label>
+
+                    <xl:Switch Grid.Column="1" Grid.Row="0"
+                               IsChecked="{Binding Common.ReverbSwitch}"
+                               OnLabel="On" OffLabel="Off"/>
+
+                    <ComboBox Name="ChorusType"
+                              Grid.Column="1" Grid.Row="1"
+                              ItemsSource="{Binding CommonReverb.ReverbTypes}"
+                              SelectedItem="{Binding CommonReverb.ReverbType}"/>
+                    
+                    <xl:NumericTextBox Grid.Column="1" Grid.Row="2"
+                                       Value="{Binding CommonReverb.ReverbLevel}" 
+                                       Min="0" Max="127"/>
+
+                    <ComboBox Grid.Column="1" Grid.Row="3"
+                              ItemsSource="{Binding CommonReverb.ReverbOutputAssigns}"
+                              SelectedItem="{Binding CommonReverb.ReverbOutputAssign}"/>
+
+
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+
+            <GroupBox Header="Reverb">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Pre Delay</Label>
+                    <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Time</Label>
+                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Density</Label>
+                    <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center">Diffusion</Label>
+                    <Label Grid.Column="0" Grid.Row="4" VerticalAlignment="Center">LF Damp</Label>
+                    <Label Grid.Column="0" Grid.Row="5" VerticalAlignment="Center">HF Damp</Label>
+                    <Label Grid.Column="0" Grid.Row="6" VerticalAlignment="Center">Spread</Label>
+                    <Label Grid.Column="0" Grid.Row="7" VerticalAlignment="Center">Tone</Label>
+
+                    <xl:NumericTextBox Grid.Column="1" Grid.Row="0"
+                                       Value="{Binding CommonReverb.ReverbPreDelay}" 
+                                       Min="0" Max="100" 
+                                       Suffix="Ms"/>
+
+                    <xl:NumericTextBox Grid.Column="1" Grid.Row="1"
+                                       Value="{Binding CommonReverb.ReverbTime}" 
+                                       Min="0.1" Max="10.0"
+                                       Interval="0.1"
+                                       Suffix="S"/>
+
+                    <xl:NumericTextBox Grid.Column="1" Grid.Row="2"
+                                       Value="{Binding CommonReverb.ReverbDensity}" 
+                                       Min="0" Max="127"/>
+
+                    <xl:NumericTextBox Grid.Column="1" Grid.Row="3"
+                                       Value="{Binding CommonReverb.ReverbDiffusion}" 
+                                       Min="0" Max="127"/>
+
+                    <xl:NumericTextBox Grid.Column="1" Grid.Row="4"
+                                       Value="{Binding CommonReverb.ReverbLFDamp}" 
+                                       Min="0" Max="127"/>
+
+                    <xl:NumericTextBox Grid.Column="1" Grid.Row="5"
+                                       Value="{Binding CommonReverb.ReverbHFDamp}" 
+                                       Min="0" Max="127"/>
+
+                    <xl:NumericTextBox Grid.Column="1" Grid.Row="6"
+                                       Value="{Binding CommonReverb.ReverbSpread}" 
+                                       Min="0" Max="127"/>
+
+                    <xl:NumericTextBox Grid.Column="1" Grid.Row="7"
+                                       Value="{Binding CommonReverb.ReverbTone}" 
+                                       Min="0" Max="127"/>
+
+                </Grid>
+
+                <GroupBox.Style>
+                    <Style TargetType="{x:Type GroupBox}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CommonReverb.ReverbType}" Value="1">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding CommonReverb.ReverbType}" Value="2">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding CommonReverb.ReverbType}" Value="3">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding CommonReverb.ReverbType}" Value="4">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding CommonReverb.ReverbType}" Value="5">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </GroupBox.Style>
+
+            </GroupBox>
+
+            <GroupBox Header="Reverb">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Header="Left">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Character</Label>
+                            <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Time</Label>
+
+                            <xl:NumericTextBox Grid.Column="1" Grid.Row="0"
+                                       Value="{Binding CommonReverb.GM2ReverbCharacter}" 
+                                       Min="0" Max="5"/>
+
+                            <xl:NumericTextBox Grid.Column="1" Grid.Row="1"
+                                       Value="{Binding CommonReverb.GM2ReverbTime}" 
+                                       Min="0" Max="127"/>
+
+                        </Grid>
+                    </GroupBox>
+
+
+                </Grid>
+
+                <GroupBox.Style>
+                    <Style TargetType="{x:Type GroupBox}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CommonReverb.ReverbType}" Value="6">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </GroupBox.Style>
+
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

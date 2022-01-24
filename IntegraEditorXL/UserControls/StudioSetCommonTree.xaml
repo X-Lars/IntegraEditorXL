@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:view="clr-namespace:IntegraEditorXL.Views"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200" d:Background="White">
     
@@ -12,14 +13,20 @@
 
         
         
-        <xl:LinkButton Content="Common"/>
+        <xl:LinkButton Content="Common"
+                       Command="{Binding ShowControlCommand}"
+                       CommandParameter="{x:Type view:StudioSetCommon}"/>
+        
         <xl:LinkButton Content="Master EQ"/>
         
         <TreeViewItem Header="Effects" IsExpanded="True">
             
 
             <xl:LinkButton Content="Chorus"/>
-            <xl:LinkButton Content="Reverb"/>
+            <xl:LinkButton Content="Reverb"
+                           Command="{Binding ShowControlCommand}"
+                           CommandParameter="{x:Type view:StudioSetCommonReverb}"/>
+                           
             <xl:LinkButton Content="Motional Surround"/>
 
         </TreeViewItem>

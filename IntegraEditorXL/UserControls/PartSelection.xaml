@@ -4,7 +4,7 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
-                xmlns:sx="clr-namespace:StylesXL;assembly=StylesXL"
+                xmlns:style="clr-namespace:StylesXL;assembly=StylesXL"
                 mc:Ignorable="d" 
                 d:DesignHeight="64" d:DesignWidth="200"
                 d:Background="White"
@@ -12,7 +12,6 @@
 
     <UserControl.Resources>
         <converters:ComparisonConverter x:Key="ComparisonConverter"/>
-        
         <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
     </UserControl.Resources>
 
@@ -30,9 +29,9 @@
                     
                     <Style TargetType="{x:Type ListViewItem}">
 
-                        <Setter Property="Background" Value="{sx:StyleManager Key={x:Static sx:Brushes.Control}}"/>
-                        <Setter Property="BorderBrush" Value="{sx:StyleManager Key={x:Static sx:Brushes.Border}}"/>
-                        <Setter Property="BorderThickness" Value="{sx:StyleManager Key={x:Static sx:Layout.BorderThickness}}"/>
+                        <Setter Property="Background" Value="{style:StyleManager Key={x:Static style:Brushes.Control}}"/>
+                        <Setter Property="BorderBrush" Value="{style:StyleManager Key={x:Static style:Brushes.Border}}"/>
+                        <Setter Property="BorderThickness" Value="0.5"/>
                         <Setter Property="Margin" Value=".5"/>
                         <Setter Property="Padding" Value="0"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>

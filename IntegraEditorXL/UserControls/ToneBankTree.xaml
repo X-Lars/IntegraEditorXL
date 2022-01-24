@@ -185,17 +185,18 @@
             </StackPanel>
         </GroupBox>
 
+        <!--TODO: Expansion Drum Kits -->
         <GroupBox Header="GM2">
 
             <StackPanel>
 
                 <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Static core:IntegraToneBanks.GM2Tone}"
-                           Content="Tones"/>
+                               CommandParameter="{x:Static core:IntegraToneBanks.GM2Tone}"
+                               Content="Tones"/>
 
                 <xl:LinkButton Command="{Binding ShowToneBankCommand}" 
-                                   CommandParameter="{x:Static core:IntegraToneBanks.GM2Drum}"
-                           Content="Drum Kits"/>
+                               CommandParameter="{x:Static core:IntegraToneBanks.GM2Drum}"
+                               Content="Drum Kits"/>
 
             </StackPanel>
         </GroupBox>

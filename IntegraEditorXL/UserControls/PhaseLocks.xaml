@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.PhaseLocks"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="65" d:DesignWidth="200"
+             DataContext="{Binding Integra.StudioSet, RelativeSource={RelativeSource AncestorType=Window}}">
+
+    <GroupBox Header="Phase Lock">
+
+        <StackPanel>
+
+            <ListView BorderThickness="0" 
+                      ItemsSource="{Binding Midis}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox IsChecked="{Binding PhaseLock}"/>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+
+                    <Style TargetType="{x:Type ListBoxItem}">
+
+                        <Setter Property="BorderThickness" Value="0.5"/>
+                        <Setter Property="Margin" Value=".5"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+                    </Style>
+
+                </ListView.ItemContainerStyle>
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+
+                        <WrapPanel Height="40" 
+                                   IsItemsHost="True"
+                                   ItemHeight="20" 
+                                   ItemWidth="20" 
+                                   Orientation="Horizontal"
+                                   Width="160"/>
+
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+            </ListView>
+        </StackPanel>
+    </GroupBox>
+</UserControl>
