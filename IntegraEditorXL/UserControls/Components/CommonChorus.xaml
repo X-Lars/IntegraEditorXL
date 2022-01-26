@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.Components.CommonChorus"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls.Components"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:dx="clr-namespace:IntegraXL.Models.Parameters;assembly=IntegraXL"
+             xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="210" d:DesignWidth="200" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=dx:CommonChorus}">
+
+    <UserControl.Resources>
+        <converters:BoolVisibility x:Key="Visibility"/>
+    </UserControl.Resources>
+    
+    <Grid DataContext="{Binding Parameter}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0">Filter Type</Label>
+        <Label Grid.Column="0" Grid.Row="1">Cutoff Freq</Label>
+        <Label Grid.Column="0" Grid.Row="2">Pre Delay</Label>
+        <Label Grid.Column="0" Grid.Row="3">Rate Switch</Label>
+        <Label Grid.Column="0" Grid.Row="4">Rate</Label>
+        <Label Grid.Column="0" Grid.Row="5">Depth</Label>
+        <Label Grid.Column="0" Grid.Row="6">Phase</Label>
+        <Label Grid.Column="0" Grid.Row="7">Feedback</Label>
+
+        <ComboBox Grid.Column="1" Grid.Row="0"
+                  ItemsSource="{Binding FilterTypes}"
+                  SelectedItem="{Binding FilterType}"/>
+
+        <ComboBox Grid.Column="1" Grid.Row="1"
+                  ItemsSource="{Binding CutoffFreqs}"
+                  SelectedItem="{Binding CutoffFreq}"/>
+
+        <xl:NumericTextBox Grid.Column="1" Grid.Row="2"
+                           ValueProvider="{Binding PreDelays}" 
+                           Index="{Binding PreDelay}"
+                           Suffix="Ms"/>
+
+        <ComboBox Grid.Column="1" Grid.Row="3"
+                  ItemsSource="{Binding RateSwitchs}"
+                  SelectedItem="{Binding RateSwitch}"/>
+
+        <xl:NumericTextBox Grid.Column="1" Grid.Row="4"
+                           Value="{Binding RateHz}"
+                           Interval="0.05"
+                           Min="0.05" Max="10.00"
+                           Suffix="hz"/>
+
+        <ComboBox Grid.Column="1" Grid.Row="4"
+                  ItemsSource="{Binding NoteRates}"
+                  SelectedItem="{Binding RateNote}"/>
+        
+        <xl:NumericTextBox Grid.Column="1" Grid.Row="5"
+                           Min="0" Max="127"
+                           Value="{Binding Depth}"/>
+
+        <xl:NumericTextBox Grid.Column="1" Grid.Row="6"
+                           Interval="2"
+                           Min="0" Max="180"
+                           Suffix="Deg"
+                           Value="{Binding Phase}"/>
+
+        <xl:NumericTextBox Grid.Column="1" Grid.Row="7"
+                           Min="0" Max="127"
+                           Value="{Binding Feedback}"/>
+
+    </Grid>
+</UserControl>

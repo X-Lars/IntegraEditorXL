@@ -3,20 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dx="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
              xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
-             
              mc:Ignorable="d" 
-             d:DesignHeight="240" d:DesignWidth="250" d:Background="White">
+             d:DesignHeight="240" d:DesignWidth="250" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=dx:VirtualSlots}">
     
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
     </UserControl.Resources>
     
-    <GroupBox DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-              Header="Virtual Slots"
-              Visibility="{Binding Integra.IsInitialized, FallbackValue=Collapsed, Converter={StaticResource VisibilityConverter}}" d:Visibility="Visible">
+    <GroupBox Header="Virtual Slots"
+              Visibility="{Binding IsInitialized, FallbackValue=Collapsed, Converter={StaticResource VisibilityConverter}}" d:Visibility="Visible">
 
-        <Grid DataContext="{Binding Integra.VirtualSlots}">
+        <Grid DataContext="{Binding VirtualSlots}">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/> <!-- SLOTS -->

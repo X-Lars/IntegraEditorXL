@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace IntegraEditorXL.UserControls
+namespace IntegraEditorXL.UserControls.Components
 {
     /// <summary>
     /// Interaction logic for PartSelection.xaml

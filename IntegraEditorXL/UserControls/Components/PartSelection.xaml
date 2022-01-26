@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="IntegraEditorXL.UserControls.PartSelection"
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.Components.PartSelection"
                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,14 +8,14 @@
                 mc:Ignorable="d" 
                 d:DesignHeight="64" d:DesignWidth="200"
                 d:Background="White"
-                DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+                >
 
     <UserControl.Resources>
         <converters:ComparisonConverter x:Key="ComparisonConverter"/>
         <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
     </UserControl.Resources>
 
-    <GroupBox DataContext="{Binding Integra}"
+    <GroupBox 
               Header="Selected Part">
         
         <StackPanel>

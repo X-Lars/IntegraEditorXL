@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200" d:Background="White">
     
-    <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+    <StackPanel>
 
         
         
@@ -22,7 +22,10 @@
         <TreeViewItem Header="Effects" IsExpanded="True">
             
 
-            <xl:LinkButton Content="Chorus"/>
+            <xl:LinkButton Content="Chorus"
+                           Command="{Binding ShowControlCommand}"
+                           CommandParameter="{x:Type view:StudioSetCommonChorus}"/>
+            
             <xl:LinkButton Content="Reverb"
                            Command="{Binding ShowControlCommand}"
                            CommandParameter="{x:Type view:StudioSetCommonReverb}"/>

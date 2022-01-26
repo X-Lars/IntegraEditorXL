@@ -22,7 +22,9 @@
                            VerticalAlignment="Top"
                            VerticalContentAlignment="Top"/>
 
-                    <Label Content="{Binding MFX.Type}"/>
+                    <ComboBox ItemsSource="{Binding MFX.Types}"
+                              SelectedItem="{Binding MFX.Type}"/>
+                    
                 </StackPanel>
             </DataTemplate>
         </ListBox.ItemTemplate>

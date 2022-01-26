@@ -42,8 +42,7 @@ namespace IntegraEditorXL
 
         private void ShowControl(Type x)
         {
-            ActiveContent.Children.Clear();
-            ActiveContent.Children.Add((UIElement)Activator.CreateInstance(x));
+            Content.Content = (UIElement)Activator.CreateInstance(x);
         }
 
         public ICommand ShowToneBankCommand
@@ -53,8 +52,7 @@ namespace IntegraEditorXL
 
         private void ShowToneBank(IntegraToneBanks x)
         {
-            ActiveContent.Children.Clear();
-            ActiveContent.Children.Add(new ToneSelection(x));
+            Content.Content = new ToneSelection(x);
         }
 
         private async void MainWindowLoaded(object sender, RoutedEventArgs e)

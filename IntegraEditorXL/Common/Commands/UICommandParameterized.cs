@@ -32,7 +32,7 @@ namespace IntegraEditorXL.Common.Commands
         /// <summary>
         /// Event raised when the execution conditions are changed.
         /// </summary>
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler? CanExecuteChanged;
 
         #endregion
 

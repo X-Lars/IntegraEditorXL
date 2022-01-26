@@ -1,14 +1,14 @@
-﻿<UserControl x:Class="IntegraEditorXL.Views.StudioSetCommonReverb"
+﻿<UserControl x:Class="IntegraEditorXL.Views.StudioSetCommonChorus"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
-             xmlns:ucc="clr-namespace:IntegraEditorXL.UserControls.Components"
+             xmlns:c="clr-namespace:IntegraEditorXL.UserControls.Components"
+             xmlns:local="clr-namespace:IntegraEditorXL.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" d:Background="LightGray"
-             DataContext="{Binding Integra.StudioSet.CommonReverb, RelativeSource={RelativeSource AncestorType=Window}}">
-    
+             DataContext="{Binding Integra.StudioSet.CommonChorus, RelativeSource={RelativeSource AncestorType=Window}}">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -33,23 +33,23 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" VerticalAlignment="Center">Reverb Switch</Label>
-                <Label Grid.Row="1" VerticalAlignment="Center">Reverb Type</Label>
-                <Label Grid.Row="2" VerticalAlignment="Center">Reverb Level</Label>
-                <Label Grid.Row="3" VerticalAlignment="Center">Reverb Output Assing</Label>
+                <Label Grid.Row="0" VerticalAlignment="Center">Chorus Switch</Label>
+                <Label Grid.Row="1" VerticalAlignment="Center">Chorus Type</Label>
+                <Label Grid.Row="2" VerticalAlignment="Center">Chorus Level</Label>
+                <Label Grid.Row="3" VerticalAlignment="Center">Chorus Output Assing</Label>
 
                 <xl:Switch Grid.Column="1" Grid.Row="0"
-                            IsChecked="{Binding Integra.StudioSet.Common.ReverbSwitch, RelativeSource={RelativeSource AncestorType=Window}}"
+                            IsChecked="{Binding Integra.StudioSet.Common.ChorusSwitch, RelativeSource={RelativeSource AncestorType=Window}}"
                             OnLabel="On" OffLabel="Off"/>
 
                 <ComboBox Name="ChorusType"
                             Grid.Column="1" Grid.Row="1"
-                            ItemsSource="{Binding ReverbTypes}"
+                            ItemsSource="{Binding Types}"
                             SelectedItem="{Binding Type}">
                 </ComboBox>
-                    
+
                 <xl:NumericTextBox Grid.Column="1" Grid.Row="2"
-                                    Value="{Binding ReverbLevel}" 
+                                    Value="{Binding ChorusLevel}" 
                                     Min="0" Max="127"/>
 
                 <ComboBox Grid.Column="1" Grid.Row="3"
@@ -59,11 +59,11 @@
 
             </Grid>
         </StackPanel>
-        
+
         <StackPanel Grid.Column="1">
-            <ucc:CommonReverb/>
-            <ucc:CommonReverbGM2/>
+            <!--<c:CommonChorus/>-->
+            <c:CommonDelay/>
         </StackPanel>
-        
+
     </Grid>
 </UserControl>

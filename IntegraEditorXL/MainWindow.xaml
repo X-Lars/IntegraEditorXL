@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:IntegraEditorXL"
         xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
         xmlns:uc="clr-namespace:IntegraEditorXL.UserControls"
+        xmlns:c="clr-namespace:IntegraEditorXL.UserControls.Components"
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1024"
         d:DataContext="{d:DesignInstance Type=local:MainWindow}">
 
-    <Grid>
+    <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
         <DockPanel>
 
             <StatusBar DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
@@ -69,7 +70,7 @@
                 <xl:Sidebar.Sections>
 
                     <xl:SidebarSection Header="Studio Set">
-                        <StackPanel>
+                        <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
 
                             <xl:LinkButton Command="{Binding ShowControlCommand}"
                                            CommandParameter="{x:Type uc:StudioSetOverview}"
@@ -121,6 +122,7 @@
             <!-- SIDE BAR: CONTEXT -->
             <xl:Sidebar DockPanel.Dock="Right"
                         DockPosition="Right"
+                        
                         ShowCommonArea="False"
                         ShowSections="False"
                         Width="250">
@@ -129,10 +131,10 @@
 
                     <xl:SidebarSection Header="Context Menu">
 
-                        <StackPanel>
+                        <StackPanel DataContext="{Binding Integra, RelativeSource={RelativeSource AncestorType=Window}}">
 
                             <uc:StudioSetSelection/>
-                            <uc:PartSelection/>
+                            <c:PartSelection/>
                             <uc:VirtualSlots/>
                             <uc:SelectedTone/>
 
@@ -143,12 +145,15 @@
 
 
             <!-- CONTENT -->
-            <Grid x:Name="ActiveContent" 
+            <ContentPresenter x:Name="Content"
+                              ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                              ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+            <!--<Grid x:Name="ActiveContent" 
                   Background="Gray"
                   ScrollViewer.VerticalScrollBarVisibility="Visible"
                   ScrollViewer.CanContentScroll="True">
 
-            </Grid>
+            </Grid>-->
             
         </DockPanel>
         <xl:Dialog/>

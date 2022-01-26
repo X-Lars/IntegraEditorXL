@@ -4,51 +4,64 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="65" d:DesignWidth="200"
-             DataContext="{Binding Integra.StudioSet, RelativeSource={RelativeSource AncestorType=Window}}">
+             d:DesignHeight="42" d:DesignWidth="162">
 
-    <GroupBox Header="Phase Lock">
+    <ListBox BorderThickness="0" 
+             ItemsSource="{Binding Midis}"
+             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+             ScrollViewer.VerticalScrollBarVisibility="Disabled">
 
-        <StackPanel>
+        <ListBox.ItemTemplate>
+            <DataTemplate>
 
-            <ListView BorderThickness="0" 
-                      ItemsSource="{Binding Midis}"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <CheckBox IsChecked="{Binding PhaseLock}"/>
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <CheckBox IsChecked="{Binding PhaseLock}"/>
-                    </DataTemplate>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
 
-                </ListView.ItemTemplate>
-                <ListView.ItemContainerStyle>
+        <ListBox.ItemContainerStyle>
 
-                    <Style TargetType="{x:Type ListBoxItem}">
+            <Style TargetType="{x:Type ListBoxItem}">
 
-                        <Setter Property="BorderThickness" Value="0.5"/>
-                        <Setter Property="Margin" Value=".5"/>
-                        <Setter Property="Padding" Value="0"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="BorderThickness" Value="0.5"/>
+                <Setter Property="Margin" Value=".5"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
 
-                    </Style>
+            </Style>
 
-                </ListView.ItemContainerStyle>
+        </ListBox.ItemContainerStyle>
 
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
+        <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
 
-                        <WrapPanel Height="40" 
-                                   IsItemsHost="True"
-                                   ItemHeight="20" 
-                                   ItemWidth="20" 
-                                   Orientation="Horizontal"
-                                   Width="160"/>
+                <WrapPanel Height="40" 
+                                IsItemsHost="True"
+                                ItemHeight="20" 
+                                ItemWidth="20" 
+                                Orientation="Horizontal"
+                                Width="160"/>
 
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
+            </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
 
-            </ListView>
-        </StackPanel>
-    </GroupBox>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+        <d:ListItem/>
+
+    </ListBox>
 </UserControl>
