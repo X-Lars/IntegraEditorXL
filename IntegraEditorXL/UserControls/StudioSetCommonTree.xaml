@@ -7,7 +7,8 @@
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              xmlns:view="clr-namespace:IntegraEditorXL.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="200" d:Background="White">
+             d:DesignHeight="200" d:DesignWidth="200" d:Background="White"
+             DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
     
     <StackPanel>
 

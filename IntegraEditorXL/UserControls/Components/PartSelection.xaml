@@ -8,7 +8,7 @@
                 mc:Ignorable="d" 
                 d:DesignHeight="64" d:DesignWidth="200"
                 d:Background="White"
-                >
+                DataContext="{Binding Integra, RelativeSource={RelativeSource AncestorType=Window}}">
 
     <UserControl.Resources>
         <converters:ComparisonConverter x:Key="ComparisonConverter"/>
