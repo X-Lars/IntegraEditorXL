@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace IntegraEditorXL.UserControls
 {
     /// <summary>
-    /// Interaction logic for SelectedTones.xaml
+    /// Interaction logic for MFXOverview.xaml
     /// </summary>
-    public partial class SelectedTones : UserControl
+    public partial class MFXOverview : UserControl
     {
-        public SelectedTones()
+        public MFXOverview()
         {
             InitializeComponent();
         }

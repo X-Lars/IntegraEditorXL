@@ -11,7 +11,7 @@
         Title="MainWindow" Height="768" Width="1024"
         d:DataContext="{d:DesignInstance Type=local:MainWindow}">
 
-    <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+    <Grid>
         <DockPanel>
 
             <StatusBar DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
@@ -28,29 +28,29 @@
 
                 <StatusBarItem>
 
-                    <TextBlock Text="{Binding Integra.Status.Description}"/>
+                    <!--<TextBlock Text="{Binding Integra.Status.Description}"/>-->
 
                 </StatusBarItem>
 
                 <StatusBarItem>
 
-                    <TextBlock Text="{Binding Integra.Status.Message}"/>
+                    <!--<TextBlock Text="{Binding Integra.Status.Message}"/>-->
 
                 </StatusBarItem>
 
                 <StatusBarItem>
 
-                    <ProgressBar Height="10"
+                    <!--<ProgressBar Height="10"
                                  Value="{Binding Integra.Status.Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                  VerticalAlignment="Center"
-                                 Width="250"/>
+                                 Width="250"/>-->
 
                 </StatusBarItem>
 
                 <StatusBarItem>
 
-                    <TextBlock Text="{Binding Integra.Status.Text}"
-                               Width="50"/>
+                    <!--<TextBlock Text="{Binding Integra.Status.Text}"
+                               Width="50"/>-->
 
                 </StatusBarItem>
             </StatusBar>
@@ -70,9 +70,9 @@
                 <xl:Sidebar.Sections>
 
                     <xl:SidebarSection Header="Studio Set">
-                        <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+                        <StackPanel>
 
-                            <xl:LinkButton Command="{Binding ShowControlCommand}"
+                            <xl:LinkButton Command="{Binding ShowControlCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                            CommandParameter="{x:Type uc:StudioSetOverview}"
                                            Content="Overview"/>
 
@@ -84,9 +84,19 @@
                     <xl:SidebarSection Header="Temporary Tone">
                         <StackPanel>
                             <xl:LinkButton Command="{Binding ShowControlCommand}"
-                                           CommandParameter="{x:Type uc:SelectedTones}"
+                                           CommandParameter="{x:Type uc:TemporaryTonesOverview}"
                                            Content="Overview"/>
                             
+                            <uc:TemporaryToneTree/>
+                        </StackPanel>
+                    </xl:SidebarSection>
+
+                    <xl:SidebarSection Header="MFX">
+                        <StackPanel>
+                            <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                           CommandParameter="{x:Type uc:MFXOverview}"
+                                           Content="Overview"/>
+
                             <uc:TemporaryToneTree/>
                         </StackPanel>
                     </xl:SidebarSection>
@@ -131,7 +141,7 @@
 
                     <xl:SidebarSection Header="Context Menu">
 
-                        <StackPanel DataContext="{Binding Integra, RelativeSource={RelativeSource AncestorType=Window}}">
+                        <StackPanel>
 
                             <uc:StudioSetSelection/>
                             <c:PartSelection/>

@@ -66,14 +66,14 @@
                            Text="{Binding Category, StringFormat='[{0}]'}"/>
 
             <!-- ADD TO FAVORITES BUTTON -->
-                <xl:VectorButton Command="{Binding AddFavorite, RelativeSource={RelativeSource AncestorType=Window}}"
+                <!--<xl:VectorButton Command="{Binding AddFavorite, RelativeSource={RelativeSource AncestorType=Window}}"
                                  Grid.Column="3" 
                                  Grid.Row="0"
                                  Height="23"
                                  HorizontalAlignment="Center" 
                                  Vector="F1 M 26.9167,38L 31.6667,38L 31.6667,45.9167L 39.5833,45.9167L 39.5833,50.6667L 31.6667,50.6667L 31.6667,58.5833L 26.9167,58.5833L 26.9167,50.6667L 19,50.6667L 19,45.9167L 26.9167,45.9167L 26.9167,38 Z M 17.4167,33.25L 32.9107,33.25L 38,19L 43.0893,33.25L 58.5833,33.25L 45.6798,42.4944L 51.4583,57L 41.1666,50.9461L 41.1666,44.3333L 33.25,44.3333L 33.25,36.4167L 25.3333,36.4167L 25.3333,38.9319L 17.4167,33.25 Z"
                                  VerticalAlignment="Center"
-                                 Width="23"/>
+                                 Width="23"/>-->
 
             <!-- TONE BANK SELECT INFO -->
                 <StackPanel Grid.Column="0" 
