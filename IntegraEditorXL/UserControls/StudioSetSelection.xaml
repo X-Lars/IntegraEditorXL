@@ -7,7 +7,7 @@
              xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="80" d:DesignWidth="200" d:Background="White"
-             DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+             DataContext="{Binding Integra, RelativeSource={RelativeSource AncestorType=Window}}">
 
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
@@ -16,12 +16,11 @@
     
     <GroupBox Header="Selected Studio Set"
               d:Visibility="Visible"
-              Visibility="{Binding Integra.StudioSets.IsInitialized, Converter={StaticResource VisibilityConverter}, FallbackValue=Collapsed}">
+              IsEnabled="{Binding IsInitialized}">
         
         <StackPanel>
         
             <ComboBox x:Name="StudioSetsComboBox" 
-                      DataContext="{Binding Integra}"
                       ItemsSource="{Binding StudioSets}"
                       SelectedIndex="{Binding Setup.StudioSetPC}">
 
@@ -36,6 +35,16 @@
                 </ComboBox.ItemTemplate>
 
             </ComboBox>
+
+            <!-- Busy indicator -->
+            <!--<Label Content="Loading..." Visibility="{Binding IsLoading,
+      Converter={StaticResource VisibilityConverter}}"/>-->
+            <!-- Results -->
+            
+            <!-- Error details -->
+            <!--<Label Content="{Binding ErrorMessage}" Background="Red"
+      Visibility="{Binding IsFaulted,
+      Converter={StaticResource VisibilityConverter}}"/>-->
 
             <!--<Button Command="{Binding SelectStudioSetCommand}"
                     CommandParameter="{Binding SelectedIndex, ElementName=StudioSetsComboBox}"

@@ -11,11 +11,13 @@
         Title="MainWindow" Height="768" Width="1024"
         d:DataContext="{d:DesignInstance Type=local:MainWindow}">
 
-    <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="VisiblityConverter"/>
+    </Window.Resources>
+    <Grid>
         <DockPanel>
 
-            <StatusBar DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-                       DockPanel.Dock="Bottom">
+            <StatusBar DockPanel.Dock="Bottom">
 
                 <StatusBar.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -26,31 +28,46 @@
                     </ItemsPanelTemplate>
                 </StatusBar.ItemsPanel>
 
-                <StatusBarItem>
+                <StatusBarItem DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding SelectedConnection.ID, StringFormat=Connection #{0}}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedConnection.IsConnected}" Value="True">
+                                            <Setter Property="Foreground" Value="Green"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedConnection.IsConnected}" Value="False">
+                                            <Setter Property="Foreground" Value="Red"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                    <!--<TextBlock Text="{Binding Integra.Status.Description}"/>-->
 
-                    <TextBlock Text="{Binding Integra.Status.Description}"/>
+                </StatusBarItem>
+
+                <StatusBarItem>
+                    
+                    <!--<TextBlock Text="{Binding Integra.Status.Message}"/>-->
 
                 </StatusBarItem>
 
                 <StatusBarItem>
 
-                    <TextBlock Text="{Binding Integra.Status.Message}"/>
-
-                </StatusBarItem>
-
-                <StatusBarItem>
-
-                    <ProgressBar Height="10"
+                    <!--<ProgressBar Height="10"
                                  Value="{Binding Integra.Status.Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                  VerticalAlignment="Center"
-                                 Width="250"/>
+                                 Width="250"/>-->
 
                 </StatusBarItem>
 
                 <StatusBarItem>
 
-                    <TextBlock Text="{Binding Integra.Status.Text}"
-                               Width="50"/>
+                    <!--<TextBlock Text="{Binding Integra.Status.Text}"
+                               Width="50"/>-->
 
                 </StatusBarItem>
             </StatusBar>
@@ -70,9 +87,9 @@
                 <xl:Sidebar.Sections>
 
                     <xl:SidebarSection Header="Studio Set">
-                        <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+                        <StackPanel>
 
-                            <xl:LinkButton Command="{Binding ShowControlCommand}"
+                            <xl:LinkButton Command="{Binding ShowControlCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                            CommandParameter="{x:Type uc:StudioSetOverview}"
                                            Content="Overview"/>
 
@@ -83,11 +100,21 @@
 
                     <xl:SidebarSection Header="Temporary Tone">
                         <StackPanel>
-                            <xl:LinkButton Command="{Binding ShowControlCommand}"
-                                           CommandParameter="{x:Type uc:SelectedTones}"
+                            <xl:LinkButton Command="{Binding ShowControlCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                           CommandParameter="{x:Type uc:TemporaryTonesOverview}"
                                            Content="Overview"/>
                             
-                            <uc:TemporaryToneTree/>
+                            <!--<uc:TemporaryToneTree/>-->
+                        </StackPanel>
+                    </xl:SidebarSection>
+
+                    <xl:SidebarSection Header="MFX">
+                        <StackPanel>
+                            <xl:LinkButton Command="{Binding ShowControlCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                           CommandParameter="{x:Type uc:MFXOverview}"
+                                           Content="Overview"/>
+
+                            <!--<uc:TemporaryToneTree/>-->
                         </StackPanel>
                     </xl:SidebarSection>
 
@@ -95,23 +122,26 @@
                         <uc:ToneBankTree/>
                     </xl:SidebarSection>
 
-                    <xl:SidebarSection Header="System">
+                    <xl:SidebarSection Header="System"
+                                       Vector="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm8.036-4.024a.75.75 0 00-1.06 1.06L10.939 12l-2.963 2.963a.75.75 0 101.06 1.06L12 13.06l2.963 2.964a.75.75 0 001.061-1.06L13.061 12l2.963-2.964a.75.75 0 10-1.06-1.06L12 10.939 9.036 7.976z">
 
                     </xl:SidebarSection>
 
-                    <xl:SidebarSection Header="Database">
+                    <xl:SidebarSection Header="Database"
+                                       Vector="M21 9.5v3c0 2.485-4.03 4.5-9 4.5s-9-2.015-9-4.5v-3c0 2.485 4.03 4.5 9 4.5s9-2.015 9-4.5zm-18 5c0 2.485 4.03 4.5 9 4.5s9-2.015 9-4.5v3c0 2.485-4.03 4.5-9 4.5s-9-2.015-9-4.5v-3zm9-2.5c-4.97 0-9-2.015-9-4.5S7.03 3 12 3s9 2.015 9 4.5-4.03 4.5-9 4.5z">
 
                     </xl:SidebarSection>
 
                     <xl:SidebarSection Header="Utilities">
                         <StackPanel>
-                            <xl:LinkButton Command="{Binding ShowControlCommand}"
+                            <!--<xl:LinkButton Command="{Binding ShowControlCommand}"
                                                CommandParameter="{x:Type uc:Keyboard}"
-                                               Content="Keyboard"/>
+                                               Content="Keyboard"/>-->
                         </StackPanel>
                     </xl:SidebarSection>
 
-                    <xl:SidebarSection Header="Settings">
+                    <xl:SidebarSection Header="Settings"
+                                       Vector="M2.213 14.06a9.945 9.945 0 0 1 0-4.12c1.11.13 2.08-.237 2.396-1.001.317-.765-.108-1.71-.986-2.403a9.945 9.945 0 0 1 2.913-2.913c.692.877 1.638 1.303 2.403.986.765-.317 1.132-1.286 1.001-2.396a9.945 9.945 0 0 1 4.12 0c-.13 1.11.237 2.08 1.001 2.396.765.317 1.71-.108 2.403-.986a9.945 9.945 0 0 1 2.913 2.913c-.877.692-1.303 1.638-.986 2.403.317.765 1.286 1.132 2.396 1.001a9.945 9.945 0 0 1 0 4.12c-1.11-.13-2.08.237-2.396 1.001-.317.765.108 1.71.986 2.403a9.945 9.945 0 0 1-2.913 2.913c-.692-.877-1.638-1.303-2.403-.986-.765.317-1.132 1.286-1.001 2.396a9.945 9.945 0 0 1-4.12 0c.13-1.11-.237-2.08-1.001-2.396-.765-.317-1.71.108-2.403.986a9.945 9.945 0 0 1-2.913-2.913c.877-.692 1.303-1.638.986-2.403-.317-.765-1.286-1.132-2.396-1.001zM4 12.21c1.1.305 2.007 1.002 2.457 2.086.449 1.085.3 2.22-.262 3.212.096.102.195.201.297.297.993-.562 2.127-.71 3.212-.262 1.084.45 1.781 1.357 2.086 2.457.14.004.28.004.42 0 .305-1.1 1.002-2.007 2.086-2.457 1.085-.449 2.22-.3 3.212.262.102-.096.201-.195.297-.297-.562-.993-.71-2.127-.262-3.212.45-1.084 1.357-1.781 2.457-2.086.004-.14.004-.28 0-.42-1.1-.305-2.007-1.002-2.457-2.086-.449-1.085-.3-2.22.262-3.212a7.935 7.935 0 0 0-.297-.297c-.993.562-2.127.71-3.212.262C13.212 6.007 12.515 5.1 12.21 4a7.935 7.935 0 0 0-.42 0c-.305 1.1-1.002 2.007-2.086 2.457-1.085.449-2.22.3-3.212-.262-.102.096-.201.195-.297.297.562.993.71 2.127.262 3.212C6.007 10.788 5.1 11.485 4 11.79c-.004.14-.004.28 0 .42zM12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2z">
 
                     </xl:SidebarSection>
 
@@ -131,12 +161,12 @@
 
                     <xl:SidebarSection Header="Context Menu">
 
-                        <StackPanel DataContext="{Binding Integra, RelativeSource={RelativeSource AncestorType=Window}}">
+                        <StackPanel>
 
                             <uc:StudioSetSelection/>
                             <c:PartSelection/>
-                            <uc:VirtualSlots/>
-                            <uc:SelectedTone/>
+                            <!--<uc:VirtualSlots/>
+                            <uc:SelectedTone/>-->
 
                         </StackPanel>
                     </xl:SidebarSection>

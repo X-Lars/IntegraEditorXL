@@ -27,7 +27,7 @@ namespace IntegraEditorXL.UserControls
         {
             InitializeComponent();
 
-            DataContext = ((MainWindow)Application.Current.MainWindow).Integra.StudioSet[((MainWindow)Application.Current.MainWindow).Integra.SelectedPart];
+            //DataContext = ((MainWindow)Application.Current.MainWindow).Integra.StudioSet[((MainWindow)Application.Current.MainWindow).Integra.SelectedPart];
         }
 
         private void KeyboardNoteOn(object sender, RoutedEventArgs e)

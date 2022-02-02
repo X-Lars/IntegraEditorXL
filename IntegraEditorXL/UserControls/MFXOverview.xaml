@@ -1,13 +1,14 @@
-﻿<UserControl x:Class="IntegraEditorXL.UserControls.SelectedTones"
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.MFXOverview"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dx="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             DataContext="{Binding Integra, RelativeSource={RelativeSource AncestorType=Window}}">
+             d:DataContext="{d:DesignInstance Type=dx:MFX}">
 
-    
+
     <ListBox ItemsSource="{Binding TemporaryTones}"
              SelectedIndex="{Binding SelectedPart}"
              ScrollViewer.CanContentScroll="True"
@@ -15,19 +16,20 @@
 
         <ListBox.ItemTemplate>
             <DataTemplate>
-                
+
                 <StackPanel Orientation="Horizontal">
-                    
+
                     <Label Content="{Binding Part}"
                            VerticalAlignment="Top"
                            VerticalContentAlignment="Top"/>
 
                     <ComboBox ItemsSource="{Binding MFX.Types}"
                               SelectedItem="{Binding MFX.Type}"/>
-                    
+
                 </StackPanel>
             </DataTemplate>
         </ListBox.ItemTemplate>
+        
     </ListBox>
-    
+
 </UserControl>

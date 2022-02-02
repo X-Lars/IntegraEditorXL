@@ -3,12 +3,11 @@ using IntegraEditorXL.Common.Commands;
 using IntegraEditorXL.UserControls;
 using IntegraXL;
 using IntegraXL.Core;
-using IntegraXL.Interfaces;
-using IntegraXL.Models;
+
 using StylesXL;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -20,19 +19,42 @@ namespace IntegraEditorXL
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private Integra _Integra;
         private Dialog _Dialog;
-       
+        private Integra _Integra;
+        private IntegraConnection _Connection;
+
         public MainWindow()
         {
-            InitializeComponent();
+            SelectedConnection = IntegraConnectionManager.CreateConnection(16, new MidiXLOutputDevice(0), new MidiXLInputDevice(0));
 
-            DataContext = this;
+            Integra = new Integra(SelectedConnection);
+            DataContext = Integra;
+
+
+            InitializeComponent();
 
             StyleManager.Appearance = ControlAppearance.Default;
             StyleManager.Style = ControlStyle.Default;
 
             Loaded += MainWindowLoaded;
+        }
+
+        private void MainWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            InitializeIntegra();
+        }
+
+        private async void InitializeIntegra()
+        {
+
+            if(await Integra.Connect())
+            {
+                await Integra.Initialize();
+            }
+            else
+            {
+                ShowControl(typeof(DeviceSelection));
+            }
         }
 
         public ICommand ShowControlCommand
@@ -54,49 +76,70 @@ namespace IntegraEditorXL
         {
             Content.Content = new ToneSelection(x);
         }
-
-        private async void MainWindowLoaded(object sender, RoutedEventArgs e)
+        
+        public IEnumerable<MidiXLOutputDevice> MidiOutputDevices
         {
-            IMIDIOutputDevice midiOutputDevice = new MidiXLOutputDevice(1);
-            IMIDIInputDevice  midiInputDevice  = new MidiXLInputDevice(0);
-            
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-
-            _Dialog = DialogManager.ProgressDialog("Connecting INTEGRA-7", "Please wait...", "", true);
-
-            IntegraConnection connection = await IntegraConnectionManager.CreateConnection(midiOutputDevice, midiInputDevice);
-
-            _Dialog.Close();
-
-            if(connection != null)
-            {
-                _Dialog = DialogManager.ProgressDialog("Initializing INTEGRA-7", "Please wait...", "", true, false, ProgressIndicatorStyles.Circular);
-
-                Integra = await Integra.CreateInstance(connection);
-                //NotifyPropertyChanged(nameof(Integra));
-                _Dialog.Close();
-
-                TemporaryTone tone = await Integra.GetModel<TemporaryTone>(Parts.Part01);
-
-                Debug.Print("COMPLETE MAIN WINDOW");
-            }
-
+            get => MidiOutputDevice.GetDevices;
         }
 
-        public Integra Integra 
+        public IEnumerable<MidiXLInputDevice> MidiInputDevices
         {
-            get { return _Integra; }
-            private set
+            get => MidiInputDevice.GetDevices;
+        }
+
+        public MidiXLOutputDevice MidiOutputDevice
+        {
+            get => (MidiXLOutputDevice)SelectedConnection.MidiOutputDevice;
+            set
             {
-                if(_Integra != value)
+                if (SelectedConnection.MidiOutputDevice != value)
                 {
-                    _Integra = value;
+                    SelectedConnection.SetMidiOutput(value);
+
                     NotifyPropertyChanged();
+                    NotifyPropertyChanged(nameof(SelectedConnection));
                 }
             }
         }
 
+        public MidiXLInputDevice MidiInputDevice
+        {
+            get => (MidiXLInputDevice)SelectedConnection.MidiInputDevice;
+            set
+            {
+                if (SelectedConnection.MidiInputDevice != value)
+                {
+                    SelectedConnection.SetMidiInput(value);
 
+                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(nameof(SelectedConnection));
+                }
+            }
+        }
+
+        public IntegraConnection SelectedConnection
+        {
+            get => _Connection;
+            set
+            {
+                _Connection = value;
+
+                NotifyPropertyChanged();
+                NotifyPropertyChanged(nameof(MidiOutputDevice));
+                NotifyPropertyChanged(nameof(MidiInputDevice));
+            }
+        }
+
+        public Integra Integra
+        {
+            get => _Integra;
+            set
+            {
+                _Integra = value;
+                NotifyPropertyChanged();
+            }
+        }
+       
         #region Interfaces: INotifyPropertyChanged
 
         /// <summary>

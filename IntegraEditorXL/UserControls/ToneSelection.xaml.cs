@@ -38,7 +38,7 @@ namespace IntegraEditorXL.UserControls
 
         private async void InitializeToneBank(IntegraToneBanks tonebank)
         {
-            ToneBank = await ((MainWindow)Application.Current.MainWindow).Integra.GetToneBank(tonebank);
+            //ToneBank = await ((MainWindow)Application.Current.MainWindow).Integra.GetToneBank(tonebank);
             //NotifyPropertyChanged(nameof(ToneBank));
         }
 

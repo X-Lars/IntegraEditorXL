@@ -2,6 +2,7 @@
 using IntegraXL.Interfaces;
 using MidiXL;
 using System;
+using System.Collections.Generic;
 
 namespace IntegraEditorXL
 {
@@ -22,6 +23,21 @@ namespace IntegraEditorXL
         public int ID { get; private set; }
 
         public string Name { get; private set; }
+
+        public IEnumerable<MidiXLOutputDevice> GetDevices
+        {
+            get
+            {
+                List<MidiXLOutputDevice> devices = new();
+
+                foreach (var device in DeviceManager.MidiOutputDevices)
+                {
+                    devices.Add(new MidiXLOutputDevice(device.ID));
+                }
+
+                return devices;
+            }
+        }
 
         public void Close()
         {
@@ -79,6 +95,19 @@ namespace IntegraEditorXL
         public int ID { get; private set; }
 
         public string Name { get; private set; }
+
+        public IEnumerable<MidiXLInputDevice> GetDevices
+        {
+            get
+            {
+                List<MidiXLInputDevice> devices = new ();
+
+                foreach (var device in DeviceManager.MidiInputDevices)
+                    devices.Add(new MidiXLInputDevice(device.ID) { Name = device.Name });
+
+                return devices;
+            }
+        }
 
         public void Close()
         {
