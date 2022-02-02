@@ -27,11 +27,7 @@ namespace IntegraEditorXL
         {
             SelectedConnection = IntegraConnectionManager.CreateConnection(16, new MidiXLOutputDevice(0), new MidiXLInputDevice(0));
 
-            Integra = new Integra(SelectedConnection);
-            DataContext = Integra;
-
-
-            InitializeComponent();
+            DataContext = this;
 
             StyleManager.Appearance = ControlAppearance.Default;
             StyleManager.Style = ControlStyle.Default;
