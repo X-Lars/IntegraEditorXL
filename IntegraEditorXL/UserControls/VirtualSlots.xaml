@@ -7,16 +7,18 @@
              xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="240" d:DesignWidth="250" d:Background="White"
-             d:DataContext="{d:DesignInstance Type=dx:VirtualSlots}">
+             d:DataContext="{d:DesignInstance Type=dx:VirtualSlots}"
+             DataContext="{Binding Integra, RelativeSource={RelativeSource AncestorType=Window}}">
     
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
     </UserControl.Resources>
     
-    <GroupBox Header="Virtual Slots"
-              Visibility="{Binding IsInitialized, FallbackValue=Collapsed, Converter={StaticResource VisibilityConverter}}" d:Visibility="Visible">
+    <GroupBox DataContext="{Binding VirtualSlots}"
+              Header="Virtual Slots"
+              IsEnabled="{Binding IsInitialized, FallbackValue=False}">
 
-        <Grid DataContext="{Binding VirtualSlots}">
+        <Grid>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/> <!-- SLOTS -->

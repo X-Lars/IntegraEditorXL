@@ -7,13 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="200"
              d:Background="White"
-             DataContext="{Binding Integra.SelectedTone, RelativeSource={RelativeSource AncestorType=Window}}">
+             DataContext="{Binding Integra, RelativeSource={RelativeSource AncestorType=Window}}">
 
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
     </UserControl.Resources>
 
-    <GroupBox Header="Selected Tone">
+    <GroupBox Header="Selected Tone"
+              DataContext="{Binding SelectedTone}"
+              IsEnabled="{Binding IsInitialized}">
 
         <StackPanel>
 
@@ -107,10 +109,15 @@
                 </StackPanel>
             </Grid>
 
+            <!--Command="{Binding Integra.PreviewCommand, RelativeSource={RelativeSource AncestorType=Window}}">-->
             <ToggleButton x:Name="PreviewButton"
-                          Command="{Binding Integra.PreviewCommand, RelativeSource={RelativeSource AncestorType=Window}}">
-                          <!--IsChecked="{Binding Integra.Preview, RelativeSource={RelativeSource AncestorType=Window}}">-->
-                
+                IsChecked="{Binding Integra.Preview, RelativeSource={RelativeSource AncestorType=Window}}">
+
+
+
+                <!--Command="{Binding Integra.PreviewCommand, RelativeSource={RelativeSource AncestorType=Window}}">-->
+                <!--IsChecked="{Binding Integra.Preview, RelativeSource={RelativeSource AncestorType=Window}}">-->
+
                 <ToggleButton.Style>
                     <Style TargetType="{x:Type ToggleButton}">
                         <Setter Property="Content" Value="Preview"/>
@@ -121,8 +128,8 @@
                         </Style.Triggers>
                     </Style>
                 </ToggleButton.Style>
-            </ToggleButton>
 
+            </ToggleButton>
         </StackPanel>
     </GroupBox>
 </UserControl>

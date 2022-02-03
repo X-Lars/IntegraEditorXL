@@ -3,12 +3,12 @@ using IntegraEditorXL.Common.Commands;
 using IntegraEditorXL.UserControls;
 using IntegraXL;
 using IntegraXL.Core;
-
 using StylesXL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -25,9 +25,18 @@ namespace IntegraEditorXL
 
         public MainWindow()
         {
-            SelectedConnection = IntegraConnectionManager.CreateConnection(16, new MidiXLOutputDevice(0), new MidiXLInputDevice(0));
+            IntegraConnectionManager.CreateConnection(18, new MidiXLOutputDevice(1), new MidiXLInputDevice(1));
+            IntegraConnectionManager.CreateConnection(17, new MidiXLOutputDevice(2), new MidiXLInputDevice(1));
+            IntegraConnectionManager.CreateConnection(25, new MidiXLOutputDevice(1), new MidiXLInputDevice(1));
+            IntegraConnectionManager.CreateConnection(31, new MidiXLOutputDevice(1), new MidiXLInputDevice(1));
+            IntegraConnectionManager.CreateConnection(24, new MidiXLOutputDevice(1), new MidiXLInputDevice(1));
 
-            DataContext = this;
+            SelectedConnection = IntegraConnectionManager.CreateConnection(16, new MidiXLOutputDevice(0), new MidiXLInputDevice(0));
+            Integra = new Integra(SelectedConnection);
+
+            DataContext = _Integra;
+
+            InitializeComponent();
 
             StyleManager.Appearance = ControlAppearance.Default;
             StyleManager.Style = ControlStyle.Default;
@@ -37,20 +46,36 @@ namespace IntegraEditorXL
 
         private void MainWindowLoaded(object sender, RoutedEventArgs e)
         {
-            InitializeIntegra();
+            // TODO: Check MIDI device count != 0
+            ConnectIntegra();
+        }
+
+        private async void ConnectIntegra()
+        {
+            if(!await Integra.Connect())
+                ShowControl(typeof(DeviceSelection));
         }
 
         private async void InitializeIntegra()
         {
+            await Integra.Initialize();
+        }
 
-            if(await Integra.Connect())
-            {
-                await Integra.Initialize();
-            }
-            else
-            {
-                ShowControl(typeof(DeviceSelection));
-            }
+        private async Task<ConnectionStatus> ValidateConnection()
+        {
+            return await SelectedConnection.Invalidate();
+        }
+
+        #region Commands
+
+        public ICommand ValidateConnectionCommand
+        {
+            get => new UICommand(o => ValidateConnection(), o => { return SelectedConnection != null && SelectedConnection.Status != ConnectionStatus.Validating; });
+        }
+
+        public ICommand InitializeCommand
+        {
+            get => new UICommand(o => InitializeIntegra(), o => { return SelectedConnection != null && SelectedConnection.Status == ConnectionStatus.Connected; } );
         }
 
         public ICommand ShowControlCommand
@@ -72,7 +97,9 @@ namespace IntegraEditorXL
         {
             Content.Content = new ToneSelection(x);
         }
-        
+
+        #endregion
+
         public IEnumerable<MidiXLOutputDevice> MidiOutputDevices
         {
             get => MidiOutputDevice.GetDevices;
@@ -131,8 +158,11 @@ namespace IntegraEditorXL
             get => _Integra;
             set
             {
-                _Integra = value;
-                NotifyPropertyChanged();
+                if (_Integra != value)
+                {
+                    _Integra = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
        

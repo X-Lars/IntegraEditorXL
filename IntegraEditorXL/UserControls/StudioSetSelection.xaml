@@ -3,24 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
-             xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="80" d:DesignWidth="200" d:Background="White"
              DataContext="{Binding Integra, RelativeSource={RelativeSource AncestorType=Window}}">
 
-    <UserControl.Resources>
-        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
-        <converters:InversedComparisonConverter x:Key="Compare"/>
-    </UserControl.Resources>
-    
     <GroupBox Header="Selected Studio Set"
-              d:Visibility="Visible"
               IsEnabled="{Binding IsInitialized}">
         
         <StackPanel>
         
-            <ComboBox x:Name="StudioSetsComboBox" 
+            <ComboBox x:Name="StudioSetsComboBox"
                       ItemsSource="{Binding StudioSets}"
                       SelectedIndex="{Binding Setup.StudioSetPC}">
 
@@ -35,30 +27,6 @@
                 </ComboBox.ItemTemplate>
 
             </ComboBox>
-
-            <!-- Busy indicator -->
-            <!--<Label Content="Loading..." Visibility="{Binding IsLoading,
-      Converter={StaticResource VisibilityConverter}}"/>-->
-            <!-- Results -->
-            
-            <!-- Error details -->
-            <!--<Label Content="{Binding ErrorMessage}" Background="Red"
-      Visibility="{Binding IsFaulted,
-      Converter={StaticResource VisibilityConverter}}"/>-->
-
-            <!--<Button Command="{Binding SelectStudioSetCommand}"
-                    CommandParameter="{Binding SelectedIndex, ElementName=StudioSetsComboBox}"
-                    Content="Select"
-                    DataContext="{Binding Integra}"
-                    >
-                <Button.IsEnabled>
-                    <MultiBinding Converter="{StaticResource Compare}">
-                        <Binding ElementName="StudioSetsComboBox" Path="SelectedIndex"/>
-                        <Binding Path="Integra.SelectedStudioSet" RelativeSource="{RelativeSource AncestorType=Window}"/>
-                    </MultiBinding>
-                </Button.IsEnabled>
-            </Button>-->
-            
         </StackPanel>
     </GroupBox>
 </UserControl>

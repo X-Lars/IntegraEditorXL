@@ -47,13 +47,10 @@
                     </StackPanel>
                     <!--<TextBlock Text="{Binding Integra.Status.Description}"/>-->
 
-                    <TextBlock Text="{Binding Integra.Status.Description}"/>
-
                 </StatusBarItem>
 
                 <StatusBarItem>
 
-                    <TextBlock Text="{Binding Integra.Status.Message}"/>
 
                 </StatusBarItem>
 
@@ -102,9 +99,9 @@
 
                     <xl:SidebarSection Header="Temporary Tone">
                         <StackPanel>
-                            <xl:LinkButton Command="{Binding ShowControlCommand}"
+                            <!--<xl:LinkButton Command="{Binding ShowControlCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                            CommandParameter="{x:Type uc:SelectedTones}"
-                                           Content="Overview"/>
+                                           Content="Overview"/>-->
                             
                             <uc:TemporaryToneTree/>
                         </StackPanel>
@@ -157,8 +154,8 @@
 
                             <uc:StudioSetSelection/>
                             <c:PartSelection/>
-                            <!--<uc:VirtualSlots/>
-                            <uc:SelectedTone/>-->
+                            <uc:VirtualSlots/>
+                            <uc:SelectedTone/>
 
                         </StackPanel>
                     </xl:SidebarSection>
