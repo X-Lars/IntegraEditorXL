@@ -10,13 +10,41 @@
              xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="480" d:DesignWidth="200"
-             d:Background="White">
+             d:Background="White"
+             d:DataContext="{d:DesignInstance Type=core:IntegraTone}">
     
     <UserControl.Resources>
         <converters:ComparisonVisibilityConverter x:Key="ComparisonConverter" />
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
     </UserControl.Resources>
 
-    <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+    <StackPanel>
+        
+        <GroupBox Header="Tone Edit">
+            
+            <StackPanel>
+                
+                <TextBlock HorizontalAlignment="Center"
+                           Text="{Binding SelectedTone.ToneBank}"/>
+                
+                <TextBlock HorizontalAlignment="Center"
+                           Text="Cannot Edit"/>
+            </StackPanel>
+            
+            <GroupBox.Style>
+                <Style TargetType="GroupBox">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedTone.IsEditable}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </GroupBox.Style>
+            
+        </GroupBox>
+        
+        <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Visibility="{Binding Integra.SelectedTone.IsEditable, Converter={StaticResource VisibilityConverter}}">
 
         <TreeViewItem Header="SuperNATURAL Acoustic Tone"
                       IsExpanded="True"
@@ -79,5 +107,6 @@
                 <xl:LinkButton>Common 2</xl:LinkButton>
             </StackPanel>
         </TreeViewItem>
+    </StackPanel>
     </StackPanel>
 </UserControl>

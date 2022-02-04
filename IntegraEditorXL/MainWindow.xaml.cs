@@ -7,6 +7,7 @@ using StylesXL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
@@ -59,6 +60,9 @@ namespace IntegraEditorXL
         private async void InitializeIntegra()
         {
             await Integra.Initialize();
+
+            if (Integra.IsInitialized)
+                Debug.Print($"INTEGRA-7 INITIALIZED");
         }
 
         private async Task<ConnectionStatus> ValidateConnection()

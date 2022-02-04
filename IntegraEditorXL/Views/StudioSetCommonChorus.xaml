@@ -43,18 +43,18 @@
                             OnLabel="On" OffLabel="Off"/>
 
                 <ComboBox Name="ChorusType"
-                            Grid.Column="1" Grid.Row="1"
-                            ItemsSource="{Binding Types}"
-                            SelectedItem="{Binding Type}">
-                </ComboBox>
+                          Grid.Column="1" Grid.Row="1"
+                          ItemsSource="{Binding Types}"
+                          SelectedItem="{Binding Type}"/>
+
 
                 <xl:NumericTextBox Grid.Column="1" Grid.Row="2"
-                                    Value="{Binding ChorusLevel}" 
-                                    Min="0" Max="127"/>
+                                   Min="0" Max="127"
+                                   Value="{Binding ChorusLevel}"/>
 
                 <ComboBox Grid.Column="1" Grid.Row="3"
-                            ItemsSource="{Binding OutputAssigns}"
-                            SelectedItem="{Binding OutputAssign}"/>
+                          ItemsSource="{Binding OutputAssigns}"
+                          SelectedItem="{Binding OutputAssign}"/>
 
 
             </Grid>
