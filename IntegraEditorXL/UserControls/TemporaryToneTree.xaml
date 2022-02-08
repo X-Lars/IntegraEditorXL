@@ -6,6 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:main="clr-namespace:IntegraEditorXL"
              xmlns:core="clr-namespace:IntegraXL.Core;assembly=IntegraXL"
              xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
              mc:Ignorable="d" 
@@ -73,11 +74,14 @@
                       IsExpanded="True"
                       d:Visibility="Visible"
                       Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALDrumkit}, FallbackValue=Collapsed}">
-            <StackPanel>
+            
+            <StackPanel d:DataContext="{d:DesignInstance main:MainWindow}">
                 <xl:LinkButton>Common</xl:LinkButton>
                 <xl:LinkButton >MFX</xl:LinkButton>
                 <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
-                <xl:LinkButton Content="Notes"/>
+                <xl:LinkButton Command="{Binding ShowControlCommand}"
+                               CommandParameter="{x:Type local:SNDNotesOverview}"
+                               Content="Notes" />
             </StackPanel>
         </TreeViewItem>
         <TreeViewItem Header="PCM Synth Tone"

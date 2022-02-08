@@ -9,7 +9,7 @@
              d:DesignHeight="54" d:DesignWidth="200" d:Background="White"
              d:DataContext="{d:DesignInstance Type=dx:CommonReverbGM2}">
     
-    <Grid DataContext="{Binding Parameter}">
+    <Grid DataContext="{Binding Parameters}">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

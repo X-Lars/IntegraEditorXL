@@ -51,22 +51,16 @@
 
                 <StatusBarItem>
 
-
+                    <TextBlock Text="{Binding Status.Text}"/>
+                </StatusBarItem>
+                <StatusBarItem>
+                    <ProgressBar Height="10"
+                                 Value="{Binding Status.Progress}"
+                                 Width="100"/>
                 </StatusBarItem>
 
-                <StatusBarItem>
-
-                    <!--<ProgressBar Height="10"
-                                 Value="{Binding Integra.Status.Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                 VerticalAlignment="Center"
-                                 Width="250"/>-->
-
-                </StatusBarItem>
 
                 <StatusBarItem>
-
-                    <!--<TextBlock Text="{Binding Integra.Status.Text}"
-                               Width="50"/>-->
 
                 </StatusBarItem>
             </StatusBar>
@@ -75,7 +69,7 @@
             <xl:Sidebar DockPanel.Dock="Left"
                         DockPosition="Left"
                         Header="Favorites"
-                        SelectedIndex="0"
+                        SelectedIndex="1"
                         VisibleSections="5"
                         Width="250">
 

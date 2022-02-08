@@ -26,13 +26,13 @@ namespace IntegraEditorXL
 
         public MainWindow()
         {
-            IntegraConnectionManager.CreateConnection(18, new MidiXLOutputDevice(1), new MidiXLInputDevice(1));
-            IntegraConnectionManager.CreateConnection(17, new MidiXLOutputDevice(2), new MidiXLInputDevice(1));
-            IntegraConnectionManager.CreateConnection(25, new MidiXLOutputDevice(1), new MidiXLInputDevice(1));
-            IntegraConnectionManager.CreateConnection(31, new MidiXLOutputDevice(1), new MidiXLInputDevice(1));
-            IntegraConnectionManager.CreateConnection(24, new MidiXLOutputDevice(1), new MidiXLInputDevice(1));
+            IntegraConnectionManager.CreateConnection(18, new MidiXLOutputDevice(1), new MidiXLInputDevice(1), new Progress<int>(UpdateConnectionProgress));
+            IntegraConnectionManager.CreateConnection(17, new MidiXLOutputDevice(2), new MidiXLInputDevice(1), new Progress<int>(UpdateConnectionProgress));
+            IntegraConnectionManager.CreateConnection(25, new MidiXLOutputDevice(1), new MidiXLInputDevice(1), new Progress<int>(UpdateConnectionProgress));
+            IntegraConnectionManager.CreateConnection(31, new MidiXLOutputDevice(1), new MidiXLInputDevice(1), new Progress<int>(UpdateConnectionProgress));
+            IntegraConnectionManager.CreateConnection(24, new MidiXLOutputDevice(1), new MidiXLInputDevice(1), new Progress<int>(UpdateConnectionProgress));
 
-            SelectedConnection = IntegraConnectionManager.CreateConnection(16, new MidiXLOutputDevice(0), new MidiXLInputDevice(0));
+            SelectedConnection = IntegraConnectionManager.CreateConnection(16, new MidiXLOutputDevice(0), new MidiXLInputDevice(0), new Progress<int>(UpdateConnectionProgress));
             Integra = new Integra(SelectedConnection);
 
             DataContext = _Integra;
@@ -45,6 +45,8 @@ namespace IntegraEditorXL
             Loaded += MainWindowLoaded;
         }
 
+       
+
         private void MainWindowLoaded(object sender, RoutedEventArgs e)
         {
             // TODO: Check MIDI device count != 0
@@ -53,16 +55,54 @@ namespace IntegraEditorXL
 
         private async void ConnectIntegra()
         {
-            if(!await Integra.Connect())
+            
+            _Dialog = DialogManager.ProgressDialog("Connecting", "Please wait...", "", false, false, ProgressIndicatorStyles.Circular);
+            
+            var isConnected = await Integra.Connect();
+
+            if (!isConnected)
+            {
+                _Dialog = DialogManager.MessageDialog("Connection Error", "Could not connect to the INTEGRA-7, make sure the device is turned on.");
+                await _Dialog.Result();
+                _Dialog.Close();
+            }
+            else
+                _Dialog.Close();
+            
+
+            if(!isConnected)
                 ShowControl(typeof(DeviceSelection));
         }
 
         private async void InitializeIntegra()
         {
-            await Integra.Initialize();
+            _Dialog = DialogManager.ProgressDialog("", "Please wait...", "", false, false, ProgressIndicatorStyles.Circular);
 
-            if (Integra.IsInitialized)
+            var isInitialized = await Integra.Initialize(new Progress<IntegraStatus>(UpdateProgress));
+
+            _Dialog.Close();
+
+            if (isInitialized)
                 Debug.Print($"INTEGRA-7 INITIALIZED");
+        }
+
+        private void UpdateProgress(IntegraStatus obj)
+        {
+            if(_Dialog != null)
+            {
+                _Dialog.Title = obj.Operation;
+                _Dialog.Message = obj.Message;
+                _Dialog.Progress = obj.Progress;
+                _Dialog.Status = obj.Text;
+            }
+        }
+
+        private void UpdateConnectionProgress(int obj)
+        {
+            if (_Dialog != null)
+            {
+                _Dialog.Progress = obj;
+            }
         }
 
         private async Task<ConnectionStatus> ValidateConnection()
@@ -97,13 +137,18 @@ namespace IntegraEditorXL
             get => new UICommandParameterized<IntegraToneBanks>((x) => ShowToneBank(x));
         }
 
-        private void ShowToneBank(IntegraToneBanks x)
+        private async void ShowToneBank(IntegraToneBanks x)
         {
-            Content.Content = new ToneSelection(x);
+            _Dialog = DialogManager.ProgressDialog("", "Please wait...", "", false, false, ProgressIndicatorStyles.Circular);
+
+            Content.Content = new ToneSelection(await Integra.GetToneBank(x));
+
+            _Dialog.Close();
         }
 
         #endregion
 
+        
         public IEnumerable<MidiXLOutputDevice> MidiOutputDevices
         {
             get => MidiOutputDevice.GetDevices;

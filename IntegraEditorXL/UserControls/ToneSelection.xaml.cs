@@ -1,22 +1,7 @@
 ﻿using IntegraXL.Core;
-using IntegraXL.Models;
-using IntegraXL.Templates;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace IntegraEditorXL.UserControls
 {
@@ -25,21 +10,14 @@ namespace IntegraEditorXL.UserControls
     /// </summary>
     public partial class ToneSelection : UserControl, INotifyPropertyChanged
     {
-        //private IntegraToneBanks _SelectedToneBank = IntegraToneBanks.SNAPresetTone;
-
         private IntegraToneBank _ToneBank;
 
-        public ToneSelection(IntegraToneBanks toneBank)
+        public ToneSelection(IntegraToneBank tonebank)
         {
             InitializeComponent();
-            DataContext = this;
-            InitializeToneBank(toneBank);
-        }
 
-        private async void InitializeToneBank(IntegraToneBanks tonebank)
-        {
-            ToneBank = await ((MainWindow)Application.Current.MainWindow).Integra.GetToneBank(tonebank);
-            NotifyPropertyChanged(nameof(ToneBank));
+            DataContext = this;
+            ToneBank = tonebank;
         }
 
         public IntegraToneBank ToneBank
@@ -54,19 +32,6 @@ namespace IntegraEditorXL.UserControls
                 }
             }
         }
-
-        //public IntegraToneBanks SelectedToneBank
-        //{
-        //    get => _SelectedToneBank;
-        //    set
-        //    {
-        //        if (_SelectedToneBank != value)
-        //        {
-        //            _SelectedToneBank = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
 
         #region Interfaces: INotifyPropertyChanged
 

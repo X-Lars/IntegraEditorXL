@@ -14,7 +14,7 @@
         <converters:BoolVisibility x:Key="Visibility"/>
     </UserControl.Resources>
     
-    <Grid DataContext="{Binding Parameter}">
+    <Grid DataContext="{Binding Parameters}">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
