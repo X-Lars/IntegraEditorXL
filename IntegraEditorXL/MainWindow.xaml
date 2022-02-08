@@ -51,11 +51,11 @@
 
                 <StatusBarItem>
 
-                    <TextBlock Text="{Binding Status.Text}"/>
+                    <TextBlock Text="{Binding Status.Text, Mode=OneWay}"/>
                 </StatusBarItem>
                 <StatusBarItem>
                     <ProgressBar Height="10"
-                                 Value="{Binding Status.Progress}"
+                                 Value="{Binding Status.Progress, Mode=OneWay}"
                                  Width="100"/>
                 </StatusBarItem>
 

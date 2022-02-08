@@ -21,6 +21,10 @@
 
     <StackPanel>
         
+        <xl:LinkButton Command="{Binding ShowControlCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                       CommandParameter="{x:Type local:TemporaryTonesOverview}"
+                       Content="Overview"/>
+        
         <GroupBox Header="Tone Edit">
             
             <StackPanel>
