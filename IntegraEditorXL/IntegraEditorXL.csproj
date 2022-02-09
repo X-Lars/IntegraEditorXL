@@ -11,7 +11,7 @@
       <HintPath>D:\ControlsXL\ControlsXL\ControlsXL\bin\Release\net5.0-windows\ControlsXL.dll</HintPath>
     </Reference>
     <Reference Include="IntegraControlsXL">
-      <HintPath>..\..\IntegraControlsXL\IntegraControlsXL\IntegraControlsXL\bin\Debug\net5.0-windows\IntegraControlsXL.dll</HintPath>
+      <HintPath>..\..\IntegraControlsXL\IntegraControlsXL\IntegraControlsXL\bin\Debug\net6.0-windows\IntegraControlsXL.dll</HintPath>
     </Reference>
     <Reference Include="IntegraXL">
       <HintPath>..\..\Integra\IntegraXL\IntegraXL\bin\Debug\net6.0\IntegraXL.dll</HintPath>

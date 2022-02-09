@@ -10,7 +10,7 @@
              xmlns:core="clr-namespace:IntegraXL.Core;assembly=IntegraXL"
              xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="480" d:DesignWidth="200"
+             d:DesignHeight="540" d:DesignWidth="200"
              d:Background="White"
              d:DataContext="{d:DesignInstance Type=core:IntegraTone}">
     
@@ -111,8 +111,10 @@
                 <xl:LinkButton >MFX</xl:LinkButton>
                 <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
                 <xl:LinkButton>Common</xl:LinkButton>
-                <xl:LinkButton Content="Notes"/>
-                <xl:LinkButton>Common 2</xl:LinkButton>
+                <xl:LinkButton Command="{Binding ShowControlCommand}"
+                               CommandParameter="{x:Type local:PCMNotesOverview}"
+                               Content="Notes"/>
+                    <xl:LinkButton>Common 2</xl:LinkButton>
             </StackPanel>
         </TreeViewItem>
     </StackPanel>

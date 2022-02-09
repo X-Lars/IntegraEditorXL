@@ -14,6 +14,7 @@
               IsReadOnly="True"
               ItemsSource="{Binding Notes}"
               HeadersVisibility="All"
+              SelectedIndex="{Binding SelectedIndex}"
               SelectionMode="Single"
               ScrollViewer.VerticalScrollBarVisibility="Auto">
 
@@ -22,7 +23,7 @@
             <DataGridTextColumn Binding="{Binding InstNumber, StringFormat='000'}"
                                 Header="Instrument"/>
 
-            <DataGridTextColumn Binding="{Binding Path=NoteName}"
+            <DataGridTextColumn Binding="{Binding Waveform.Name}"
                                 Header="Name"/>
 
         </DataGrid.Columns>
@@ -31,7 +32,7 @@
             <Style TargetType="DataGridRowHeader">
                 <Style.Setters>
                     
-                    <Setter Property="Content" Value="{Binding Note}"/>
+                    <Setter Property="Content" Value="{Binding Index}"/>
                     
                 </Style.Setters>
             </Style>

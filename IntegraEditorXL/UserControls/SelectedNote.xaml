@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.SelectedNote"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:core="clr-namespace:IntegraXL.Core;assembly=IntegraXL"
+             xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
+             mc:Ignorable="d" d:Height="36" d:DesignWidth="200"
+             d:Background="White"
+             DataContext="{Binding Integra, RelativeSource={RelativeSource AncestorType=Window}}" Height="97">
+
+    <UserControl.Resources>
+        <converters:ComparisonVisibilityConverter x:Key="ComparisonConverter" />
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+    </UserControl.Resources>
+
+    <GroupBox Header="Selected Note"
+              Height="Auto">
+
+        <StackPanel>
+        <Grid DataContext="{Binding TemporaryTone.SuperNATURALDrumKit.Note}"
+              Visibility="{Binding Integra.SelectedTone.Type, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALDrumkit}, FallbackValue=Collapsed}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Text="{Binding Index}"
+                       d:Text="A 1"/>
+
+            <TextBlock Grid.Column="1"
+                       Padding="2 0"
+                       Text="{Binding InstNumber, StringFormat='000'}"
+                       d:Text="000"/>
+
+            <TextBlock Grid.Column="2"
+                       FontWeight="Bold"
+                       d:Text="Tone Name"
+                       Text="{Binding Waveform.Name}"/>
+
+        </Grid>
+
+        <Grid DataContext="{Binding TemporaryTone.PCMDrumKit.Partial}"
+              Visibility="{Binding Integra.SelectedTone.Type, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMDrumkit}, FallbackValue=Collapsed}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Text="{Binding Index}"
+                       d:Text="A 1"/>
+
+            <TextBlock Grid.Column="1"
+                       Padding="2 0"
+                       Text="{Binding WMT01WaveNumberL, StringFormat='0000'}"
+                       d:Text="0000"/>
+
+            <TextBlock Grid.Column="2"
+                       FontWeight="Bold"
+                       d:Text="Tone Name"
+                       Text="{Binding Waveform01L.Name}"/>
+
+        </Grid>
+        </StackPanel>
+    </GroupBox>
+</UserControl>

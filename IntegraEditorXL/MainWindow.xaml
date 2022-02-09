@@ -150,6 +150,7 @@
                             <c:PartSelection/>
                             <uc:VirtualSlots/>
                             <uc:SelectedTone/>
+                            <uc:SelectedNote/>
 
                         </StackPanel>
                     </xl:SidebarSection>
@@ -161,14 +162,10 @@
             <ContentPresenter x:Name="Content"
                               ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
-            <!--<Grid x:Name="ActiveContent" 
-                  Background="Gray"
-                  ScrollViewer.VerticalScrollBarVisibility="Visible"
-                  ScrollViewer.CanContentScroll="True">
-
-            </Grid>-->
             
         </DockPanel>
+        
         <xl:Dialog/>
+        
     </Grid>
 </Window>

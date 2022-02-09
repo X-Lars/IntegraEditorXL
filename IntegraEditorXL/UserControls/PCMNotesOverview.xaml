@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.PCMNotesOverview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" 
+             d:DataContext="{d:DesignInstance Type=models:PCMDrumKit}"
+             DataContext="{Binding TemporaryTone.PCMDrumKit}">
+    
+    <DataGrid Grid.Row="1" 
+              AutoGenerateColumns="False"
+              IsReadOnly="True"
+              ItemsSource="{Binding Partials}"
+              HeadersVisibility="All"
+              SelectedIndex="{Binding SelectedIndex}"
+              SelectionMode="Single"
+              ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+        <DataGrid.Columns>
+
+            <DataGridTextColumn Binding="{Binding WMT01WaveNumberL, StringFormat='0000'}"
+                                Header="Wave 01 L"/>
+
+            <DataGridTextColumn Binding="{Binding Waveform01L.Name}"
+                                Header="Name"/>
+            
+            <DataGridTextColumn Binding="{Binding WMT01WaveNumberR, StringFormat='0000'}"
+                                Header="Wave 01 R"/>
+
+            <DataGridTextColumn Binding="{Binding Waveform01R.Name}"
+                                Header="Name"/>
+
+            <DataGridTextColumn Binding="{Binding WMT02WaveNumberL, StringFormat='0000'}"
+                                Header="Wave 02 L"/>
+
+            <DataGridTextColumn Binding="{Binding Waveform02L.Name}"
+                                Header="Name"/>
+
+            <DataGridTextColumn Binding="{Binding WMT02WaveNumberR, StringFormat='0000'}"
+                                Header="Wave 02 R"/>
+
+            <DataGridTextColumn Binding="{Binding Waveform02R.Name}"
+                                Header="Name"/>
+
+            <DataGridTextColumn Binding="{Binding WMT03WaveNumberL, StringFormat='0000'}"
+                                Header="Wave 03 L"/>
+
+            <DataGridTextColumn Binding="{Binding Waveform03L.Name}"
+                                Header="Name"/>
+
+            <DataGridTextColumn Binding="{Binding WMT03WaveNumberR, StringFormat='0000'}"
+                                Header="Wave 03 R"/>
+
+            <DataGridTextColumn Binding="{Binding Waveform03R.Name}"
+                                Header="Name"/>
+
+            <DataGridTextColumn Binding="{Binding WMT04WaveNumberL, StringFormat='0000'}"
+                                Header="Wave 04 L"/>
+
+            <DataGridTextColumn Binding="{Binding Waveform04L.Name}"
+                                Header="Name"/>
+
+            <DataGridTextColumn Binding="{Binding WMT04WaveNumberR, StringFormat='0000'}"
+                                Header="Wave 04 R"/>
+
+            <DataGridTextColumn Binding="{Binding Waveform04R.Name}"
+                                Header="Name"/>
+
+
+        </DataGrid.Columns>
+
+        <DataGrid.RowHeaderStyle>
+            <Style TargetType="DataGridRowHeader">
+                <Style.Setters>
+
+                    <Setter Property="Content" Value="{Binding Index}"/>
+
+                </Style.Setters>
+            </Style>
+        </DataGrid.RowHeaderStyle>
+
+    </DataGrid>
+</UserControl>
