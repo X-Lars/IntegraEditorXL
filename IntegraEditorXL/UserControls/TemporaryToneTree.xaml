@@ -58,8 +58,10 @@
             
             <StackPanel>
                 <xl:LinkButton>Common</xl:LinkButton>
-                <xl:LinkButton >MFX</xl:LinkButton>
-            </StackPanel>
+                <xl:LinkButton Command="{Binding ShowControlCommand}"
+                               CommandParameter="{x:Type local:MFXEdit}"
+                               Content="MFX"/>
+                </StackPanel>
         </TreeViewItem>
         
         <TreeViewItem Header="SuperNATURAL Synth Tone"
@@ -68,8 +70,10 @@
                       Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALSynthTone}, FallbackValue=Collapsed}">
             <StackPanel>
                 <xl:LinkButton>Common</xl:LinkButton>
-                <xl:LinkButton>MFX</xl:LinkButton>
-                <xl:LinkButton>Partial 1</xl:LinkButton>
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                               CommandParameter="{x:Type local:MFXEdit}"
+                               Content="MFX"/>
+                    <xl:LinkButton>Partial 1</xl:LinkButton>
                 <xl:LinkButton>Partial 2</xl:LinkButton>
                 <xl:LinkButton>Partial 3</xl:LinkButton>
             </StackPanel>
@@ -81,8 +85,10 @@
             
             <StackPanel d:DataContext="{d:DesignInstance main:MainWindow}">
                 <xl:LinkButton>Common</xl:LinkButton>
-                <xl:LinkButton >MFX</xl:LinkButton>
-                <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                               CommandParameter="{x:Type local:MFXEdit}"
+                               Content="MFX"/>
+                    <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
                 <xl:LinkButton Command="{Binding ShowControlCommand}"
                                CommandParameter="{x:Type local:SNDNotesOverview}"
                                Content="Notes" />
@@ -95,8 +101,10 @@
             <StackPanel>
                 <xl:LinkButton>Common</xl:LinkButton>
                 <xl:LinkButton>Common 2</xl:LinkButton>
-                <xl:LinkButton >MFX</xl:LinkButton>
-                <xl:LinkButton>Partial Mix Table</xl:LinkButton>
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                               CommandParameter="{x:Type local:MFXEdit}"
+                               Content="MFX"/>
+                    <xl:LinkButton>Partial Mix Table</xl:LinkButton>
                 <xl:LinkButton>Partial 1</xl:LinkButton>
                 <xl:LinkButton>Partial 2</xl:LinkButton>
                 <xl:LinkButton>Partial 3</xl:LinkButton>
@@ -108,10 +116,12 @@
                       d:Visibility="Visible"
                       Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMDrumkit}, FallbackValue=Collapsed}">
             <StackPanel>
-                <xl:LinkButton >MFX</xl:LinkButton>
                 <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
                 <xl:LinkButton>Common</xl:LinkButton>
-                <xl:LinkButton Command="{Binding ShowControlCommand}"
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                               CommandParameter="{x:Type local:MFXEdit}"
+                               Content="MFX"/>
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
                                CommandParameter="{x:Type local:PCMNotesOverview}"
                                Content="Notes"/>
                     <xl:LinkButton>Common 2</xl:LinkButton>

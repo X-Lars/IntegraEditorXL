@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IntegraEditorXL.UserControls.Components
+namespace IntegraEditorXL.UserControls
 {
     /// <summary>
-    /// Interaction logic for NotesTest.xaml
+    /// Interaction logic for StudioSetPartEQ.xaml
     /// </summary>
-    public partial class NotesTest : UserControl
+    public partial class StudioSetPartEQ : UserControl
     {
-        public NotesTest()
+        public StudioSetPartEQ()
         {
             InitializeComponent();
         }

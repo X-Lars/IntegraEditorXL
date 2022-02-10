@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace IntegraEditorXL
@@ -129,7 +130,8 @@ namespace IntegraEditorXL
 
         private void ShowControl(Type x)
         {
-            Content.Content = (UIElement)Activator.CreateInstance(x);
+            Content.Content = (UserControl)Activator.CreateInstance(x);
+            Content.DataContext = Integra;
         }
 
         public ICommand ShowToneBankCommand

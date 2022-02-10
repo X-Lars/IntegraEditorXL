@@ -57,10 +57,13 @@
                            Min="0" Max="1000"
                            Value="{Binding LeftMSec}"
                            Suffix="Ms"/>
-        
-        <ComboBox Grid.Column="1" Grid.Row="2"
+
+        <xl:NumericTextBox Grid.Column="1" Grid.Row="2"
+                           ValueProvider="{Binding Notes}"
+                           Value="{Binding LeftNote}"/>
+        <!--<ComboBox Grid.Column="1" Grid.Row="2"
                   ItemsSource="{Binding Notes}"
-                  SelectedItem="{Binding LeftNote}"/>
+                  SelectedItem="{Binding LeftNote}"/>-->
 
         <ComboBox Grid.Column="3" Grid.Row="1"
                   ItemsSource="{Binding RateSwitchs}"

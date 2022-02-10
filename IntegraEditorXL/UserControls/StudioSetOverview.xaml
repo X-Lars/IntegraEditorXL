@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              xmlns:uc="clr-namespace:IntegraEditorXL.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
@@ -22,12 +23,20 @@
                                    VerticalAlignment="Top"
                                    VerticalContentAlignment="Top"/>
                             <uc:ToneInfo DataContext="{Binding Tone}"/>
-                        </StackPanel>
+                    <StackPanel>
+                    <xl:LinkButton Command="{Binding ShowControlCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                   CommandParameter="{x:Type uc:StudioSetPart}"
+                                   Content="View Part"/>
+                        <xl:LinkButton Command="{Binding ShowControlCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                   CommandParameter="{x:Type uc:StudioSetPartEQ}"
+                                   Content="View Part EQ"/>
+                    </StackPanel>
+                </StackPanel>
                     </DataTemplate>
                     
                 </ListBox.ItemTemplate>
-
-            </ListBox>
+        <d:ListBoxItem/>
+    </ListBox>
             <!--<StackPanel Orientation="Horizontal">
                 <Label Content="Part 01"/>
                 <uc:ToneInfo DataContext="{Binding Parts[0].Tone}"/>

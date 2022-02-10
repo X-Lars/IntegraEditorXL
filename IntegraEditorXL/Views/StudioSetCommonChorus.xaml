@@ -4,11 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
-             xmlns:c="clr-namespace:IntegraEditorXL.UserControls.Components"
+             xmlns:component="clr-namespace:IntegraEditorXL.UserControls.Components"
              xmlns:local="clr-namespace:IntegraEditorXL.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" d:Background="LightGray"
-             DataContext="{Binding Integra.StudioSet.CommonChorus, RelativeSource={RelativeSource AncestorType=Window}}">
+             DataContext="{Binding StudioSet.CommonChorus}">
+    
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -61,8 +62,8 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1">
-            <!--<c:CommonChorus/>-->
-            <c:CommonDelay/>
+            <component:CommonChorus/>
+            <component:CommonDelay/>
         </StackPanel>
 
     </Grid>

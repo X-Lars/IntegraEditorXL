@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace IntegraEditorXL.UserControls
 {
     /// <summary>
-    /// Interaction logic for PhaseLocks.xaml
+    /// Interaction logic for TemporaryToneEdit.xaml
     /// </summary>
-    public partial class PhaseLocks : UserControl
+    public partial class TemporaryToneEdit : UserControl
     {
-        public PhaseLocks()
+        public TemporaryToneEdit()
         {
             InitializeComponent();
         }
