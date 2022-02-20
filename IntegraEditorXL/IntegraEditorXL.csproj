@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Reference Include="ControlsXL">
-      <HintPath>D:\ControlsXL\ControlsXL\ControlsXL\bin\Release\net5.0-windows\ControlsXL.dll</HintPath>
+      <HintPath>..\..\ControlsXL\ControlsXL\ControlsXL\bin\Debug\net6.0-windows\ControlsXL.dll</HintPath>
     </Reference>
     <Reference Include="IntegraControlsXL">
       <HintPath>..\..\IntegraControlsXL\IntegraControlsXL\IntegraControlsXL\bin\Debug\net6.0-windows\IntegraControlsXL.dll</HintPath>
@@ -20,7 +20,7 @@
       <HintPath>D:\MidiXL\MidiXL\MidiXL\bin\Release\MidiXL.dll</HintPath>
     </Reference>
     <Reference Include="StylesXL">
-      <HintPath>D:\StylesXL\StylesXL\StylesXL\bin\Release\net5.0-windows\StylesXL.dll</HintPath>
+      <HintPath>..\..\StylesXL\StylesXL\StylesXL\bin\Debug\net6.0-windows\StylesXL.dll</HintPath>
     </Reference>
   </ItemGroup>
 

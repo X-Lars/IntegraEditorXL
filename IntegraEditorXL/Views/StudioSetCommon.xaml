@@ -1,25 +1,21 @@
 ﻿<UserControl x:Class="IntegraEditorXL.Views.StudioSetCommon"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:IntegraEditorXL.Views"
-      xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
-      xmlns:uc="clr-namespace:IntegraEditorXL.UserControls"
-                  xmlns:core="core"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              xmlns:component="clr-namespace:IntegraEditorXL.UserControls.Components"
-      mc:Ignorable="d" 
-      d:DesignHeight="240" d:DesignWidth="800"
-      d:Background="White">
+             mc:Ignorable="d" 
+             d:DesignHeight="240" d:DesignWidth="800" d:Background="White">
 
     <!-- Requires DataContext: Integra -->
 
     <Grid DataContext="{Binding StudioSet}">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -28,35 +24,30 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!--<TextBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding Common.Name}"/>-->
-
         <StackPanel Grid.Column="0" Grid.Row="1"
-                        DataContext="{Binding Common}">
+                    DataContext="{Binding Common}">
 
             <GroupBox Header="General">
 
                 <Grid>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Studio Set Tempo</Label>
-                    <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Content="Drum Compressor + EQ Assign"/>
+                    <xl:SpinText Grid.Column="0" Grid.Row="0"
+                                 Min="20" Max="250"
+                                 Prefix="Tempo"
+                                 Value="{Binding Tempo}"/>
 
-                    <xl:NumericTextBox Grid.Column="1" Grid.Row="0"
-                                           Value="{Binding Tempo}" 
-                                           Min="20" Max="250"/>
-
-                    <ComboBox Grid.Column="1" Grid.Row="1"
-                                  ItemsSource="{Binding IntegraParts}"
-                                  SelectedItem="{Binding DrumCompEQPart}"/>
+                    <xl:EnumeratedText Grid.Column="0" Grid.Row="1"
+                                       Prefix="Drum Comp + EQ"
+                                       Value="{Binding DrumCompEQPart}"/>
 
                 </Grid>
             </GroupBox>
@@ -69,37 +60,35 @@
                 <Grid>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Source 1</Label>
-                    <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Source 2</Label>
-                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Source 3</Label>
-                    <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center">Source 4</Label>
+                    <xl:EnumeratedText Grid.Column="0" Grid.Row="0"
+                                       HorizontalContentAlignment="Left"
+                                       Prefix="Source 1"
+                                       Value="{Binding ToneControlSource01}"/>
 
-                    <ComboBox Grid.Column="1" Grid.Row="0"
-                                  ItemsSource="{Binding ToneControlSourceValues}"
-                                  SelectedItem="{Binding ToneControlSource01}"/>
+                    <xl:EnumeratedText Grid.Column="0" Grid.Row="1"
+                                       HorizontalContentAlignment="Left"
+                                       Prefix="Source 2"
+                                       Value="{Binding ToneControlSource02}"/>
 
-                    <ComboBox Grid.Column="1" Grid.Row="1"
-                                  ItemsSource="{Binding ToneControlSourceValues}"
-                                  SelectedItem="{Binding ToneControlSource02}"/>
+                    <xl:EnumeratedText Grid.Column="0" Grid.Row="2"
+                                       HorizontalContentAlignment="Left"
+                                       Prefix="Source 3"
+                                       Value="{Binding ToneControlSource03}"/>
 
-                    <ComboBox Grid.Column="1" Grid.Row="2"
-                                  ItemsSource="{Binding ToneControlSourceValues}"
-                                  SelectedItem="{Binding ToneControlSource03}"/>
-
-                    <ComboBox Grid.Column="1" Grid.Row="3"
-                                  ItemsSource="{Binding ToneControlSourceValues}"
-                                  SelectedItem="{Binding ToneControlSource04}"/>
+                    <xl:EnumeratedText Grid.Column="0" Grid.Row="3"
+                                       HorizontalContentAlignment="Left"
+                                       Prefix="Source 4"
+                                       Value="{Binding ToneControlSource04}"/>
 
                 </Grid>
             </GroupBox>
@@ -112,107 +101,100 @@
                 <Grid>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Column="0" Grid.Row="0">Part 1</Label>
-                    <Label Grid.Column="0" Grid.Row="1">Part 2</Label>
-                    <Label Grid.Column="0" Grid.Row="2">Part 3</Label>
-                    <Label Grid.Column="0" Grid.Row="3">Part 4</Label>
-                    <Label Grid.Column="0" Grid.Row="4">Part 5</Label>
-                    <Label Grid.Column="0" Grid.Row="5">Part 6</Label>
-                    <Label Grid.Column="0" Grid.Row="6">Part 7</Label>
-                    <Label Grid.Column="0" Grid.Row="7">Part 8</Label>
-                    <Label Grid.Column="2" Grid.Row="0">Part 9</Label>
-                    <Label Grid.Column="2" Grid.Row="1">Part 10</Label>
-                    <Label Grid.Column="2" Grid.Row="2">Part 11</Label>
-                    <Label Grid.Column="2" Grid.Row="3">Part 12</Label>
-                    <Label Grid.Column="2" Grid.Row="4">Part 13</Label>
-                    <Label Grid.Column="2" Grid.Row="5">Part 14</Label>
-                    <Label Grid.Column="2" Grid.Row="6">Part 15</Label>
-                    <Label Grid.Column="2" Grid.Row="7">Part 16</Label>
+                    <xl:ListText Grid.Column="0" Grid.Row="0"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve01}"
+                                 Prefix="Part 1"/>
 
-                    <xl:NumericTextBox Grid.Column="1" Grid.Row="0"
-                                  ValueProvider="{Binding VoiceReserveValues}"
-                                  Index="{Binding VoiceReserve01}"/>
-                    <!--<ComboBox Grid.Column="1" Grid.Row="0"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve01}"/>-->
+                    <xl:ListText Grid.Column="0" Grid.Row="1"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve02}"
+                                 Prefix="Part 2"/>
 
-                    <ComboBox Grid.Column="1" Grid.Row="1"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve02}"/>
+                    <xl:ListText Grid.Column="0" Grid.Row="2"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve03}"
+                                 Prefix="Part 3"/>
 
-                    <ComboBox Grid.Column="1" Grid.Row="2"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve03}"/>
+                    <xl:ListText Grid.Column="0" Grid.Row="3"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve04}"
+                                 Prefix="Part 4"/>
 
-                    <ComboBox Grid.Column="1" Grid.Row="3"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve04}"/>
+                    <xl:ListText Grid.Column="0" Grid.Row="4"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve05}"
+                                 Prefix="Part 5"/>
 
-                    <ComboBox Grid.Column="1" Grid.Row="4"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve05}"/>
+                    <xl:ListText Grid.Column="0" Grid.Row="5"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve06}"
+                                 Prefix="Part 6"/>
 
-                    <ComboBox Grid.Column="1" Grid.Row="5"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve06}"/>
+                    <xl:ListText Grid.Column="0" Grid.Row="6"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve07}"
+                                 Prefix="Part 7"/>
 
-                    <ComboBox Grid.Column="1" Grid.Row="6"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve07}"/>
+                    <xl:ListText Grid.Column="0" Grid.Row="7"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve08}"
+                                 Prefix="Part 8"/>
 
-                    <ComboBox Grid.Column="1" Grid.Row="7"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve08}"/>
+                    <xl:ListText Grid.Column="1" Grid.Row="0"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve09}"
+                                 Prefix="Part 9"/>
 
-                    <ComboBox Grid.Column="3" Grid.Row="0"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve09}"/>
+                    <xl:ListText Grid.Column="1" Grid.Row="1"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve10}"
+                                 Prefix="Part 10"/>
 
-                    <ComboBox Grid.Column="3" Grid.Row="1"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve10}"/>
+                    <xl:ListText Grid.Column="1" Grid.Row="2"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve11}"
+                                 Prefix="Part 11"/>
 
-                    <ComboBox Grid.Column="3" Grid.Row="2"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve11}"/>
+                    <xl:ListText Grid.Column="1" Grid.Row="3"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve12}"
+                                 Prefix="Part 12"/>
 
-                    <ComboBox Grid.Column="3" Grid.Row="3"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve12}"/>
+                    <xl:ListText Grid.Column="1" Grid.Row="4"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve13}"
+                                 Prefix="Part 13"/>
 
-                    <ComboBox Grid.Column="3" Grid.Row="4"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve13}"/>
+                    <xl:ListText Grid.Column="1" Grid.Row="5"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve14}"
+                                 Prefix="Part 14"/>
 
-                    <ComboBox Grid.Column="3" Grid.Row="5"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve14}"/>
+                    <xl:ListText Grid.Column="1" Grid.Row="6"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve15}"
+                                 Prefix="Part 15"/>
 
-                    <ComboBox Grid.Column="3" Grid.Row="6"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve15}"/>
-
-                    <ComboBox Grid.Column="3" Grid.Row="7"
-                                  ItemsSource="{Binding VoiceReserveValues}"
-                                  SelectedIndex="{Binding VoiceReserve16}"/>
+                    <xl:ListText Grid.Column="1" Grid.Row="7"
+                                 ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve16}"
+                                 Prefix="Part 16"/>
 
                 </Grid>
             </GroupBox>

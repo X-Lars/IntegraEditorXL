@@ -38,14 +38,13 @@
         
         <StackPanel Grid.Column="1" Grid.Row="1">
 
-            <ComboBox HorizontalContentAlignment="Right"
-                      ItemsSource="{Binding Path=LowFrequencies}"
-                      SelectedItem="{Binding Path=EQLowFreq}"/>
+            <xl:EnumeratedText HorizontalContentAlignment="Right"
+                               Suffix="Hz"
+                               Value="{Binding EQLowFreq}"/>
 
-            <xl:NumericTextBox Min="-15" Max="15"
-                               ShowButtons="False"
-                               Suffix="dB"
-                               Value="{Binding Path=EQLowGain}"/>
+            <xl:SpinText Min="-15" Max="15"
+                         Suffix="dB"
+                         Value="{Binding EQLowGain}"/>
 
         </StackPanel>
         
@@ -55,18 +54,17 @@
 
         <StackPanel Grid.Column="2" Grid.Row="1">
 
-            <ComboBox HorizontalContentAlignment="Right"
-                      ItemsSource="{Binding MidFrequencies}"
-                      SelectedItem="{Binding EQMidFreq}"/>
+            <xl:EnumeratedText HorizontalContentAlignment="Right"
+                               Suffix="Hz"
+                               Value="{Binding EQMidFreq}"/>
 
-            <xl:NumericTextBox Min="-15" Max="15"
-                               ShowButtons="False"
-                               Suffix="dB"
-                               Value="{Binding EQMidGain}"/>
+            <xl:SpinText Min="-15" Max="15"
+                         Suffix="dB"
+                         Value="{Binding EQMidGain}"/>
 
-            <ComboBox HorizontalContentAlignment="Right"
-                      ItemsSource="{Binding MidQs}"
-                      SelectedItem="{Binding EQMidQ}"/>
+            <xl:EnumeratedText HorizontalContentAlignment="Right"
+                               Prefix="Q"
+                               Value="{Binding EQMidQ}"/>
 
         </StackPanel>
 
@@ -77,14 +75,13 @@
         
         <StackPanel Grid.Column="3" Grid.Row="1">
 
-            <ComboBox HorizontalContentAlignment="Right"
-                      ItemsSource="{Binding HighFrequencies}"
-                      SelectedItem="{Binding EQHighFreq}"/>
+            <xl:EnumeratedText HorizontalContentAlignment="Right"
+                               Suffix="Hz"
+                               Value="{Binding EQHighFreq}"/>
 
-            <xl:NumericTextBox Min="-15" Max="15"
-                               ShowButtons="False"
-                               Value="{Binding EQHighGain}" 
-                               Suffix="dB"/>
+            <xl:SpinText Min="-15" Max="15"
+                         Suffix="dB"
+                         Value="{Binding EQHighGain}"/>
 
         </StackPanel>
 

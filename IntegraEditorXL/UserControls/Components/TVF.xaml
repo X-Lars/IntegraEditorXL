@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.Components.TVF"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls.Components"
+             xmlns:i="clr-namespace:IntegraControlsXL;assembly=IntegraControlsXL"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
+             >
+    
+    <Grid DataContext="{Binding Partial}"
+          d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <xl:EnumeratedText Grid.Column="0" Grid.Row="0"
+                           Prefix="Filter Type"
+                           Value="{Binding TVFFilterType}"/>
+        
+        <i:TVF Grid.Column="0" Grid.Row="1"
+               Cutoff="{Binding TVFCutoffFrequency}"
+               FilterType="{Binding TVFFilterType}"
+               Height="100"
+               Resonance="{Binding TVFResonance}"
+               Width="200"/>
+
+        <StackPanel Grid.Column="0" Grid.Row="2">
+            
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Cutoff Frequency"
+                         Value="{Binding TVFCutoffFrequency}"/>
+            
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Resonance"
+                         Value="{Binding TVFCutoffVelocitySens}"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+
+            <xl:SpinText Interval="10"
+                         Min="-200" Max="200"
+                         Prefix="Cutoff Keyfollow"
+                         Value="{Binding TVFCutoffKeyFollow}"/>
+
+            <xl:EnumeratedText Prefix="Cutoff V-Curve"
+                               Value="{Binding TVFCutoffVelocityCurve}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="Cutoff V-Sens"
+                         Value="{Binding TVFCutoffVelocitySens}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="Resonance V-Sens"
+                         Value="{Binding TVFResonanceVelocitySens}"/>
+            
+        </StackPanel>
+    </Grid>
+</UserControl>

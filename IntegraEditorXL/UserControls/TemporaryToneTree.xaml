@@ -58,9 +58,13 @@
             
             <StackPanel>
                 <xl:LinkButton>Common</xl:LinkButton>
-                <xl:LinkButton Command="{Binding ShowControlCommand}"
+                    <StackPanel Orientation="Horizontal">
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
                                CommandParameter="{x:Type local:MFXEdit}"
-                               Content="MFX"/>
+                               Content="MFX :"/>
+                        <xl:EnumeratedText HorizontalContentAlignment="Left"
+                                           Value="{Binding Integra.TemporaryTone.MFX.Type, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    </StackPanel>
                 </StackPanel>
         </TreeViewItem>
         
@@ -105,12 +109,21 @@
                                CommandParameter="{x:Type local:MFXEdit}"
                                Content="MFX"/>
                     <xl:LinkButton>Partial Mix Table</xl:LinkButton>
-                <xl:LinkButton>Partial 1</xl:LinkButton>
-                <xl:LinkButton>Partial 2</xl:LinkButton>
-                <xl:LinkButton>Partial 3</xl:LinkButton>
-                <xl:LinkButton>Partial 4</xl:LinkButton>
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:PCMPartialEdit}"
+                                   Content="Partial 1"/>
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:PCMPartialEdit}"
+                                   Content="Partial 2"/>
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:PCMPartialEdit}"
+                                   Content="Partial 3"/>
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:PCMPartialEdit}"
+                                   Content="Partial 4"/>
             </StackPanel>
         </TreeViewItem>
+            
         <TreeViewItem Header="PCM Drum Kit"
                       IsExpanded="True"
                       d:Visibility="Visible"
@@ -125,6 +138,7 @@
                                CommandParameter="{x:Type local:PCMNotesOverview}"
                                Content="Notes"/>
                     <xl:LinkButton>Common 2</xl:LinkButton>
+                
             </StackPanel>
         </TreeViewItem>
     </StackPanel>

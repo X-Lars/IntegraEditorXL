@@ -4,10 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:components="clr-namespace:IntegraEditorXL.UserControls.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             DataContext="{Binding StudioSet.Part}">
-    <Grid>
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="White">
+    <Grid DataContext="{Binding StudioSet.Part}">
+        <StackPanel>
         <TextBlock Text="{Binding Tone.PC}"/>
+            <StackPanel>
+        <components:PartOffset/>
+        
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -41,9 +41,10 @@ namespace IntegraEditorXL
             InitializeComponent();
 
             StyleManager.Appearance = ControlAppearance.Default;
-            StyleManager.Style = ControlStyle.Default;
 
             Loaded += MainWindowLoaded;
+
+            StyleManager.StyleChanged += (o, e) => { this.InvalidateVisual(); };
         }
 
        
@@ -73,6 +74,21 @@ namespace IntegraEditorXL
 
             if(!isConnected)
                 ShowControl(typeof(DeviceSelection));
+        }
+
+        private ControlStyle _Style = ControlStyle.Default;
+        public ControlStyle ApplicationStyle
+        {
+            get => _Style;
+            set
+            {
+                if(_Style != value)
+                {
+                    _Style = value;
+                    StyleManager.Style = value;
+                    NotifyPropertyChanged();
+                }
+            }
         }
 
         private async void InitializeIntegra()

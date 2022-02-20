@@ -58,9 +58,12 @@
                            Value="{Binding LeftMSec}"
                            Suffix="Ms"/>
 
-        <xl:NumericTextBox Grid.Column="1" Grid.Row="2"
-                           ValueProvider="{Binding Notes}"
+        <xl:EnumeratedText Grid.Column="1" Grid.Row="2"
+                           FontSize="18"
+                           HorizontalContentAlignment="Center"
                            Value="{Binding LeftNote}"/>
+        
+        <!--Value="{Binding LeftNote}"/>-->
         <!--<ComboBox Grid.Column="1" Grid.Row="2"
                   ItemsSource="{Binding Notes}"
                   SelectedItem="{Binding LeftNote}"/>-->
