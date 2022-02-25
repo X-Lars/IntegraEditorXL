@@ -14,73 +14,58 @@
         <converters:BoolVisibility x:Key="Visibility"/>
     </UserControl.Resources>
     
-    <Grid DataContext="{Binding Parameters}">
+    <Grid DataContext="{Binding Parameters}"
+          Width="Auto">
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+        <StackPanel>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+            <xl:EnumeratedText Grid.Column="1" Grid.Row="0"
+                           Prefix="Filter Type"
+                           Value="{Binding FilterType}"/>
 
-        <Label Grid.Column="0" Grid.Row="0">Filter Type</Label>
-        <Label Grid.Column="0" Grid.Row="1">Cutoff Freq</Label>
-        <Label Grid.Column="0" Grid.Row="2">Pre Delay</Label>
-        <Label Grid.Column="0" Grid.Row="3">Rate Switch</Label>
-        <Label Grid.Column="0" Grid.Row="4">Rate</Label>
-        <Label Grid.Column="0" Grid.Row="5">Depth</Label>
-        <Label Grid.Column="0" Grid.Row="6">Phase</Label>
-        <Label Grid.Column="0" Grid.Row="7">Feedback</Label>
+            <xl:EnumeratedText Grid.Column="1" Grid.Row="1"
+                               Prefix="Cutoff Frequency"
+                               Suffix="Hz"
+                               Value="{Binding CutoffFreq}"/>
 
-        <ComboBox Grid.Column="1" Grid.Row="0"
-                  ItemsSource="{Binding FilterTypes}"
-                  SelectedItem="{Binding FilterType}"/>
+            <xl:ListText Grid.Column="1" Grid.Row="2"
+                     ItemsSource="{Binding PreDelays}" 
+                     Prefix="Pre-Delay"
+                     SelectedIndex="{Binding PreDelay}"
+                     Suffix="Ms"/>
 
-        <ComboBox Grid.Column="1" Grid.Row="1"
-                  ItemsSource="{Binding CutoffFreqs}"
-                  SelectedItem="{Binding CutoffFreq}"/>
+            <xl:EnumeratedText Grid.Column="1" Grid.Row="3"
+                           Prefix="Rate Switch"
+                           Value="{Binding RateSwitch}"/>
 
-        <xl:NumericTextBox Grid.Column="1" Grid.Row="2"
-                           ValueProvider="{Binding PreDelays}" 
-                           Index="{Binding PreDelay}"
-                           Suffix="Ms"/>
+            <xl:SpinText Grid.Column="1" Grid.Row="4"
+                     Interval="0.05"
+                     Min="0.05" Max="10.00"
+                     Prefix="Rate"
+                     Value="{Binding RateHz}"
+                     Suffix="hz"/>
 
-        <ComboBox Grid.Column="1" Grid.Row="3"
-                  ItemsSource="{Binding RateSwitchs}"
-                  SelectedItem="{Binding RateSwitch}"/>
+            <xl:EnumeratedText Grid.Column="1" Grid.Row="4"
+                           Prefix="Rate"
+                           Value="{Binding RateNote}"/>
 
-        <xl:NumericTextBox Grid.Column="1" Grid.Row="4"
-                           Value="{Binding RateHz}"
-                           Interval="0.05"
-                           Min="0.05" Max="10.00"
-                           Suffix="hz"/>
+            <xl:SpinText Grid.Column="1" Grid.Row="5"
+                     Min="0" Max="127"
+                     Prefix="Depth"
+                     Value="{Binding Depth}"/>
 
-        <ComboBox Grid.Column="1" Grid.Row="4"
-                  ItemsSource="{Binding NoteRates}"
-                  SelectedItem="{Binding RateNote}"/>
-        
-        <xl:NumericTextBox Grid.Column="1" Grid.Row="5"
-                           Min="0" Max="127"
-                           Value="{Binding Depth}"/>
+            <xl:SpinText Grid.Column="1" Grid.Row="6"
+                     Interval="2"
+                     Min="0" Max="180"
+                     Prefix="Phase"
+                     Suffix="Deg"
+                     Value="{Binding Phase}"/>
 
-        <xl:NumericTextBox Grid.Column="1" Grid.Row="6"
-                           Interval="2"
-                           Min="0" Max="180"
-                           Suffix="Deg"
-                           Value="{Binding Phase}"/>
-
-        <xl:NumericTextBox Grid.Column="1" Grid.Row="7"
-                           Min="0" Max="127"
-                           Value="{Binding Feedback}"/>
-
+            <xl:SpinText Grid.Column="1" Grid.Row="7"
+                     Min="0" Max="127"
+                     Prefix="Feedback"
+                     Value="{Binding Feedback}"/>
+            
+        </StackPanel>
     </Grid>
 </UserControl>

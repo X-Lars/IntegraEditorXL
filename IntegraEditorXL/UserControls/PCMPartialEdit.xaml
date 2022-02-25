@@ -15,11 +15,14 @@
     <Grid DataContext="{Binding TemporaryTone.PCMSynthTone}">
 
         <Grid.ColumnDefinitions>
-            
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition DataContext="{Binding Partial}"/>
+            <RowDefinition DataContext="{Binding Partial}"/>
             <RowDefinition DataContext="{Binding Partial}"/>
         </Grid.RowDefinitions>
         
@@ -28,7 +31,10 @@
                            Prefix="Partial"
                            Value="{Binding SelectedPartial}"/>
 
-        <components:TVF Grid.Column="0" Grid.Row="1"/>
+        <components:LFO Grid.Column="0" Grid.Row="1"/>
+        <components:TVF Grid.Column="0" Grid.Row="2"/>
+        <components:TVA Grid.Column="0" Grid.Row="3"/>
 
+        <components:StepLFO Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </UserControl>

@@ -8,47 +8,36 @@
              xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
-             >
-    
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="White">
+
     <Grid DataContext="{Binding Partial}"
           d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <xl:EnumeratedText Grid.Column="0" Grid.Row="0"
+        <Label Grid.Column="0" Grid.Row="0"
+               Content="TVF"/>
+
+        <Label Grid.Column="2" Grid.Row="0"
+               Content="TVF ENVELOPE"/>
+
+        <xl:EnumeratedText Grid.Column="1" Grid.Row="0"
                            Prefix="Filter Type"
                            Value="{Binding TVFFilterType}"/>
-        
-        <i:TVF Grid.Column="0" Grid.Row="1"
-               Cutoff="{Binding TVFCutoffFrequency}"
-               FilterType="{Binding TVFFilterType}"
-               Height="100"
-               Resonance="{Binding TVFResonance}"
-               Width="200"/>
 
-        <StackPanel Grid.Column="0" Grid.Row="2">
-            
-            <xl:SpinText Min="0" Max="127"
-                         Prefix="Cutoff Frequency"
-                         Value="{Binding TVFCutoffFrequency}"/>
-            
-            <xl:SpinText Min="0" Max="127"
-                         Prefix="Resonance"
-                         Value="{Binding TVFCutoffVelocitySens}"/>
-
-        </StackPanel>
-
-        <StackPanel Grid.Column="1" Grid.Row="1">
+        <StackPanel Grid.Column="0" Grid.Row="1">
 
             <xl:SpinText Interval="10"
                          Min="-200" Max="200"
@@ -65,7 +54,117 @@
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Resonance V-Sens"
                          Value="{Binding TVFResonanceVelocitySens}"/>
-            
+
         </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="2">
+
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Cutoff Frequency"
+                         Value="{Binding TVFCutoffFrequency}"/>
+
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Resonance"
+                         Value="{Binding TVFResonance}"/>
+
+        </StackPanel>
+
+        <i:TVF Grid.Column="1" Grid.Row="1"
+               Cutoff="{Binding TVFCutoffFrequency}"
+               FilterType="{Binding TVFFilterType}"
+               Height="100"
+               Resonance="{Binding TVFResonance}"
+               Width="200"/>
+
+        <StackPanel Grid.Column="2" Grid.Row="1">
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="TVF Env Dept"
+                         Value="{Binding TVFEnvDepth}"/>
+
+            <xl:EnumeratedText Prefix="TVF Env V-Curve"
+                               Value="{Binding TVFEnvVelocityCurve}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="TVF Env V-Sens"
+                         Value="{Binding TVFEnvVelocitySens}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="TVF Env T1 V-Sens"
+                         Value="{Binding TVFEnvTime1VelocitySens}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="TVF Env T4 V-Sens"
+                         Value="{Binding TVFEnvTime4VelocitySens}"/>
+
+            <xl:SpinText Interval="10"
+                         Min="-100" Max="100"
+                         Prefix="TVF Env Time KF"
+                         Value="{Binding TVFEnvTimeKeyFollow}"/>
+
+        </StackPanel>
+
+        <i:TVFEnvelope Grid.Column="3" Grid.Row="1"
+                    Height="100"
+                    Level0="{Binding TVFLevel0}"
+                    Level1="{Binding TVFLevel1}"
+                    Level2="{Binding TVFLevel2}"
+                    Level3="{Binding TVFLevel3}"
+                    Level4="{Binding TVFLevel4}"
+                    Time1="{Binding TVFTime1}"
+                    Time2="{Binding TVFTime2}"
+                    Time3="{Binding TVFTime3}"
+                    Time4="{Binding TVFTime4}"
+                    Width="200"/>
+
+        <Grid Grid.Column="3" Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <xl:SpinText Grid.Column="0" Grid.Row="0"
+                         Min="0" Max="127"
+                         Prefix="Level 0"
+                         Value="{Binding TVFLevel0}"/>
+
+            <StackPanel Grid.Column="0" Grid.Row="1">
+                <xl:SpinText Min="0" Max="127"
+                                 Prefix="Level 1"
+                                 Value="{Binding TVFLevel1}"/>
+                <xl:SpinText Min="0" Max="127"
+                                 Prefix="Level 2"
+                                 Value="{Binding TVFLevel2}"/>
+                <xl:SpinText Min="0" Max="127"
+                                 Prefix="Level 3"
+                                 Value="{Binding TVFLevel3}"/>
+                <xl:SpinText Min="0" Max="127"
+                                 Prefix="Level 4"
+                                 Value="{Binding TVFLevel4}"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <xl:SpinText Min="0" Max="127"
+                                 Prefix="Time 1"
+                                 Value="{Binding TVFTime1}"/>
+                <xl:SpinText Min="0" Max="127"
+                                 Prefix="Time 2"
+                                 Value="{Binding TVFTime2}"/>
+                <xl:SpinText Min="0" Max="127"
+                                 Prefix="Time 3"
+                                 Value="{Binding TVFTime3}"/>
+                <xl:SpinText Min="0" Max="127"
+                                 Prefix="Time 4"
+                                 Value="{Binding TVFTime4}"/>
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </UserControl>

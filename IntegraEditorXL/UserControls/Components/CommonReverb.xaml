@@ -9,67 +9,46 @@
              d:DesignHeight="210" d:DesignWidth="200" d:Background="White"
              d:DataContext="{d:DesignInstance Type=dx:CommonReverb}">
 
-        <Grid DataContext="{Binding Parameters}">
+    <Grid DataContext="{Binding Parameters}">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+            
+        <StackPanel>
+            
+            <xl:SpinText Min="0" Max="100"
+                         Prefix="Pre-Delay"
+                         Suffix="Ms"
+                         Value="{Binding PreDelay, FallbackValue=0}"/>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+            <xl:SpinText Interval="0.1"
+                         Min="0.1" Max="10.0"
+                         Prefix="Time"
+                         Suffix="S"
+                         Value="{Binding Time, FallbackValue=0}"/>
 
-            <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Pre Delay</Label>
-            <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Time</Label>
-            <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Density</Label>
-            <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center">Diffusion</Label>
-            <Label Grid.Column="0" Grid.Row="4" VerticalAlignment="Center">LF Damp</Label>
-            <Label Grid.Column="0" Grid.Row="5" VerticalAlignment="Center">HF Damp</Label>
-            <Label Grid.Column="0" Grid.Row="6" VerticalAlignment="Center">Spread</Label>
-            <Label Grid.Column="0" Grid.Row="7" VerticalAlignment="Center">Tone</Label>
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Density"
+                         Value="{Binding Density, FallbackValue=0}"/>
 
-            <xl:NumericTextBox Grid.Column="1" Grid.Row="0"
-                                               Value="{Binding PreDelay, FallbackValue=0}" 
-                                               Min="0" Max="100" 
-                                               Suffix="Ms"/>
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Diffusion"
+                         Value="{Binding Diffusion, FallbackValue=0}"/>
 
-            <xl:NumericTextBox Grid.Column="1" Grid.Row="1"
-                                               Value="{Binding Time, FallbackValue=0}" 
-                                               Min="0.1" Max="10.0"
-                                               Interval="0.1"
-                                               Suffix="S"/>
+            <xl:SpinText Min="0" Max="100"
+                         Prefix="LF Damp"
+                         Value="{Binding LFDamp, FallbackValue=0}"/>
 
-            <xl:NumericTextBox Grid.Column="1" Grid.Row="2"
-                                               Value="{Binding Density, FallbackValue=0}" 
-                                               Min="0" Max="127"/>
+            <xl:SpinText Min="0" Max="100"
+                         Prefix="HF Damp"
+                         Value="{Binding HFDamp, FallbackValue=0}"/>
 
-            <xl:NumericTextBox Grid.Column="1" Grid.Row="3"
-                                               Value="{Binding Diffusion, FallbackValue=0}" 
-                                               Min="0" Max="127"/>
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Spread"
+                         Value="{Binding Spread, FallbackValue=0}"/>
 
-            <xl:NumericTextBox Grid.Column="1" Grid.Row="4"
-                                               Value="{Binding LFDamp, FallbackValue=0}" 
-                                               Min="0" Max="100"/>
-
-            <xl:NumericTextBox Grid.Column="1" Grid.Row="5"
-                                               Value="{Binding HFDamp, FallbackValue=0}" 
-                                               Min="0" Max="100"/>
-
-            <xl:NumericTextBox Grid.Column="1" Grid.Row="6"
-                                               Value="{Binding Spread, FallbackValue=0}" 
-                                               Min="0" Max="127"/>
-
-            <xl:NumericTextBox Grid.Column="1" Grid.Row="7"
-                                               Value="{Binding Tone, FallbackValue=0}" 
-                                               Min="0" Max="127"/>
-
-        </Grid>
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Tone"
+                         Value="{Binding Tone, FallbackValue=0}"/>
+            
+        </StackPanel>
+    </Grid>
 </UserControl>

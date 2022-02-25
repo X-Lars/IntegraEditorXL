@@ -8,30 +8,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="54" d:DesignWidth="200" d:Background="White"
              d:DataContext="{d:DesignInstance Type=dx:CommonReverbGM2}">
-    
+
     <Grid DataContext="{Binding Parameters}">
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+        <StackPanel>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+            <xl:SpinText Min="0" Max="5"
+                         Prefix="Character"
+                         Value="{Binding Character, FallbackValue=0}"/>
 
-        <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Character</Label>
-        <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Time</Label>
-
-        <xl:NumericTextBox Grid.Column="1" Grid.Row="0"
-                                       Value="{Binding Character, FallbackValue=0}" 
-                                       Min="0" Max="5"/>
-
-        <xl:NumericTextBox Grid.Column="1" Grid.Row="1"
-                                       Value="{Binding Time, FallbackValue=0}" 
-                                       Min="0" Max="127"/>
-
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Time"
+                         Value="{Binding Time, FallbackValue=0}"/>
+            
+        </StackPanel>
     </Grid>
-    
 </UserControl>

@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:IntegraEditorXL.UserControls.Components"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              xmlns:dx="clr-namespace:IntegraXL.Models.Parameters;assembly=IntegraXL"
              xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="160" d:DesignWidth="480" d:Background="White"
+             d:DesignHeight="160" d:DesignWidth="320" d:Background="White"
              d:DataContext="{d:DesignInstance Type=dx:CommonDelay}">
 
     <UserControl.Resources>
@@ -18,103 +17,79 @@
     <Grid DataContext="{Binding Parameters}">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0">
+            
+            <Label HorizontalContentAlignment="Center">Left</Label>
+            
+            <xl:EnumeratedText Prefix="Switch"
+                               Value="{Binding LeftSwitch}"/>
 
+            <xl:SpinText Min="0" Max="1000"
+                         Prefix="Delay"
+                         Value="{Binding LeftMSec}"
+                         Suffix="Ms"/>
 
-        <Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center">Left</Label>
-        <Label Grid.Column="2" Grid.Row="0" HorizontalContentAlignment="Center">Center</Label>
-        <Label Grid.Column="3" Grid.Row="0" HorizontalContentAlignment="Center">Right</Label>
+            <xl:EnumeratedText HorizontalContentAlignment="Center"
+                               Prefix="Delay"
+                               Value="{Binding LeftNote}"/>
 
-
-        <Label Grid.Column="0" Grid.Row="1">Switch</Label>
-        <Label Grid.Column="0" Grid.Row="2">Delay</Label>
-        <Label Grid.Column="0" Grid.Row="3">Level</Label>
-        <Label Grid.Column="0" Grid.Row="4">Feedback</Label>
-        <Label Grid.Column="0" Grid.Row="5">HF Damp</Label>
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Level"
+                         Value="{Binding LeftLevel}"/>
+        </StackPanel>
         
-        
-        <ComboBox Grid.Column="1" Grid.Row="1"
-                  ItemsSource="{Binding RateSwitchs}"
-                  SelectedItem="{Binding LeftSwitch}"/>
+        <StackPanel Grid.Column="1">
+            
+            <Label HorizontalContentAlignment="Center">Center</Label>
+            
+            <xl:EnumeratedText Prefix="Switch"
+                               Value="{Binding CenterSwitch}"/>
 
-        <xl:NumericTextBox Grid.Column="1" Grid.Row="2"
-                           Min="0" Max="1000"
-                           Value="{Binding LeftMSec}"
-                           Suffix="Ms"/>
+            <xl:SpinText Min="0" Max="1000"
+                         Prefix="Delay"
+                         Value="{Binding CenterMSec}"
+                         Suffix="Ms"/>
 
-        <xl:EnumeratedText Grid.Column="1" Grid.Row="2"
-                           FontSize="18"
-                           HorizontalContentAlignment="Center"
-                           Value="{Binding LeftNote}"/>
-        
-        <!--Value="{Binding LeftNote}"/>-->
-        <!--<ComboBox Grid.Column="1" Grid.Row="2"
-                  ItemsSource="{Binding Notes}"
-                  SelectedItem="{Binding LeftNote}"/>-->
+            <xl:EnumeratedText Prefix="Delay"
+                               Value="{Binding CenterNote}"/>
 
-        <ComboBox Grid.Column="3" Grid.Row="1"
-                  ItemsSource="{Binding RateSwitchs}"
-                  SelectedItem="{Binding RightSwitch}"/>
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Level"
+                         Value="{Binding CenterLevel}"/>
 
-        <xl:NumericTextBox Grid.Column="3" Grid.Row="2"
-                           Min="0" Max="1000"
-                           Value="{Binding RightMSec}"
-                           Suffix="Ms"/>
+            <xl:SpinText Interval="2"
+                         Min="-98" Max="98"
+                         Prefix="Feedback"
+                         Value="{Binding CenterFeedback}"
+                         Suffix="%"/>
 
-        <ComboBox Grid.Column="3" Grid.Row="2"
-                  ItemsSource="{Binding Notes}"
-                  SelectedItem="{Binding RightNote}"/>
+            <xl:EnumeratedText Prefix="HF Damp"
+                               Value="{Binding HFDamp}"/>
+        </StackPanel>
 
-        <ComboBox Grid.Column="2" Grid.Row="1"
-                  ItemsSource="{Binding RateSwitchs}"
-                  SelectedItem="{Binding CenterSwitch}"/>
+        <StackPanel Grid.Column="2">
+            
+            <Label HorizontalContentAlignment="Center">Right</Label>
+            
+            <xl:EnumeratedText Prefix="Switch"
+                               Value="{Binding RightSwitch}"/>
 
-        <xl:NumericTextBox Grid.Column="2" Grid.Row="2"
-                           Min="0" Max="1000"
-                           Value="{Binding RightMSec}"
-                           Suffix="Ms"/>
+            <xl:SpinText Min="0" Max="1000"
+                         Prefix="Delay"
+                         Value="{Binding RightMSec}"
+                         Suffix="Ms"/>
 
-        <ComboBox Grid.Column="2" Grid.Row="2"
-                  ItemsSource="{Binding Notes}"
-                  SelectedItem="{Binding CenterNote}"/>
+            <xl:EnumeratedText Prefix="Delay"
+                               Value="{Binding RightNote}"/>
 
-        <xl:NumericTextBox Grid.Column="2" Grid.Row="4"
-                           Interval="2"
-                           Min="-98" Max="98"
-                           Value="{Binding CenterFeedback}"
-                           Suffix="%"/>
-
-        <ComboBox Grid.Column="1" Grid.Row="5"
-                  ItemsSource="{Binding HFDamps}"
-                  SelectedItem="{Binding HFDamp}"/>
-
-        <xl:NumericTextBox Grid.Column="1" Grid.Row="3"
-                           Min="0" Max="127"
-                           Value="{Binding LeftLevel}"/>
-
-        <xl:NumericTextBox Grid.Column="2" Grid.Row="3"
-                           Min="0" Max="127"
-                           Value="{Binding CenterLevel}"/>
-
-        <xl:NumericTextBox Grid.Column="3" Grid.Row="3"
-                           Min="0" Max="127"
-                           Value="{Binding RightLevel}"/>
-
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Level"
+                         Value="{Binding RightLevel}"/>
+        </StackPanel>
     </Grid>
 </UserControl>

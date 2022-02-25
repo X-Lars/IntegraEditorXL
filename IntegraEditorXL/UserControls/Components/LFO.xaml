@@ -1,0 +1,172 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.Components.LFO"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls.Components"
+             xmlns:i="clr-namespace:IntegraControlsXL;assembly=IntegraControlsXL"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="White">
+
+    <Grid DataContext="{Binding Partial}"
+          d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0"
+               Content="LFO 1"/>
+
+        <xl:EnumeratedText Grid.Column="1" Grid.Row="0"
+                        Prefix="Waveform"
+                        Value="{Binding LFO1WaveForm}"/>
+
+        <Label Grid.Column="2" Grid.Row="0"
+               Content="LFO 2"/>
+
+        <xl:EnumeratedText Grid.Column="3" Grid.Row="0"
+                           Prefix="Waveform"
+                           Value="{Binding LFO2WaveForm}"/>
+
+        <StackPanel Grid.Column="0" Grid.Row="1">
+
+            <xl:ListText ItemsSource="{Binding Rates}"
+                         Prefix="Rate"
+                         SelectedIndex="{Binding LFO1Rate}"/>
+
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Rate Detune"
+                         Value="{Binding LFO1Detune}"/>
+
+            <xl:SpinText Interval="50"
+                         Min="-100" Max="100"
+                         Prefix="Offset"
+                         Value="{Binding LFO1Offset}"/>
+
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Delay Time"
+                         Value="{Binding LFO1DelayTime}"/>
+
+            <xl:SpinText Interval="10"
+                         Min="-100" Max="100"
+                         Prefix="Delay Time KF"
+                         Value="{Binding LFO1DelayTimeKeyFollow}"/>
+
+            <xl:EnumeratedText Prefix="Fade Mode"
+                               Value="{Binding LFO1FadeMode}"/>
+
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Fade Time"
+                         Value="{Binding LFO1FadeTime}"/>
+            
+            
+            <xl:EnumeratedText Prefix="Key Trigger"
+                               Value="{Binding LFO1KeyTrigger}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="Pitch Depth"
+                         Value="{Binding LFO1PitchDepth}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="TVF Depth"
+                         Value="{Binding LFO1TVFDepth}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="TVA Depth"
+                         Value="{Binding LFO1TVADepth}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="Pan Depth"
+                         Value="{Binding LFO1PanDepth}"/>
+
+        </StackPanel>
+
+        <i:LFO Grid.Column="1" Grid.Row="1"
+               DelayTime="{Binding LFO1DelayTime}"
+               FadeMode="{Binding LFO1FadeMode}"
+               FadeTime="{Binding LFO1FadeTime}"
+               Height="150"
+               Rate="{Binding LFO1Rate}"
+               Offset="{Binding LFO1Offset}"
+               Waveform="{Binding LFO1WaveForm}"
+               Width="250"/>
+        
+
+        <StackPanel Grid.Column="2" Grid.Row="1">
+
+            <xl:ListText ItemsSource="{Binding Rates}"
+                         Prefix="Rate"
+                         SelectedIndex="{Binding LFO2Rate}"/>
+
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Rate Detune"
+                         Value="{Binding LFO2Detune}"/>
+
+            <xl:SpinText Interval="50"
+                         Min="-100" Max="100"
+                         Prefix="Offset"
+                         Value="{Binding LFO2Offset}"/>
+
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Delay Time"
+                         Value="{Binding LFO2DelayTime}"/>
+
+            <xl:SpinText Interval="10"
+                         Min="-100" Max="100"
+                         Prefix="Delay Time KF"
+                         Value="{Binding LFO2DelayTimeKeyFollow}"/>
+
+            <xl:EnumeratedText Prefix="Fade Mode"
+                               Value="{Binding LFO2FadeMode}"/>
+
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Fade Time"
+                         Value="{Binding LFO2FadeTime}"/>
+
+
+            <xl:EnumeratedText Prefix="Key Trigger"
+                               Value="{Binding LFO2KeyTrigger}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="Pitch Depth"
+                         Value="{Binding LFO2PitchDepth}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="TVF Depth"
+                         Value="{Binding LFO2TVFDepth}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="TVA Depth"
+                         Value="{Binding LFO2TVADepth}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="Pan Depth"
+                         Value="{Binding LFO2PanDepth}"/>
+
+        </StackPanel>
+
+        <i:LFO Grid.Column="3" Grid.Row="1"
+               DelayTime="{Binding LFO2DelayTime}"
+               FadeMode="{Binding LFO2FadeMode}"
+               FadeTime="{Binding LFO2FadeTime}"
+               Height="150"
+               Rate="{Binding LFO2Rate}"
+               Offset="{Binding LFO2Offset}"
+               Waveform="{Binding LFO2WaveForm}"
+               Width="250"/>
+
+
+        
+    </Grid>
+</UserControl>
