@@ -108,7 +108,9 @@
                     <xl:LinkButton Command="{Binding ShowControlCommand}"
                                CommandParameter="{x:Type local:MFXEdit}"
                                Content="MFX"/>
-                    <xl:LinkButton>Partial Mix Table</xl:LinkButton>
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:PartialMixTable}"
+                                   Content="Partial Mix Table"/>
                     <xl:LinkButton Command="{Binding ShowControlCommand}"
                                    CommandParameter="{x:Type local:PCMPartialEdit}"
                                    Content="Partial 1"/>

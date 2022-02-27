@@ -25,12 +25,23 @@
             <RowDefinition DataContext="{Binding Partial}"/>
             <RowDefinition DataContext="{Binding Partial}"/>
         </Grid.RowDefinitions>
-        
-        <xl:EnumeratedText Grid.Column="0" Grid.Row="0"
-                           HorizontalAlignment="Left"
-                           Prefix="Partial"
-                           Value="{Binding SelectedPartial}"/>
 
+        <Grid Grid.Column="0" Grid.Row="0">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <xl:EnumeratedText Grid.Column="0"
+                               HorizontalAlignment="Left"
+                               Prefix="Partial"
+                               Value="{Binding SelectedPartial}"/>
+            
+        </Grid>
+        
         <components:LFO Grid.Column="0" Grid.Row="1"/>
         <components:TVF Grid.Column="0" Grid.Row="2"/>
         <components:TVA Grid.Column="0" Grid.Row="3"/>

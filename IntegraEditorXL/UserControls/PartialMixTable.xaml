@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.PartialMixTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:dx="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:i="clr-namespace:IntegraControlsXL;assembly=IntegraControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="520" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=dx:PCMSynthTonePMT}">
+    
+    <Grid DataContext="{Binding TemporaryTone.PCMSynthTone.PMT}">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            
+            <xl:EnumeratedText Prefix="Structure Type"
+                               Value="{Binding StructureType12}"/>
+
+            <i:StructureType Partials="Partial12"
+                             Type="{Binding StructureType12}" />
+
+            <xl:SpinText Interval="6"
+                         Min="0" Max="18"
+                         Prefix="Booster"
+                         Value="{Binding Booster12}"
+                         Suffix="dB"/>
+
+        </StackPanel>
+
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <i:KeyRangeSlider ValueLower="{Binding PMT01KeyboardRangeLower}"
+                          ValueUpper="{Binding PMT01KeyboardRangeUpper}"/>
+        </StackPanel>
+            <StackPanel Grid.Column="1">
+                <i:KeyRangeSlider ValueLower="{Binding PMT02KeyboardRangeLower}"
+                          ValueUpper="{Binding PMT02KeyboardRangeUpper}"/>
+
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Column="1" Grid.Row="0">
+            
+            <xl:EnumeratedText Prefix="Structure Type"
+                               Value="{Binding StructureType34}"/>
+            
+            <i:StructureType Partials="Partial34"
+                             Type="{Binding StructureType34}"/>
+
+            <xl:SpinText Interval="6"
+                         Min="0" Max="18"
+                         Prefix="Booster"
+                         Value="{Binding Booster34}"
+                         Suffix="dB"/>
+
+        </StackPanel>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <i:KeyRangeSlider ValueLower="{Binding PMT03KeyboardRangeLower}"
+                          ValueUpper="{Binding PMT03KeyboardRangeUpper}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <i:KeyRangeSlider ValueLower="{Binding PMT04KeyboardRangeLower}"
+                          ValueUpper="{Binding PMT04KeyboardRangeUpper}"/>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
