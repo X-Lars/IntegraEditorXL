@@ -8,22 +8,45 @@
              xmlns:dx="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
              xmlns:i="clr-namespace:IntegraControlsXL;assembly=IntegraControlsXL"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="520" d:Background="White"
+             d:DesignHeight="450" d:DesignWidth="640" d:Background="White"
              d:DataContext="{d:DesignInstance Type=dx:PCMSynthTonePMT}">
     
     <Grid DataContext="{Binding TemporaryTone.PCMSynthTone.PMT}">
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        <StackPanel Grid.Column="0" Grid.Row="0">
+
+        <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+        <xl:EnumeratedText Grid.Column="0"
+                           Prefix="Part 1 Switch"
+                           Value="{Binding PMT1Switch}"/>
+        <xl:EnumeratedText Grid.Column="1"
+                           Prefix="Part 2 Switch"
+                           Value="{Binding PMT2Switch}"/>
+            <xl:EnumeratedText Grid.Column="2"
+                           Prefix="Part 3 Switch"
+                           Value="{Binding PMT3Switch}"/>
+            <xl:EnumeratedText Grid.Column="3"
+                           Prefix="Part 4 Switch"
+                           Value="{Binding PMT4Switch}"/>
+        </Grid>
+        <StackPanel Grid.Column="0" Grid.Row="1">
             
             <xl:EnumeratedText Prefix="Structure Type"
                                Value="{Binding StructureType12}"/>
@@ -39,23 +62,81 @@
 
         </StackPanel>
 
-        <Grid Grid.Column="0" Grid.Row="1">
+        <Grid Grid.Column="0" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <!--PMT 1-->
         <StackPanel Grid.Column="0">
-            <i:KeyRangeSlider ValueLower="{Binding PMT01KeyboardRangeLower}"
-                          ValueUpper="{Binding PMT01KeyboardRangeUpper}"/>
-        </StackPanel>
+                <TextBlock HorizontalAlignment="Center" Text="Partial 1"/>
+                <TextBlock HorizontalAlignment="Center" Text="Keyboard Range"/>
+                <i:KeyRangeSlider ValueLower="{Binding PMT1KeyboardRangeLower}"
+                          ValueUpper="{Binding PMT1KeyboardRangeUpper}"/>
+                <TextBlock HorizontalAlignment="Center" Text="Lower Fade Upper"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <i:KeyFadeSlider Grid.Column="0" Min="0" Max="127"
+                             Value="{Binding PMT1KeyboardFadeWidthLower}"/>
+                    <i:KeyFadeSlider Grid.Column="1" Min="127" Max="0"
+                             Value="{Binding PMT1KeyboardFadeWidthUpper}"/>
+                </Grid>
+                <TextBlock HorizontalAlignment="Center" Text="Velocity Range"/>
+                <i:RangeSlider Min="1" Max="127"
+                               ValueLower="{Binding PMT1VelocityRangeLower}"
+                               ValueUpper="{Binding PMT1VelocityRangeUpper}"/>
+                <TextBlock HorizontalAlignment="Center" Text="Lower Fade Upper"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <i:KeyFadeSlider Grid.Column="0" Min="0" Max="127"
+                             Value="{Binding PMT1VelocityFadeWidthLower}"/>
+                    <i:KeyFadeSlider Grid.Column="1" Min="127" Max="0"
+                             Value="{Binding PMT1VelocityFadeWidthUpper}"/>
+                </Grid>
+            </StackPanel>
+            <!--PMT 2-->
             <StackPanel Grid.Column="1">
-                <i:KeyRangeSlider ValueLower="{Binding PMT02KeyboardRangeLower}"
-                          ValueUpper="{Binding PMT02KeyboardRangeUpper}"/>
+                <TextBlock HorizontalAlignment="Center" Text="Partial 2"/>
+                <TextBlock HorizontalAlignment="Center" Text="Keyboard Range"/>
+                <i:KeyRangeSlider ValueLower="{Binding PMT2KeyboardRangeLower}"
+                          ValueUpper="{Binding PMT2KeyboardRangeUpper}"/>
+                <TextBlock HorizontalAlignment="Center" Text="Lower Fade Upper"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <i:KeyFadeSlider Grid.Column="0" Min="0" Max="127"
+                             Value="{Binding PMT2KeyboardFadeWidthLower}"/>
+                    <i:KeyFadeSlider Grid.Column="1" Min="127" Max="0"
+                             Value="{Binding PMT2KeyboardFadeWidthUpper}"/>
+                </Grid>
+                <TextBlock HorizontalAlignment="Center" Text="Velocity Range"/>
+                <i:RangeSlider Min="1" Max="127"
+                               ValueLower="{Binding PMT2VelocityRangeLower}"
+                               ValueUpper="{Binding PMT2VelocityRangeUpper}"/>
+                <TextBlock HorizontalAlignment="Center" Text="Lower Fade Upper"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <i:KeyFadeSlider Grid.Column="0" Min="0" Max="127"
+                             Value="{Binding PMT2VelocityFadeWidthLower}"/>
+                    <i:KeyFadeSlider Grid.Column="1" Min="127" Max="0"
+                             Value="{Binding PMT2VelocityFadeWidthUpper}"/>
+                </Grid>
 
             </StackPanel>
         </Grid>
 
-        <StackPanel Grid.Column="1" Grid.Row="0">
+        <StackPanel Grid.Column="1" Grid.Row="1">
             
             <xl:EnumeratedText Prefix="Structure Type"
                                Value="{Binding StructureType34}"/>
@@ -71,20 +152,85 @@
 
         </StackPanel>
 
-        <Grid Grid.Column="1" Grid.Row="1">
+        <Grid Grid.Column="1" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <!--PMT3-->
             <StackPanel Grid.Column="0">
-                <i:KeyRangeSlider ValueLower="{Binding PMT03KeyboardRangeLower}"
-                          ValueUpper="{Binding PMT03KeyboardRangeUpper}"/>
-            </StackPanel>
-            <StackPanel Grid.Column="1">
-                <i:KeyRangeSlider ValueLower="{Binding PMT04KeyboardRangeLower}"
-                          ValueUpper="{Binding PMT04KeyboardRangeUpper}"/>
+                <TextBlock HorizontalAlignment="Center" Text="Partial 3"/>
+                <TextBlock HorizontalAlignment="Center" Text="Keyboard Range"/>
+                <i:KeyRangeSlider ValueLower="{Binding PMT3KeyboardRangeLower}"
+                          ValueUpper="{Binding PMT3KeyboardRangeUpper}"/>
+                <TextBlock HorizontalAlignment="Center" Text="Lower Fade Upper"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <i:KeyFadeSlider Grid.Column="0" Min="0" Max="127"
+                             Value="{Binding PMT3KeyboardFadeWidthLower}"/>
+                    <i:KeyFadeSlider Grid.Column="1" Min="127" Max="0"
+                             Value="{Binding PMT3KeyboardFadeWidthUpper}"/>
+                </Grid>
+                <TextBlock HorizontalAlignment="Center" Text="Velocity Range"/>
+                <i:RangeSlider Min="1" Max="127"
+                               ValueLower="{Binding PMT3VelocityRangeLower}"
+                               ValueUpper="{Binding PMT3VelocityRangeUpper}"/>
+                <TextBlock HorizontalAlignment="Center" Text="Lower Fade Upper"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <i:KeyFadeSlider Grid.Column="0" Min="0" Max="127"
+                             Value="{Binding PMT3VelocityFadeWidthLower}"/>
+                    <i:KeyFadeSlider Grid.Column="1" Min="127" Max="0"
+                             Value="{Binding PMT3VelocityFadeWidthUpper}"/>
+                </Grid>
 
             </StackPanel>
+            <!--PMT4-->
+            <StackPanel Grid.Column="1">
+                <TextBlock HorizontalAlignment="Center" Text="Partial 4"/>
+                <TextBlock HorizontalAlignment="Center" Text="Keyboard Range"/>
+                <i:KeyRangeSlider ValueLower="{Binding PMT4KeyboardRangeLower}"
+                          ValueUpper="{Binding PMT4KeyboardRangeUpper}"/>
+                <TextBlock HorizontalAlignment="Center" Text="Lower Fade Upper"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <i:KeyFadeSlider Grid.Column="0" Min="0" Max="127"
+                             Value="{Binding PMT4KeyboardFadeWidthLower}"/>
+                    <i:KeyFadeSlider Grid.Column="1" Min="127" Max="0"
+                             Value="{Binding PMT4KeyboardFadeWidthUpper}"/>
+                </Grid>
+                <TextBlock HorizontalAlignment="Center" Text="Velocity Range"/>
+                <i:RangeSlider Min="1" Max="127"
+                               ValueLower="{Binding PMT4VelocityRangeLower}"
+                               ValueUpper="{Binding PMT4VelocityRangeUpper}"/>
+                <TextBlock HorizontalAlignment="Center" Text="Lower Fade Upper"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <i:KeyFadeSlider Grid.Column="0" Min="0" Max="127"
+                             Value="{Binding PMT4VelocityFadeWidthLower}"/>
+                    <i:KeyFadeSlider Grid.Column="1" Min="127" Max="0"
+                             Value="{Binding PMT4VelocityFadeWidthUpper}"/>
+                </Grid>
+
+            </StackPanel>
+
+           
         </Grid>
+        <StackPanel Grid.Column="2" Grid.Row="0">
+            <xl:EnumeratedText Prefix="VelocityControl"
+                               Value="{Binding VelocityControl}"/>
+        </StackPanel>
     </Grid>
 </UserControl>
