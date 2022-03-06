@@ -9,36 +9,67 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
              d:DataContext="{d:DesignInstance Type=models:PCMSynthToneCommon}">
-    <Grid>
+    
+    <Grid DataContext="{Binding TemporaryTone.PCMSynthTone}">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
-        <GroupBox Grid.Column="0" Header="Common">
+
+        <!--TONE-->
+        <GroupBox Grid.Column="0" Header="Tone">
             <StackPanel>
             
                 <TextBox MaxLength="12" 
-                         Text="{Binding ToneName}"/>
+                         Text="{Binding Common.ToneName}"/>
+
+                <xl:EnumeratedText Prefix="Category"
+                                   Value="{Binding Common02.ToneCategory}"/>
                 
                 <xl:SpinText Min="0" Max="127"
                              Prefix="Level"
-                             Value="{Binding ToneLevel}"/>
+                             Value="{Binding Common.ToneLevel}"/>
                 
-                <xl:ListText ItemsSource="{Binding PanValues}"
+                <xl:ListText ItemsSource="{Binding Common.PanValues}"
                              Prefix="Pan"
-                             SelectedIndex="{Binding Pan}"/>
+                             SelectedIndex="{Binding Common.Pan}"/>
 
                 <xl:EnumeratedText Prefix="Priority"
-                                   Value="{Binding Priority}"/>
+                                   Value="{Binding Common.Priority}"/>
+               
+            </StackPanel>
+        </GroupBox>
 
+        <!--PREVIEW-->
+        <GroupBox Grid.Column="0" Grid.Row="1"
+                  Header="Preview">
+            
+            <StackPanel>
+                
+                <xl:EnumeratedText Prefix="Phrase Number"
+                                   Value="{Binding Common02.PhraseNumber}"/>
+                
+                <xl:SpinText Min="-3" Max="3"
+                             Prefix="Phrase Octave Shift"
+                             ShowPositiveSign="True"
+                             Value="{Binding Common02.PhraseOctaveShift}"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!--COMMON-->
+        <GroupBox Grid.Column="1"
+                  DataContext="{Binding Common}"
+                  Header="Common">
+            
+            <StackPanel>
+                
                 <xl:SpinText Min="-3" Max="3"
                              Prefix="Octave Shift"
                              ShowPositiveSign="True"
@@ -72,8 +103,10 @@
 
             </StackPanel>
         </GroupBox>
-
-        <GroupBox Grid.Column="1"
+        
+        <!--OFFSET-->
+        <GroupBox Grid.Column="2"
+                  DataContext="{Binding Common}"
                   Header="Offset">
 
             <StackPanel>
@@ -105,7 +138,9 @@
             </StackPanel>
         </GroupBox>
         
-        <GroupBox Grid.Column="2"
+        <!--PORTAMENTO-->
+        <GroupBox Grid.Column="2" Grid.Row="1"
+                  DataContext="{Binding Common}"
                   Header="Portamento">
             
             <StackPanel>
@@ -125,6 +160,24 @@
                 <xl:SpinText Min="0" Max="127"
                              Prefix="Time"
                              Value="{Binding PortamentoTime}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <!--PITCH-->
+        <GroupBox Grid.Column="1" Grid.Row="1"
+                  DataContext="{Binding Common}"
+                  Header="Pitch">
+            
+            <StackPanel>
+                
+                <xl:SpinText Min="0" Max="48"
+                             Prefix="Bend Range Up"
+                             Value="{Binding PitchBendRangeUp}"/>
+                
+                <xl:SpinText Min="0" Max="48"
+                             Prefix="Bend Range Down"
+                             Value="{Binding PitchBendRangeDown}"/>
 
             </StackPanel>
         </GroupBox>

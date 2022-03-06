@@ -11,21 +11,22 @@
              d:DesignHeight="450" d:DesignWidth="640" d:Background="White"
              d:DataContext="{d:DesignInstance Type=dx:PCMSynthTonePMT}">
     
-    <Grid DataContext="{Binding TemporaryTone.PCMSynthTone.PMT}">
+    <Grid DataContext="{Binding TemporaryTone.PCMSynthTone}">
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+        <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+              DataContext="{Binding PMT}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -33,12 +34,12 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
-        <xl:EnumeratedText Grid.Column="0"
-                           Prefix="Part 1 Switch"
-                           Value="{Binding PMT1Switch}"/>
-        <xl:EnumeratedText Grid.Column="1"
-                           Prefix="Part 2 Switch"
-                           Value="{Binding PMT2Switch}"/>
+            <xl:EnumeratedText Grid.Column="0"
+                               Prefix="Part 1 Switch"
+                               Value="{Binding PMT1Switch}"/>
+            <xl:EnumeratedText Grid.Column="1"
+                               Prefix="Part 2 Switch"
+                               Value="{Binding PMT2Switch}"/>
             <xl:EnumeratedText Grid.Column="2"
                            Prefix="Part 3 Switch"
                            Value="{Binding PMT3Switch}"/>
@@ -46,7 +47,9 @@
                            Prefix="Part 4 Switch"
                            Value="{Binding PMT4Switch}"/>
         </Grid>
-        <StackPanel Grid.Column="0" Grid.Row="1">
+        
+        <StackPanel Grid.Column="0" Grid.Row="1"
+                    DataContext="{Binding PMT}">
             
             <xl:EnumeratedText Prefix="Structure Type"
                                Value="{Binding StructureType12}"/>
@@ -63,13 +66,16 @@
 
         </StackPanel>
 
-        <Grid Grid.Column="0" Grid.Row="2">
+        <Grid Grid.Column="0" Grid.Row="2"
+              DataContext="{Binding PMT}">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            
             <!--PMT 1-->
-        <StackPanel Grid.Column="0">
+            <StackPanel Grid.Column="0">
                 <TextBlock HorizontalAlignment="Center" Text="Partial 1"/>
                 <TextBlock HorizontalAlignment="Center" Text="Keyboard Range"/>
                 <i:KeyRangeSlider ValueLower="{Binding PMT1KeyboardRangeLower}"
@@ -137,7 +143,8 @@
             </StackPanel>
         </Grid>
 
-        <StackPanel Grid.Column="1" Grid.Row="1">
+        <StackPanel Grid.Column="1" Grid.Row="1"
+                    DataContext="{Binding PMT}">
             
             <xl:EnumeratedText Prefix="Structure Type"
                                Value="{Binding StructureType34}"/>
@@ -154,7 +161,9 @@
 
         </StackPanel>
 
-        <Grid Grid.Column="1" Grid.Row="2">
+        <Grid Grid.Column="1" Grid.Row="2"
+              DataContext="{Binding PMT}">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -231,8 +240,10 @@
            
         </Grid>
         <StackPanel Grid.Column="2" Grid.Row="0">
-            <xl:EnumeratedText Prefix="VelocityControl"
-                               Value="{Binding VelocityControl}"/>
+            <xl:EnumeratedText Prefix="PMT Control"
+                               Value="{Binding Common.PMTControlSwitch}"/>
+            <xl:EnumeratedText Prefix="Velocity Control"
+                               Value="{Binding PMT.VelocityControl}"/>
         </StackPanel>
     </Grid>
 </UserControl>
