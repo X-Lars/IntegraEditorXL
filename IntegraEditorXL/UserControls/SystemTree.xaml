@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.SystemTree"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="200" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=models:SystemCommon}">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        
+        <StackPanel DataContext="{Binding System}"
+                    Visibility="{Binding IsInitialized, Converter={StaticResource VisibilityConverter}}">
+            
+            <GroupBox Header="Sound">
+                
+                <StackPanel>
+                    
+                    <xl:SpinText Min="0" Max="127"
+                                 Prefix="Master Level"
+                                 Value="{Binding MasterLevel}"/>
+                    
+                    <xl:SpinText Interval="0.1"
+                                 Min="415.3" Max="466.2"
+                                 Prefix="Master Tune"
+                                 Suffix="Hz"
+                                 Value="{Binding MasterTune}"/>
+                    
+                    <xl:SpinText Min="-24" Max="24"
+                                 Prefix="Master Key Shift"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding MasterKeyShift}"/>
+                    
+                </StackPanel>
+            </GroupBox>
+            
+            <GroupBox Header="Sync Tempo">
+                
+                <StackPanel>
+                    
+                    <xl:EnumeratedText Prefix="Clock Source"
+                                       Value="{Binding SystemClockSource}"/>
+                    
+                    <xl:SpinText Min="20" Max="250"
+                                 Prefix="System Tempo"
+                                 Suffix="&#x0001D15F;"
+                                 Value="{Binding SystemTempo}"/>
+                    
+                    <xl:EnumeratedText Prefix="Tempo Assign Source"
+                                       Value="{Binding TempoAssignSource}"/>
+                    
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="MIDI">
+                
+                <StackPanel>
+
+                    <xl:EnumeratedText Prefix="Studio Set Control Channel"
+                                       Value="{Binding StudioSetControlChannel}"/>
+
+                    <xl:EnumeratedText Prefix="Rx Program Change"
+                                       Value="{Binding ReceiveProgramChange}"/>
+
+                    <xl:EnumeratedText Prefix="Rx Bank Select"
+                                       Value="{Binding ReceiveBankSelect}"/>
+
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Motional Surround">
+
+                <StackPanel>
+
+                    <xl:EnumeratedText Prefix="2CH Output Mode"
+                                       Value="{Binding StereoOutputMode}"/>
+
+                    <xl:EnumeratedText Prefix="5.1CH Center Speaker"
+                                       Value="{Binding SurroundCenterSpeakerSwitch}"/>
+
+                    <xl:EnumeratedText Prefix="5.1CH Sub Woofer"
+                                       Value="{Binding SurroundSubWooferSwitch}"/>
+                    
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="System Control">
+
+                <StackPanel>
+
+                    <xl:EnumeratedText HorizontalContentAlignment="Left"
+                                       Prefix="Source 1"
+                                       Value="{Binding Control01Source}"/>
+
+                    <xl:EnumeratedText HorizontalContentAlignment="Left"
+                                       Prefix="Source 2"
+                                       Value="{Binding Control02Source}"/>
+
+                    <xl:EnumeratedText HorizontalContentAlignment="Left"
+                                       Prefix="Source 3"
+                                       Value="{Binding Control03Source}"/>
+
+                    <xl:EnumeratedText HorizontalContentAlignment="Left"
+                                       Prefix="Source 4"
+                                       Value="{Binding Control04Source}"/>
+
+                    <xl:EnumeratedText HorizontalContentAlignment="Left"
+                                       Prefix="Source Select"
+                                       Value="{Binding ControlSourceSelect}"/>
+
+                </StackPanel>
+            </GroupBox>
+            <xl:EnumeratedText Prefix="Scale Tune"
+                               Value="{Binding ScaleTuneSwitch}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

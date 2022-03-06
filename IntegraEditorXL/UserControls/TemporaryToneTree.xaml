@@ -10,7 +10,7 @@
              xmlns:core="clr-namespace:IntegraXL.Core;assembly=IntegraXL"
              xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="540" d:DesignWidth="200"
+             d:DesignHeight="640" d:DesignWidth="200"
              d:Background="White"
              d:DataContext="{d:DesignInstance Type=core:IntegraTone}">
     
@@ -98,12 +98,27 @@
                                Content="Notes" />
             </StackPanel>
         </TreeViewItem>
+            
+        <!--PCM SYNTH TONE-->
         <TreeViewItem Header="PCM Synth Tone"
                       IsExpanded="True"
                       d:Visibility="Visible"
                       Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMSynthTone}, FallbackValue=Collapsed}">
-            <StackPanel>
-                <xl:LinkButton>Common</xl:LinkButton>
+            
+                <TreeViewItem IsExpanded="True">
+                    
+                    <TreeViewItem.Header>
+                        <xl:LinkButton Content="Common"/>
+                    </TreeViewItem.Header>
+                    
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:MatrixControl}"
+                                   Content="Matrix Control"/>
+
+                </TreeViewItem>
+
+                <StackPanel>
+                    
                 <xl:LinkButton>Common 2</xl:LinkButton>
                     <xl:LinkButton Command="{Binding ShowControlCommand}"
                                CommandParameter="{x:Type local:MFXEdit}"
@@ -123,7 +138,7 @@
                     <xl:LinkButton Command="{Binding ShowControlCommand}"
                                    CommandParameter="{x:Type local:PCMPartialEdit}"
                                    Content="Partial 4"/>
-            </StackPanel>
+                </StackPanel>
         </TreeViewItem>
             
         <TreeViewItem Header="PCM Drum Kit"
@@ -144,5 +159,16 @@
             </StackPanel>
         </TreeViewItem>
     </StackPanel>
+        <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Visibility="{Binding Integra.SelectedTone.IsEditable, Converter={StaticResource VisibilityConverter}}">
+            <GroupBox Header="File">
+                <StackPanel>
+                    <xl:LinkButton Command="{Binding LoadToneCommand}"
+                                   Content="Load"/>
+                    <xl:LinkButton Command="{Binding SaveToneCommand}"
+                                   Content="Save"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
     </StackPanel>
 </UserControl>

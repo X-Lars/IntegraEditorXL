@@ -57,8 +57,9 @@
             <xl:SpinText Interval="6"
                          Min="0" Max="18"
                          Prefix="Booster"
-                         Value="{Binding Booster12}"
-                         Suffix="dB"/>
+                         ShowPositiveSign="True"
+                         Suffix="dB"
+                         Value="{Binding Booster12}"/>
 
         </StackPanel>
 
@@ -147,8 +148,9 @@
             <xl:SpinText Interval="6"
                          Min="0" Max="18"
                          Prefix="Booster"
-                         Value="{Binding Booster34}"
-                         Suffix="dB"/>
+                         ShowPositiveSign="True"
+                         Suffix="dB"
+                         Value="{Binding Booster34}"/>
 
         </StackPanel>
 

@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              xmlns:view="clr-namespace:IntegraEditorXL.Views"
+             xmlns:uc="clr-namespace:IntegraEditorXL.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200" d:Background="White"
              DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
@@ -21,26 +22,61 @@
         <xl:LinkButton Content="Master EQ"/>
         
         <TreeViewItem Header="Effects" IsExpanded="True">
-            
 
-            <xl:LinkButton Content="Chorus"
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Integra.StudioSet.Common.ChorusSwitch}"/>
+                <xl:LinkButton Content="Chorus "
                            Command="{Binding ShowControlCommand}"
                            CommandParameter="{x:Type view:StudioSetCommonChorus}"/>
-            
-            <xl:LinkButton Content="Reverb"
+                <xl:EnumeratedText HorizontalContentAlignment="Left"
+                                   Value="{Binding Integra.StudioSet.CommonChorus.Type}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Integra.StudioSet.Common.ReverbSwitch}"/>
+                <xl:LinkButton Content="Reverb "
                            Command="{Binding ShowControlCommand}"
                            CommandParameter="{x:Type view:StudioSetCommonReverb}"/>
-                           
+                <xl:EnumeratedText HorizontalContentAlignment="Left"
+                                   Value="{Binding Integra.StudioSet.CommonReverb.Type}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Integra.StudioSet.CommonMotionalSurround.MotionalSurroundSwitch}"/>
             <xl:LinkButton Content="Motional Surround"/>
-
+            </StackPanel>
         </TreeViewItem>
 
+
+        <TreeViewItem IsExpanded="True">
+            <TreeViewItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Partials "
+                               VerticalAlignment="Center"/>
+                    <xl:EnumeratedText HorizontalContentAlignment="Left"
+                                       Value="{Binding Integra.Part}"/>
+                </StackPanel>
+            </TreeViewItem.Header>
+            
+            <xl:LinkButton Command="{Binding ShowControlCommand}"
+                           CommandParameter="{x:Type uc:StudioSetPart}"
+                           Content="View"/>
+            
+            <xl:LinkButton Command="{Binding ShowControlCommand}"
+                           CommandParameter="{x:Type uc:StudioSetPartEQ}"
+                           Content="EQ"/>
+            
+            <xl:LinkButton Content="MIDI"/>
+            
+        </TreeViewItem>
         
-
-        <TreeViewItem Header="Partials" IsExpanded="True">
-            <xl:LinkButton Content="Part View"/>
-            <xl:LinkButton Content="Part EQ"/>
-            <xl:LinkButton Content="Part MIDI"/>
-        </TreeViewItem>
+        <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+            <GroupBox Header="File">
+                <StackPanel>
+                    <xl:LinkButton Command="{Binding LoadToneCommand}"
+                                   Content="Load"/>
+                    <xl:LinkButton Command="{Binding SaveToneCommand}"
+                                   Content="Save"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
     </StackPanel>
 </UserControl>

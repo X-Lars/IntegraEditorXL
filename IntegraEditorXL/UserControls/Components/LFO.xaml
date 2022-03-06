@@ -52,6 +52,7 @@
             <xl:SpinText Interval="50"
                          Min="-100" Max="100"
                          Prefix="Offset"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO1Offset}"/>
 
             <xl:SpinText Min="0" Max="127"
@@ -61,6 +62,7 @@
             <xl:SpinText Interval="10"
                          Min="-100" Max="100"
                          Prefix="Delay Time KF"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO1DelayTimeKeyFollow}"/>
 
             <xl:EnumeratedText Prefix="Fade Mode"
@@ -76,18 +78,22 @@
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Pitch Depth"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO1PitchDepth}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="TVF Depth"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO1TVFDepth}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="TVA Depth"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO1TVADepth}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Pan Depth"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO1PanDepth}"/>
 
         </StackPanel>
@@ -116,6 +122,7 @@
             <xl:SpinText Interval="50"
                          Min="-100" Max="100"
                          Prefix="Offset"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO2Offset}"/>
 
             <xl:SpinText Min="0" Max="127"
@@ -125,6 +132,7 @@
             <xl:SpinText Interval="10"
                          Min="-100" Max="100"
                          Prefix="Delay Time KF"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO2DelayTimeKeyFollow}"/>
 
             <xl:EnumeratedText Prefix="Fade Mode"
@@ -134,24 +142,27 @@
                          Prefix="Fade Time"
                          Value="{Binding LFO2FadeTime}"/>
 
-
             <xl:EnumeratedText Prefix="Key Trigger"
                                Value="{Binding LFO2KeyTrigger}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Pitch Depth"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO2PitchDepth}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="TVF Depth"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO2TVFDepth}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="TVA Depth"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO2TVADepth}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Pan Depth"
+                         ShowPositiveSign="True"
                          Value="{Binding LFO2PanDepth}"/>
 
         </StackPanel>
@@ -165,8 +176,6 @@
                Offset="{Binding LFO2Offset}"
                Waveform="{Binding LFO2WaveForm}"
                Width="250"/>
-
-
         
     </Grid>
 </UserControl>

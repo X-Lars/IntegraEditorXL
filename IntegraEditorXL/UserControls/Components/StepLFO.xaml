@@ -65,57 +65,91 @@
                                Value="{Binding LFOStepType}"/>
             
             <StackPanel Grid.Column="0" Grid.Row="1">
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 1"
-                                 Value="{Binding LFOStep1}"/>
+                             Prefix="Step 1"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep1}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 2"
-                                 Value="{Binding LFOStep2}"/>
+                             Prefix="Step 2"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep2}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 3"
-                                 Value="{Binding LFOStep3}"/>
+                             Prefix="Step 3"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep3}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 4"
-                                 Value="{Binding LFOStep4}"/>
+                             Prefix="Step 4"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep4}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 5"
-                                 Value="{Binding LFOStep5}"/>
+                             Prefix="Step 5"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep5}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 6"
-                                 Value="{Binding LFOStep6}"/>
+                             Prefix="Step 6"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep6}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 7"
-                                 Value="{Binding LFOStep7}"/>
+                             Prefix="Step 7"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep7}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 8"
-                                 Value="{Binding LFOStep8}"/>
+                             Prefix="Step 8"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep8}"/>
+                
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1">
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 9"
-                                 Value="{Binding LFOStep9}"/>
+                             Prefix="Step 9"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep9}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 10"
-                                 Value="{Binding LFOStep10}"/>
+                             Prefix="Step 10"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep10}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 11"
-                                 Value="{Binding LFOStep11}"/>
+                             Prefix="Step 11"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep11}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 12"
-                                 Value="{Binding LFOStep12}"/>
+                             Prefix="Step 12"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep12}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 13"
-                                 Value="{Binding LFOStep13}"/>
+                             Prefix="Step 13"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep13}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 14"
-                                 Value="{Binding LFOStep14}"/>
+                             Prefix="Step 14"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep14}"/>
+                
                 <xl:SpinText Min="-360" Max="36"
-                                 Prefix="Step 15"
-                                 Value="{Binding LFOStep15}"/>
+                             Prefix="Step 15"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep15}"/>
+                
                 <xl:SpinText Min="-36" Max="36"
-                                 Prefix="Step 16"
-                                 Value="{Binding LFOStep16}"/>
+                             Prefix="Step 16"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOStep16}"/>
+                
             </StackPanel>
 
         </Grid>

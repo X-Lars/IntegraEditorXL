@@ -44,11 +44,13 @@
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Level V-Sens"
+                         ShowPositiveSign="True"
                          Value="{Binding TVALevelVelocitySens}"/>
 
             <xl:SpinText Interval="10"
                          Min="-100" Max="100"
                          Prefix="Bias Level"
+                         ShowPositiveSign="True"
                          Value="{Binding BiasLevel}"/>
 
             <xl:EnumeratedText Prefix="Bias Position"
@@ -64,6 +66,7 @@
             <xl:SpinText Interval="10"
                          Min="-100" Max="100"
                          Prefix="Pan Keyfollow"
+                         ShowPositiveSign="True"
                          Value="{Binding PanKeyFollow}"/>
 
             <xl:SpinText Min="0" Max="63"
@@ -85,15 +88,18 @@
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="TVA Env T1 V-Sens"
+                         ShowPositiveSign="True"
                          Value="{Binding TVAEnvTime1VelocitySens}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="TVA Env T4 V-Sens"
+                         ShowPositiveSign="True"
                          Value="{Binding TVAEnvTime4VelocitySens}"/>
 
             <xl:SpinText Interval="10"
                          Min="-100" Max="100"
                          Prefix="TVA Env Time KF"
+                         ShowPositiveSign="True"
                          Value="{Binding TVAEnvTimeKeyFollow}"/>
 
         </StackPanel>
@@ -117,30 +123,39 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
+                
                 <xl:SpinText Min="0" Max="127"
-                                 Prefix="Level 1"
-                                 Value="{Binding TVAEnvLevel1}"/>
+                             Prefix="Level 1"
+                             Value="{Binding TVAEnvLevel1}"/>
+                
                 <xl:SpinText Min="0" Max="127"
-                                 Prefix="Level 2"
-                                 Value="{Binding TVAEnvLevel2}"/>
+                             Prefix="Level 2"
+                             Value="{Binding TVAEnvLevel2}"/>
+                
                 <xl:SpinText Min="0" Max="127"
-                                 Prefix="Level 3"
-                                 Value="{Binding TVAEnvLevel3}"/>
+                             Prefix="Level 3"
+                             Value="{Binding TVAEnvLevel3}"/>
+                
             </StackPanel>
 
             <StackPanel Grid.Column="1">
+                
                 <xl:SpinText Min="0" Max="127"
-                                 Prefix="Time 1"
-                                 Value="{Binding TVAEnvTime1}"/>
+                             Prefix="Time 1"
+                             Value="{Binding TVAEnvTime1}"/>
+                
                 <xl:SpinText Min="0" Max="127"
-                                 Prefix="Time 2"
-                                 Value="{Binding TVAEnvTime2}"/>
+                             Prefix="Time 2"
+                             Value="{Binding TVAEnvTime2}"/>
+                
                 <xl:SpinText Min="0" Max="127"
-                                 Prefix="Time 3"
-                                 Value="{Binding TVAEnvTime3}"/>
+                             Prefix="Time 3"
+                             Value="{Binding TVAEnvTime3}"/>
+                
                 <xl:SpinText Min="0" Max="127"
-                                 Prefix="Time 4"
-                                 Value="{Binding TVAEnvTime4}"/>
+                             Prefix="Time 4"
+                             Value="{Binding TVAEnvTime4}"/>
+                
             </StackPanel>
 
         </Grid>

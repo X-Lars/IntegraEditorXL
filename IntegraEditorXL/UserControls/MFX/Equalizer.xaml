@@ -19,178 +19,103 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <GroupBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="1"
-                  Header="General">
-            <Grid>
-                
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <Label Grid.Column="0" Grid.Row="0">Level</Label>
-                <Label Grid.Column="0" Grid.Row="1">MFX Reverb Send Level</Label>
-                <Label Grid.Column="0" Grid.Row="2">MFX Chorus Send Level</Label>
-
-                <xl:NumericTextBox Grid.Column="1" Grid.Row="0"
-                                   Min="0" Max="127"
-                                   Value="{Binding Path=Parameter.Level}"/>
-
-                <xl:NumericTextBox Grid.Column="1" Grid.Row="1"
-                                   Min="0" Max="127"
-                                   Value="{Binding Path=ReverbSendLevel}"/>
-
-                <xl:NumericTextBox Grid.Column="1" Grid.Row="2"
-                                   Min="0" Max="127"
-                                   Value="{Binding Path=ChorusSendLevel}"/>
-
-            </Grid>
-        </GroupBox>
         
-        <GroupBox Grid.Column="0" Header="Low Range">
+        <GroupBox Grid.Column="0"
+                  DataContext="{Binding Paramter}"
+                  Header="Low Range">
 
-            <Grid DataContext="{Binding Parameter}">
+            <StackPanel>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+                <xl:EnumeratedText Prefix="Low Frequency"
+                                   Value="{Binding LowFreq}"/>
+                
+                <xl:SpinText Min="-15" Max="15"
+                             Prefix="Low Gain"
+                             ShowPositiveSign="True"
+                             Suffix="dB"
+                             Value="{Binding LowGain}"/>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <Label Grid.Column="0" Grid.Row="0">Low Frequency</Label>
-                <Label Grid.Column="0" Grid.Row="1">Low Gain</Label>
-
-                <ComboBox Grid.Column="1" Grid.Row="0"
-                          HorizontalContentAlignment="Right"
-                          ItemsSource="{Binding Path=LowFrequencies}"
-                          SelectedItem="{Binding Path=LowFreq}"/>
-
-                <xl:NumericTextBox Grid.Column="1" Grid.Row="1"
-                                   Min="-15" Max="15"
-                                   Value="{Binding Path=LowGain}"
-                                   Suffix="dB"/>
-
-            </Grid>
+            </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Column="1" Header="Mid 1 Range">
+        <GroupBox Grid.Column="1"
+                  DataContext="{Binding Parameter}"
+                  Header="Mid 1 Range">
 
-            <Grid DataContext="{Binding Parameter}">
+            <StackPanel>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+                <xl:EnumeratedText Prefix="Mid 1 Frequency"
+                                   Value="{Binding Mid1Freq}"/>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                <xl:SpinText Min="-15" Max="15"
+                             Prefix="Mid 1 Gain"
+                             ShowPositiveSign="True"
+                             Suffix="dB"
+                             Value="{Binding Mid1Gain}"/>
 
-                <Label Grid.Column="0" Grid.Row="0">Mid 1 Frequency</Label>
-                <Label Grid.Column="0" Grid.Row="1">Mid 1 Gain</Label>
-                <Label Grid.Column="0" Grid.Row="2">Mid 1 Q</Label>
+                <xl:EnumeratedText Prefix="Mid 1 Q"
+                                   Value="{Binding Mid1Q}"/>
 
-                <ComboBox Grid.Column="1" Grid.Row="0"
-                                ItemsSource="{Binding Path=MidFrequencies}"
-                                SelectedItem="{Binding Path=Mid1Freq}"
-                                HorizontalContentAlignment="Right"/>
-
-                <xl:NumericTextBox Grid.Column="1" Grid.Row="1"
-                                        Value="{Binding Path=Mid1Gain}" 
-                                        Min="-15" Max="15" 
-                                        Suffix="dB"/>
-
-                <ComboBox Grid.Column="1" Grid.Row="2"
-                                ItemsSource="{Binding Path=MidQs}"
-                                SelectedItem="{Binding Path=Mid1Q}"
-                                HorizontalContentAlignment="Right"/>
-
-            </Grid>
+            </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Column="2" Header="Mid 2 Range">
+        <GroupBox Grid.Column="2"
+                  DataContext="{Binding Paramter}"
+                  Header="Mid 2 Range">
 
-            <Grid DataContext="{Binding Parameter}">
+            <StackPanel>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+                <xl:EnumeratedText Prefix="Mid 2 Frequency"
+                                   Value="{Binding Mid2Freq}"/>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                <xl:SpinText Min="-15" Max="15"
+                             Prefix="Mid 2 Gain"
+                             ShowPositiveSign="True"
+                             Suffix="dB"
+                             Value="{Binding Mid2Gain}"/>
 
-                <Label Grid.Column="0" Grid.Row="0">Mid 1 Frequency</Label>
-                <Label Grid.Column="0" Grid.Row="1">Mid 1 Gain</Label>
-                <Label Grid.Column="0" Grid.Row="2">Mid 1 Q</Label>
+                <xl:EnumeratedText Prefix="Mid 2 Q"
+                                   Value="{Binding Mid2Q}"/>
 
-                <ComboBox Grid.Column="1" Grid.Row="0"
-                          HorizontalContentAlignment="Right"
-                          ItemsSource="{Binding Path=MidFrequencies}"
-                          SelectedItem="{Binding Path=Mid2Freq}"/>
-
-                <xl:NumericTextBox Grid.Column="1" Grid.Row="1"
-                                   Min="-15" Max="15"
-                                   Value="{Binding Path=Mid2Gain}" 
-                                   Suffix="dB"/>
-
-                <ComboBox Grid.Column="1" Grid.Row="2"
-                          HorizontalContentAlignment="Right"
-                          ItemsSource="{Binding Path=MidQs}"
-                          SelectedItem="{Binding Path=Mid2Q}"/>
-
-            </Grid>
+            </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Column="3" Header="High Range">
+        <GroupBox Grid.Column="3"
+                  DataContext="{Binding Parameter}"
+                  Header="High Range">
 
-            <Grid DataContext="{Binding Parameter}">
+            <StackPanel>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+                <xl:EnumeratedText Prefix="High Frequency"
+                                   Value="{Binding HighFreq}"/>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+                <xl:SpinText Min="-15" Max="15"
+                             Prefix="High Gain"
+                             ShowPositiveSign="True"
+                             Suffix="dB"
+                             Value="{Binding HighGain}"/>
 
-                <Label Grid.Column="0" Grid.Row="0">High Frequency</Label>
-                <Label Grid.Column="0" Grid.Row="1">High Gain</Label>
+            </StackPanel>
+        </GroupBox>
 
-                <ComboBox Grid.Column="1"
-                          ItemsSource="{Binding Path=HighFrequencies}"
-                          SelectedItem="{Binding Path=HighFreq}"
-                          HorizontalContentAlignment="Right"/>
+        <GroupBox Grid.Column="4"
+                  Header="General">
 
-                <xl:NumericTextBox Grid.Column="1" Grid.Row="1"
-                                   Min="-15" Max="15" 
-                                   Value="{Binding Path=HighGain}" 
-                                   Suffix="dB"/>
+            <StackPanel>
 
-            </Grid>
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Level"
+                             Value="{Binding Parameter.Level}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Reverb Send Level"
+                             Value="{Binding ReverbSendLevel}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Chorus Send Level"
+                             Value="{Binding ChorusSendLevel}"/>
+
+            </StackPanel>
         </GroupBox>
     </Grid>
 </UserControl>

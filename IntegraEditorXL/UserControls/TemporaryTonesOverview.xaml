@@ -10,7 +10,7 @@
 
 
     <ListBox ItemsSource="{Binding TemporaryTones}"
-             SelectedIndex="{Binding SelectedPart}"
+             SelectedIndex="{Binding PartIndex}"
              ScrollViewer.CanContentScroll="True"
              ScrollViewer.VerticalScrollBarVisibility="Hidden">
 

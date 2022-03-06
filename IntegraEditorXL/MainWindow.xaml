@@ -71,7 +71,7 @@
             <xl:Sidebar DockPanel.Dock="Left"
                         DockPosition="Left"
                         Header="Favorites"
-                        SelectedIndex="1"
+                        SelectedIndex="0"
                         VisibleSections="5"
                         Width="250">
 
@@ -109,7 +109,7 @@
 
                     <xl:SidebarSection Header="System"
                                        Vector="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm8.036-4.024a.75.75 0 00-1.06 1.06L10.939 12l-2.963 2.963a.75.75 0 101.06 1.06L12 13.06l2.963 2.964a.75.75 0 001.061-1.06L13.061 12l2.963-2.964a.75.75 0 10-1.06-1.06L12 10.939 9.036 7.976z">
-
+                        <uc:SystemTree/>
                     </xl:SidebarSection>
 
                     <xl:SidebarSection Header="Database"
@@ -156,12 +156,6 @@
                             <uc:VirtualSlots/>
                             <uc:SelectedTone/>
                             <uc:SelectedNote/>
-                            <i:ToneOffset DataContext="{Binding StudioSet.Part}"
-                                Width="Auto"
-                                Height="150"
-                                Attack="{Binding AttackTimeOffset}"
-                                Decay="{Binding DecayTimeOffset}"
-                                Release="{Binding ReleaseTimeOffset}"/>
                         </StackPanel>
                     </xl:SidebarSection>
                 </xl:Sidebar.Sections>

@@ -43,6 +43,7 @@
                                Value="{Binding EQLowFreq}"/>
 
             <xl:SpinText Min="-15" Max="15"
+                         ShowPositiveSign="True"
                          Suffix="dB"
                          Value="{Binding EQLowGain}"/>
 
@@ -59,6 +60,7 @@
                                Value="{Binding EQMidFreq}"/>
 
             <xl:SpinText Min="-15" Max="15"
+                         ShowPositiveSign="True"
                          Suffix="dB"
                          Value="{Binding EQMidGain}"/>
 
@@ -80,6 +82,7 @@
                                Value="{Binding EQHighFreq}"/>
 
             <xl:SpinText Min="-15" Max="15"
+                         ShowPositiveSign="True"
                          Suffix="dB"
                          Value="{Binding EQHighGain}"/>
 

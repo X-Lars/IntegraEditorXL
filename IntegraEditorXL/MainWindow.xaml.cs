@@ -3,11 +3,14 @@ using IntegraEditorXL.Common.Commands;
 using IntegraEditorXL.UserControls;
 using IntegraXL;
 using IntegraXL.Core;
+using IntegraXL.File;
+using Microsoft.Win32;
 using StylesXL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
@@ -144,6 +147,56 @@ namespace IntegraEditorXL
             get => new UICommandParameterized<Type>((x) => ShowControl(x));
         }
 
+        public ICommand LoadToneCommand
+        {
+            get => new UICommand(x => LoadTone());
+        }
+
+        public ICommand SaveToneCommand
+        {
+            get => new UICommand(x => SaveTone(), x => { return Integra.TemporaryTone.IsEditable; });
+        }
+
+        private void SaveTone()
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Temporary Tone Files (*.i7t)|*.i7t";
+
+            string path = null;
+
+            if (dialog.ShowDialog() == true)
+            {
+                path = dialog.FileName;
+            }
+
+            if(path != null)
+            {
+                var file = Integra.SaveTemporaryTone();
+
+                File.WriteAllBytes(path, file.ToArray());
+
+            }
+        }
+
+        private void LoadTone()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Temporary Tone Files (*.i7t)|*.i7t";
+
+            string path = null;
+
+            if(dialog.ShowDialog() == true)
+            {
+                path = dialog.FileName;
+            }
+
+            if(path != null)
+            {
+                TemporaryToneFile file = FileManager.LoadTemporaryTone(File.ReadAllBytes(path));
+                Integra.LoadTemporaryTone(file);
+            }
+        }
+
         private void ShowControl(Type x)
         {
             Content.Content = (UserControl)Activator.CreateInstance(x);
@@ -166,7 +219,8 @@ namespace IntegraEditorXL
 
         #endregion
 
-        
+        #region Properties
+
         public IEnumerable<MidiXLOutputDevice> MidiOutputDevices
         {
             get => MidiOutputDevice.GetDevices;
@@ -232,7 +286,9 @@ namespace IntegraEditorXL
                 }
             }
         }
-       
+
+        #endregion
+
         #region Interfaces: INotifyPropertyChanged
 
         /// <summary>

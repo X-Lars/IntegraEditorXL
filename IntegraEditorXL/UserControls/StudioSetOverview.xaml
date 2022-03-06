@@ -12,7 +12,7 @@
              DataContext="{Binding Integra.StudioSet, RelativeSource={RelativeSource AncestorType=Window}}">
     
             <ListBox ItemsSource="{Binding Parts}"
-                     SelectedIndex="{Binding Integra.SelectedPart, RelativeSource={RelativeSource AncestorType=Window}}"
+                     SelectedIndex="{Binding Integra.PartIndex, RelativeSource={RelativeSource AncestorType=Window}}"
                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
                      ScrollViewer.CanContentScroll="True">
 

@@ -52,11 +52,13 @@
 
             <xl:SpinText Min="0" Max="1000"
                          Prefix="Delay"
+                         Suffix="Ms"
                          Value="{Binding CenterMSec}"
-                         Suffix="Ms"/>
+                         />
 
             <xl:EnumeratedText Prefix="Delay"
-                               Value="{Binding CenterNote}"/>
+                               Value="{Binding CenterNote}"
+                               />
 
             <xl:SpinText Min="0" Max="127"
                          Prefix="Level"
@@ -65,8 +67,10 @@
             <xl:SpinText Interval="2"
                          Min="-98" Max="98"
                          Prefix="Feedback"
+                         ShowPositiveSign="True"
+                         Suffix="%"
                          Value="{Binding CenterFeedback}"
-                         Suffix="%"/>
+                         />
 
             <xl:EnumeratedText Prefix="HF Damp"
                                Value="{Binding HFDamp}"/>
@@ -81,8 +85,9 @@
 
             <xl:SpinText Min="0" Max="1000"
                          Prefix="Delay"
+                         Suffix="Ms"
                          Value="{Binding RightMSec}"
-                         Suffix="Ms"/>
+                         />
 
             <xl:EnumeratedText Prefix="Delay"
                                Value="{Binding RightNote}"/>

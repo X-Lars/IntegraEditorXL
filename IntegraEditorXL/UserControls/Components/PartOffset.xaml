@@ -8,45 +8,64 @@
              xmlns:dx="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
              xmlns:i="clr-namespace:IntegraControlsXL;assembly=IntegraControlsXL"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
+             d:DesignHeight="150" d:DesignWidth="300" d:Background="White"
              d:DataContext="{d:DesignInstance Type=dx:StudioSetPart}">
     
     <Grid MinWidth="150">
+        
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
+        
         <StackPanel Grid.Column="0">
-        <i:ToneOffset Attack="{Binding AttackTimeOffset}"
-                      Decay="{Binding DecayTimeOffset}"
-                      Height="100"
-                      Release="{Binding ReleaseTimeOffset}"
-                      Width="150"/>
-        <xl:SpinText Min="-64" Max="63"
-                     Prefix="Attack"
-                     Value="{Binding AttackTimeOffset}"/>
-        <xl:SpinText Min="-64" Max="63"
-                     Prefix="Decay"
-                     Value="{Binding DecayTimeOffset}"/>
-        <xl:SpinText Min="-64" Max="63"
-                     Prefix="Attack"
-                     Value="{Binding ReleaseTimeOffset}"/>
+            
+            <i:ToneOffset Attack="{Binding AttackTimeOffset}"
+                          Decay="{Binding DecayTimeOffset}"
+                          Height="100"
+                          Release="{Binding ReleaseTimeOffset}"
+                          Width="150"/>
+            
+            <xl:SpinText Min="-64" Max="63"
+                         Prefix="Attack"
+                         ShowPositiveSign="True"
+                         Value="{Binding AttackTimeOffset}"/>
+            
+            <xl:SpinText Min="-64" Max="63"
+                         Prefix="Decay"
+                         ShowPositiveSign="True"
+                         Value="{Binding DecayTimeOffset}"/>
+            
+            <xl:SpinText Min="-64" Max="63"
+                         Prefix="Attack"
+                         ShowPositiveSign="True"
+                         Value="{Binding ReleaseTimeOffset}"/>
+            
         </StackPanel>
+        
         <StackPanel Grid.Column="1">
+            
             <i:Vibrato Delay="{Binding VibratoDelay}"
                        Depth="{Binding VibratoDepth}"
                        Height="100"
                        Rate="{Binding VibratoRate}"
                        Width="150"/>
+            
             <xl:SpinText Min="-64" Max="63"
-                     Prefix="Delay"
-                     Value="{Binding VibratoDelay}"/>
+                         Prefix="Delay"
+                         ShowPositiveSign="True"
+                         Value="{Binding VibratoDelay}"/>
+            
             <xl:SpinText Min="-64" Max="63"
-                     Prefix="Rate"
-                     Value="{Binding VibratoRate}"/>
+                         Prefix="Rate"
+                         ShowPositiveSign="True"
+                         Value="{Binding VibratoRate}"/>
+            
             <xl:SpinText Min="-64" Max="63"
-                     Prefix="Depth"
-                     Value="{Binding VibratoDepth}"/>
+                         Prefix="Depth"
+                         ShowPositiveSign="True"
+                         Value="{Binding VibratoDepth}"/>
+            
         </StackPanel>
     </Grid>
 </UserControl>
