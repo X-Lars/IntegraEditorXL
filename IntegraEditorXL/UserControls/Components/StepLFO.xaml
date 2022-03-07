@@ -15,6 +15,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -26,7 +27,7 @@
         <Label Grid.Column="0" Grid.Row="0"
                Content="STEP LFO"/>
 
-        <i:StepLFO Grid.Row="1"
+        <i:StepLFO Grid.Column="1" Grid.Row="1"
                    Height="100"
                    Step1="{Binding LFOStep1}"
                    Step2="{Binding LFOStep2}"
@@ -48,7 +49,7 @@
                    Width="200"/>
 
 
-        <Grid Grid.Column="3" Grid.Row="2">
+        <Grid Grid.Column="0" Grid.Row="1">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

@@ -115,8 +115,13 @@
                                    Content="Common"/>
                     
                 </TreeViewItem.Header>
-                    
-                <!--PCM SYNTH TONE: MATRIX CONTROL-->
+
+                <!--PCM SYNTH TONE: WAVE TAB-->
+                <xl:LinkButton Command="{Binding ShowControlCommand}"
+                               CommandParameter="{x:Type local:PCMWaveTab}"
+                               Content="Wave"/>
+                
+                    <!--PCM SYNTH TONE: MATRIX CONTROL-->
                 <xl:LinkButton Command="{Binding ShowControlCommand}"
                                CommandParameter="{x:Type local:MatrixControl}"
                                Content="Matrix Control"/>

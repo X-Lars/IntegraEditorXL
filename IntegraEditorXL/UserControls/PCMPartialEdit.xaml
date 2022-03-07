@@ -9,21 +9,22 @@
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              xmlns:components="clr-namespace:IntegraEditorXL.UserControls.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
-             d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}"
-             >
+             d:DesignHeight="960" d:DesignWidth="1280" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
+    
     <Grid DataContext="{Binding TemporaryTone.PCMSynthTone}">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition DataContext="{Binding Partial}"/>
-            <RowDefinition DataContext="{Binding Partial}"/>
-            <RowDefinition DataContext="{Binding Partial}"/>
+            <RowDefinition Height="Auto" DataContext="{Binding Partial}"/>
+            <RowDefinition Height="Auto" DataContext="{Binding Partial}"/>
+            <RowDefinition Height="Auto" DataContext="{Binding Partial}"/>
+            <RowDefinition Height="Auto" DataContext="{Binding Partial}"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="0" Grid.Row="0">
@@ -39,13 +40,17 @@
                                HorizontalAlignment="Left"
                                Prefix="Partial"
                                Value="{Binding SelectedPartial}"/>
+            <components:WaveFormInfo Grid.Column="1" Grid.ColumnSpan="2"/>
             
         </Grid>
         
-        <components:LFO Grid.Column="0" Grid.Row="1"/>
+        <components:LFO Grid.Column="0" Grid.Row="1"
+                        VerticalAlignment="Top"/>
         <components:TVF Grid.Column="0" Grid.Row="2"/>
         <components:TVA Grid.Column="0" Grid.Row="3"/>
 
         <components:StepLFO Grid.Column="1" Grid.Row="1"/>
+        <components:PCMPitchTab Grid.Column="0" Grid.Row="4"/>
+
     </Grid>
 </UserControl>
