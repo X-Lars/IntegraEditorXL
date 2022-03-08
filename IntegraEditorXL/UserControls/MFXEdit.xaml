@@ -11,6 +11,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
@@ -21,7 +22,7 @@
         
         <component:PartSelection Grid.Column="0"/>
         
-        <local:ToneInfo Grid.Column="1"
+        <local:ToneInfo Grid.Column="2"
                         DataContext="{Binding SelectedTone}"/>
         
         <ComboBox Grid.Column="0" Grid.Row="1"
@@ -31,6 +32,8 @@
         <ContentControl Grid.Column="0" Grid.Row="2"
                         Grid.ColumnSpan="2"/>
 
+        <component:MFXControlTab Grid.Column="2" Grid.Row="2"
+                                 DataContext="{Binding TemporaryTone.MFX}"/>
     </Grid>
     
 </UserControl>

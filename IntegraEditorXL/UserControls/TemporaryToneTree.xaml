@@ -51,150 +51,141 @@
         <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                 Visibility="{Binding Integra.SelectedTone.IsEditable, Converter={StaticResource VisibilityConverter}}">
 
-        <TreeViewItem Header="SuperNATURAL Acoustic Tone"
-                      IsExpanded="True"
-                      d:Visibility="Visible"
-                      Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALAcousticTone}, FallbackValue=Collapsed}">
-            
-            <StackPanel>
-                <xl:LinkButton>Common</xl:LinkButton>
+            <TreeViewItem Header="SuperNATURAL Acoustic Tone"
+                          IsExpanded="True"
+                          d:Visibility="Visible"
+                          Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALAcousticTone}, FallbackValue=Collapsed}">
+
+                <StackPanel>
+                    <xl:LinkButton>Common</xl:LinkButton>
                     <StackPanel Orientation="Horizontal">
                         <xl:LinkButton Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type local:MFXEdit}"
-                               Content="MFX :"/>
+                                   CommandParameter="{x:Type local:MFXEdit}"
+                                   Content="MFX :"/>
                         <xl:EnumeratedText HorizontalContentAlignment="Left"
-                                           Value="{Binding Integra.TemporaryTone.MFX.Type, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                               Value="{Binding Integra.TemporaryTone.MFX.Type, RelativeSource={RelativeSource AncestorType=Window}}"/>
                     </StackPanel>
                 </StackPanel>
-        </TreeViewItem>
-        
-        <TreeViewItem Header="SuperNATURAL Synth Tone"
+            </TreeViewItem>
+
+            <TreeViewItem Header="SuperNATURAL Synth Tone"
                       IsExpanded="True"
                       d:Visibility="Visible"
                       Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALSynthTone}, FallbackValue=Collapsed}">
-            <StackPanel>
-                <xl:LinkButton>Common</xl:LinkButton>
+                <StackPanel>
+                    <xl:LinkButton>Common</xl:LinkButton>
                     <xl:LinkButton Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type local:MFXEdit}"
-                               Content="MFX"/>
+                                   CommandParameter="{x:Type local:MFXEdit}"
+                                   Content="MFX"/>
                     <xl:LinkButton>Partial 1</xl:LinkButton>
-                <xl:LinkButton>Partial 2</xl:LinkButton>
-                <xl:LinkButton>Partial 3</xl:LinkButton>
-            </StackPanel>
-        </TreeViewItem>
-        <TreeViewItem Header="SuperNATURAL Drum Kit"
+                    <xl:LinkButton>Partial 2</xl:LinkButton>
+                    <xl:LinkButton>Partial 3</xl:LinkButton>
+                </StackPanel>
+            </TreeViewItem>
+            <TreeViewItem Header="SuperNATURAL Drum Kit"
                       IsExpanded="True"
                       d:Visibility="Visible"
                       Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALDrumkit}, FallbackValue=Collapsed}">
-            
-            <StackPanel d:DataContext="{d:DesignInstance main:MainWindow}">
-                <xl:LinkButton>Common</xl:LinkButton>
-                    <xl:LinkButton Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type local:MFXEdit}"
-                               Content="MFX"/>
-                    <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
-                <xl:LinkButton Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type local:SNDNotesOverview}"
-                               Content="Notes" />
-            </StackPanel>
-        </TreeViewItem>
-            
-        <!--PCM SYNTH TONE-->
-        <TreeViewItem Header="PCM Synth Tone"
-                      IsExpanded="True"
-                      d:Visibility="Visible"
-                      Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMSynthTone}, FallbackValue=Collapsed}">
-            
-            <!--PCM SYNTH TONE: COMMON-->
-            <TreeViewItem IsExpanded="True">
-                    
-                <TreeViewItem.Header>
-                    
-                    <xl:LinkButton Command="{Binding ShowControlCommand}"
-                                   CommandParameter="{x:Type local:PCMSynthToneCommonEdit}"
-                                   Content="Common"/>
-                    
-                </TreeViewItem.Header>
 
-                <!--PCM SYNTH TONE: WAVE TAB-->
-                <xl:LinkButton Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type local:PCMWaveTab}"
-                               Content="Wave"/>
-                
-                    <!--PCM SYNTH TONE: MATRIX CONTROL-->
-                <xl:LinkButton Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type local:MatrixControl}"
-                               Content="Matrix Control"/>
-
-            </TreeViewItem>
-
-            <StackPanel>
-
-                <!--PCM SYNTH TONE: MFX-->
-                <StackPanel Orientation="Horizontal">
-
+                <StackPanel d:DataContext="{d:DesignInstance main:MainWindow}">
+                    <xl:LinkButton>Common</xl:LinkButton>
                     <xl:LinkButton Command="{Binding ShowControlCommand}"
                                    CommandParameter="{x:Type local:MFXEdit}"
-                                   Content="MFX: "/>
-
-                    <xl:EnumeratedText HorizontalContentAlignment="Left"
-                                       Value="{Binding Integra.TemporaryTone.PCMSynthTone.Common02.TFXSwitch}"/>
-
-                </StackPanel>
-
-                <!--PCM SYNTH TONE: PARTIAL MIX TABLE-->
-                <StackPanel Orientation="Horizontal">
-
+                                   Content="MFX"/>
+                    <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
                     <xl:LinkButton Command="{Binding ShowControlCommand}"
-                                   CommandParameter="{x:Type local:PartialMixTable}"
-                                   Content="Partial Mix Table: "/>
+                                   CommandParameter="{x:Type local:SNDNotesOverview}"
+                                   Content="Notes" />
+                </StackPanel>
+            </TreeViewItem>
 
-                    <xl:EnumeratedText HorizontalContentAlignment="Left"
-                                       Value="{Binding Integra.TemporaryTone.PCMSynthTone.Common.PMTControlSwitch}"/>
+            <!--PCM SYNTH TONE-->
+            <TreeViewItem Header="PCM Synth Tone"
+                          IsExpanded="True"
+                          d:Visibility="Visible"
+                          Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMSynthTone}, FallbackValue=Collapsed}">
+            
+                <!--PCM SYNTH TONE: COMMON-->
+                <TreeViewItem IsExpanded="True">
+
+                    <TreeViewItem.Header>
+
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:PCMSynthToneCommonEdit}"
+                                       Content="Common"/>
+
+                    </TreeViewItem.Header>
+
+                    <!--PCM SYNTH TONE: WAVE-->
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:PCMWaveTab}"
+                                   Content="Wave"/>
+
+                    <!--PCM SYNTH TONE: MATRIX CONTROL-->
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:MatrixControl}"
+                                   Content="Matrix Control"/>
+
+                </TreeViewItem>
+
+                <StackPanel>
+
+                    <!--PCM SYNTH TONE: MFX-->
+                    <StackPanel Orientation="Horizontal">
+
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:MFXEdit}"
+                                       Content="MFX: "/>
+
+                        <xl:EnumeratedText HorizontalContentAlignment="Left"
+                                           Value="{Binding Integra.TemporaryTone.PCMSynthTone.Common02.TFXSwitch}"/>
+
+                    </StackPanel>
+
+                    <!--PCM SYNTH TONE: PARTIAL MIX TABLE-->
+                    <StackPanel Orientation="Horizontal">
+
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:PartialMixTable}"
+                                       Content="Partial Mix Table: "/>
+
+                        <xl:EnumeratedText Value="{Binding Integra.TemporaryTone.PCMSynthTone.Common.PMTControlSwitch}"/>
+
+                    </StackPanel>
+
+                    <!--PCM SYNTH TONE: PARTIAL-->
+                    <StackPanel Orientation="Horizontal">
+
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:PCMPartialEdit}"
+                                       Content="Partial: "/>
+
+                        <xl:EnumeratedText Value="{Binding Integra.TemporaryTone.PCMSynthTone.SelectedPartial}"/>
+
+                    </StackPanel>
 
                 </StackPanel>
+            </TreeViewItem>
 
-                <!--PCM SYNTH TONE: PARTIAL 1-->
-                <xl:LinkButton Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type local:PCMPartialEdit}"
-                               Content="Partial 1"/>
+            <TreeViewItem Header="PCM Drum Kit"
+                          IsExpanded="True"
+                          d:Visibility="Visible"
+                          Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMDrumkit}, FallbackValue=Collapsed}">
+                <StackPanel>
+                    <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
+                    <xl:LinkButton>Common</xl:LinkButton>
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                CommandParameter="{x:Type local:MFXEdit}"
+                                Content="MFX"/>
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                CommandParameter="{x:Type local:PCMNotesOverview}"
+                                Content="Notes"/>
+                    <xl:LinkButton>Common 2</xl:LinkButton>
 
-                <!--PCM SYNTH TONE: PARTIAL 2-->
-                <xl:LinkButton Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type local:PCMPartialEdit}"
-                               Content="Partial 2"/>
-
-                <!--PCM SYNTH TONE: PARTIAL 3-->
-                <xl:LinkButton Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type local:PCMPartialEdit}"
-                               Content="Partial 3"/>
-
-                <!--PCM SYNTH TONE: PARTIAL 4-->
-                <xl:LinkButton Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type local:PCMPartialEdit}"
-                               Content="Partial 4"/>
-
-            </StackPanel>
-        </TreeViewItem>
-            
-        <TreeViewItem Header="PCM Drum Kit"
-                      IsExpanded="True"
-                      d:Visibility="Visible"
-                      Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMDrumkit}, FallbackValue=Collapsed}">
-            <StackPanel>
-                <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
-                <xl:LinkButton>Common</xl:LinkButton>
-                <xl:LinkButton Command="{Binding ShowControlCommand}"
-                            CommandParameter="{x:Type local:MFXEdit}"
-                            Content="MFX"/>
-                <xl:LinkButton Command="{Binding ShowControlCommand}"
-                            CommandParameter="{x:Type local:PCMNotesOverview}"
-                            Content="Notes"/>
-                <xl:LinkButton>Common 2</xl:LinkButton>
-                
-            </StackPanel>
-        </TreeViewItem>
-    </StackPanel>
+                </StackPanel>
+            </TreeViewItem>
+        </StackPanel>
+        
         <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                 Visibility="{Binding Integra.SelectedTone.IsEditable, Converter={StaticResource VisibilityConverter}}">
             <GroupBox Header="File">

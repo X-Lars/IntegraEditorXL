@@ -26,9 +26,13 @@
 
         <Label Grid.Column="0" Grid.Row="0"
                Content="STEP LFO"/>
-
+        
+        <xl:EnumeratedText Grid.Column="1" Grid.Row="0"
+                           Prefix="Step Type"
+                           Value="{Binding LFOStepType}"/>
+        
         <i:StepLFO Grid.Column="1" Grid.Row="1"
-                   Height="100"
+                   Height="150"
                    Step1="{Binding LFOStep1}"
                    Step2="{Binding LFOStep2}"
                    Step3="{Binding LFOStep3}"
@@ -46,7 +50,7 @@
                    Step15="{Binding LFOStep15}"
                    Step16="{Binding LFOStep16}"
                    StepType="{Binding LFOStepType}"
-                   Width="200"/>
+                   Width="250"/>
 
 
         <Grid Grid.Column="0" Grid.Row="1">
@@ -55,17 +59,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <xl:EnumeratedText Grid.Column="0" Grid.Row="0"
-                               Prefix="Step Type"
-                               Value="{Binding LFOStepType}"/>
             
-            <StackPanel Grid.Column="0" Grid.Row="1">
+            <StackPanel Grid.Column="0">
                 
                 <xl:SpinText Min="-36" Max="36"
                              Prefix="Step 1"

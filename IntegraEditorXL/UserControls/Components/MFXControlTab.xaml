@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.Components.MFXControlTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls.Components"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=models:MFX}">
+    
+    <GroupBox Header="Control">
+
+        <StackPanel>
+            
+            <xl:EnumeratedText Prefix="Source 1"
+                               Value="{Binding ControlSource1}"/>
+            
+            <xl:ListText ItemsSource="{Binding Controls, Mode=OneWay}"
+                         Prefix="Destination 1"
+                         SelectedIndex="{Binding ControlAssign1}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="Sens 1"
+                         ShowPositiveSign="True"
+                         Value="{Binding ControlSens1}"/>
+
+            <xl:EnumeratedText Prefix="Source 2"
+                               Value="{Binding ControlSource2}"/>
+
+            <xl:ListText ItemsSource="{Binding Controls}"
+                         Prefix="Destination 2"
+                         SelectedIndex="{Binding ControlAssign2}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="Sens 2"
+                         ShowPositiveSign="True"
+                         Value="{Binding ControlSens2}"/>
+
+            <xl:EnumeratedText Prefix="Source 3"
+                               Value="{Binding ControlSource3}"/>
+
+            <xl:ListText ItemsSource="{Binding Controls}"
+                         Prefix="Destination 3"
+                         SelectedIndex="{Binding ControlAssign3}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="Sens 3"
+                         ShowPositiveSign="True"
+                         Value="{Binding ControlSens3}"/>
+
+            <xl:EnumeratedText Prefix="Source 4"
+                               Value="{Binding ControlSource4}"/>
+
+            <xl:ListText ItemsSource="{Binding Controls}"
+                         Prefix="Destination 4"
+                         SelectedIndex="{Binding ControlAssign4}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="Sens 4"
+                         ShowPositiveSign="True"
+                         Value="{Binding ControlSens4}"/>
+        </StackPanel>
+    </GroupBox>
+</UserControl>

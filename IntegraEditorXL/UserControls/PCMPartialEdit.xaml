@@ -44,13 +44,80 @@
             
         </Grid>
         
-        <components:LFO Grid.Column="0" Grid.Row="1"
-                        VerticalAlignment="Top"/>
+        <components:LFO Grid.Column="0" Grid.Row="1"/>
         <components:TVF Grid.Column="0" Grid.Row="2"/>
         <components:TVA Grid.Column="0" Grid.Row="3"/>
 
         <components:StepLFO Grid.Column="1" Grid.Row="1"/>
         <components:PCMPitchTab Grid.Column="0" Grid.Row="4"/>
 
+        <Grid Grid.Column="1" Grid.Row="2"
+              DataContext="{Binding Partial}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="OIUTPUT"/>
+            
+            <StackPanel Grid.Column="0" Grid.Row="1">
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Output Level"
+                             Value="{Binding OutputLevel}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Chorus Send Level"
+                             Value="{Binding ChorusSendLevel}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Reverb Send Level"
+                             Value="{Binding ReverbSendLevel}"/>
+                
+            </StackPanel>
+            
+            
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="3"
+              DataContext="{Binding Partial}"
+              d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0"
+                   Content="CONTROL"/>
+
+            <StackPanel Grid.Column="0" Grid.Row="1">
+
+                <xl:EnumeratedText Prefix="Envlope Mode"
+                                   Value="{Binding EnvMode}"/>
+
+                <xl:EnumeratedText Prefix="Rx Bender"
+                                   Value="{Binding ReceiveBender}"/>
+
+                <xl:EnumeratedText Prefix="Rx Expression"
+                                   Value="{Binding ReceiveExpression}"/>
+
+                <xl:EnumeratedText Prefix="Rx Hold"
+                                   Value="{Binding ReceiveHold}"/>
+
+                <xl:EnumeratedText Prefix="Redamper Switch"
+                                   Value="{Binding RedamperSwitch}"/>
+
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>
