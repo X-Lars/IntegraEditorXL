@@ -7,7 +7,7 @@
              xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
+             d:DesignHeight="220" d:DesignWidth="164" d:Background="White"
              d:DataContext="{d:DesignInstance Type=models:MFX}">
     
     <GroupBox Header="Control">
@@ -17,9 +17,9 @@
             <xl:EnumeratedText Prefix="Source 1"
                                Value="{Binding ControlSource1}"/>
             
-            <xl:ListText ItemsSource="{Binding Controls, Mode=OneWay}"
+            <xl:ListText ItemsSource="{Binding Controls}"
                          Prefix="Destination 1"
-                         SelectedIndex="{Binding ControlAssign1}"/>
+                         SelectedIndex="{Binding ControlDestination1}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Sens 1"
@@ -31,7 +31,7 @@
 
             <xl:ListText ItemsSource="{Binding Controls}"
                          Prefix="Destination 2"
-                         SelectedIndex="{Binding ControlAssign2}"/>
+                         SelectedIndex="{Binding ControlDestination2}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Sens 2"
@@ -43,7 +43,7 @@
 
             <xl:ListText ItemsSource="{Binding Controls}"
                          Prefix="Destination 3"
-                         SelectedIndex="{Binding ControlAssign3}"/>
+                         SelectedIndex="{Binding ControlDestination3}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Sens 3"
@@ -55,7 +55,7 @@
 
             <xl:ListText ItemsSource="{Binding Controls}"
                          Prefix="Destination 4"
-                         SelectedIndex="{Binding ControlAssign4}"/>
+                         SelectedIndex="{Binding ControlDestination4}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Sens 4"

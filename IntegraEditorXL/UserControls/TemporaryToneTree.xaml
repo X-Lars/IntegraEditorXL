@@ -56,8 +56,26 @@
                           d:Visibility="Visible"
                           Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALAcousticTone}, FallbackValue=Collapsed}">
 
+                <TreeViewItem IsExpanded="True">
+
+                    <TreeViewItem.Header>
+                        <xl:LinkButton Content="Common"
+                                   Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:SNACommonTab}"/>
+
+                    </TreeViewItem.Header>
+
+                    <StackPanel>
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:SNAInstrumentTab}"
+                                   Content="Instrument"/>
+
+                    </StackPanel>
+                </TreeViewItem>
+                              
+                              
                 <StackPanel>
-                    <xl:LinkButton>Common</xl:LinkButton>
+                    
                     <StackPanel Orientation="Horizontal">
                         <xl:LinkButton Command="{Binding ShowControlCommand}"
                                    CommandParameter="{x:Type local:MFXEdit}"

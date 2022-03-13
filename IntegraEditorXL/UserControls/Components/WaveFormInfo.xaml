@@ -30,10 +30,9 @@
                                Prefix="Type"
                                Value="{Binding WaveGroupType}"/>
 
-            <xl:SpinText Grid.Column="1" Grid.Row="0"
-                         Min="1" Max="12"
-                         Prefix="Group"
-                         Value="{Binding WaveGroupID}"/>
+            <xl:EnumeratedText Grid.Column="1" Grid.Row="0"
+                               Prefix="Group"
+                               Value="{Binding WaveGroupID}"/>
             
             <!--WAVEFORM NAMES-->
             <StackPanel Grid.Column="0" Grid.Row="1"

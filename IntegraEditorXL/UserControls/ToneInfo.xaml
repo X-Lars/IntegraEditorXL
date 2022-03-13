@@ -54,7 +54,7 @@
                        HorizontalAlignment="Right"
                        Padding="2"
                        d:Text="[Category]"
-                       Text="{Binding Category, StringFormat='[{0}]'}"/>
+                       Text="{Binding Category}"/>
 
             <!-- TONE BANK SELECT INFO -->
             <StackPanel Grid.Column="0" 

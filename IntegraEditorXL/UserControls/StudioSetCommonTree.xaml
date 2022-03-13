@@ -18,30 +18,44 @@
         <xl:LinkButton Content="Common"
                        Command="{Binding ShowControlCommand}"
                        CommandParameter="{x:Type view:StudioSetCommon}"/>
-        
-        <xl:LinkButton Content="Master EQ"/>
-        
+
+        <StackPanel Orientation="Horizontal">
+            <xl:LinkButton Content="Master EQ: "/>
+            <xl:EnumeratedText Value="{Binding Integra.StudioSet.Common.MasterEQSwitch}"
+                               VerticalAlignment="Center"/>
+        </StackPanel>
+
         <TreeViewItem Header="Effects" IsExpanded="True">
 
+            <!--STUDIO SET: COMMON CHORUS-->
             <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding Integra.StudioSet.Common.ChorusSwitch}"/>
-                <xl:LinkButton Content="Chorus "
-                           Command="{Binding ShowControlCommand}"
-                           CommandParameter="{x:Type view:StudioSetCommonChorus}"/>
-                <xl:EnumeratedText HorizontalContentAlignment="Left"
-                                   Value="{Binding Integra.StudioSet.CommonChorus.Type}"/>
+                
+                <xl:LinkButton Content="Chorus: "
+                               Command="{Binding ShowControlCommand}"
+                               CommandParameter="{x:Type view:StudioSetCommonChorus}"/>
+                
+                <xl:EnumeratedText Value="{Binding Integra.StudioSet.Common.ChorusSwitch}"/>
+                
             </StackPanel>
+            
+            <!--STUDIO SET: COMMON REVERB-->
             <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding Integra.StudioSet.Common.ReverbSwitch}"/>
-                <xl:LinkButton Content="Reverb "
-                           Command="{Binding ShowControlCommand}"
-                           CommandParameter="{x:Type view:StudioSetCommonReverb}"/>
-                <xl:EnumeratedText HorizontalContentAlignment="Left"
-                                   Value="{Binding Integra.StudioSet.CommonReverb.Type}"/>
+                
+                <xl:LinkButton Content="Reverb: "
+                               Command="{Binding ShowControlCommand}"
+                               CommandParameter="{x:Type view:StudioSetCommonReverb}"/>
+                
+                <xl:EnumeratedText Value="{Binding Integra.StudioSet.Common.ReverbSwitch}"/>
+                
             </StackPanel>
+            
+            <!--STUDIO SET: COMMON MOTIONAL SURROUND-->
             <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding Integra.StudioSet.CommonMotionalSurround.MotionalSurroundSwitch}"/>
-            <xl:LinkButton Content="Motional Surround"/>
+                
+                <xl:LinkButton Content="Motional Surround: "/>
+                
+                <xl:EnumeratedText Value="{Binding Integra.StudioSet.CommonMotionalSurround.Switch}"/>
+                
             </StackPanel>
         </TreeViewItem>
 
@@ -49,7 +63,7 @@
         <TreeViewItem IsExpanded="True">
             <TreeViewItem.Header>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Partials "
+                    <TextBlock Text="Partial: "
                                VerticalAlignment="Center"/>
                     <xl:EnumeratedText HorizontalContentAlignment="Left"
                                        Value="{Binding Integra.Part}"/>

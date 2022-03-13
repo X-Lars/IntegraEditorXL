@@ -5,14 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              xmlns:component="clr-namespace:IntegraEditorXL.UserControls.Components"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+          xmlns:views="clr-namespace:IntegraEditorXL.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="240" d:DesignWidth="800" d:Background="White">
-
-    <!-- Requires DataContext: Integra -->
+             d:DesignHeight="240" d:DesignWidth="800" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=models:StudioSetCommon}">
 
     <Grid DataContext="{Binding StudioSet}">
 
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
@@ -21,187 +24,186 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="1"
-                    DataContext="{Binding Common}">
+        <GroupBox Grid.Column="0"
+                  DataContext="{Binding Common}"
+                  Header="General">
 
-            <GroupBox Header="General">
+            <StackPanel>
 
-                <Grid>
+                <xl:SpinText Min="20" Max="250"
+                             Prefix="Tempo"
+                             Suffix="&#x0001D15F;"
+                             Value="{Binding Tempo}"/>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                    
+                <xl:EnumeratedText Prefix="Solo"
+                                   Value="{Binding SoloPart}"/>
+                    
+            </StackPanel>
+        </GroupBox>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+        <GroupBox Grid.Column="1"
+                  DataContext="{Binding Common}"
+                  Header="Tone Control Source">
 
-                    <xl:SpinText Grid.Column="0" Grid.Row="0"
-                                 Min="20" Max="250"
-                                 Prefix="Tempo"
-                                 Value="{Binding Tempo}"/>
+            <StackPanel>
 
-                    <xl:EnumeratedText Grid.Column="0" Grid.Row="1"
-                                       Prefix="Drum Comp + EQ"
-                                       Value="{Binding DrumCompEQPart}"/>
+                <xl:EnumeratedText Prefix="Source 1"
+                                   Value="{Binding ToneControlSource1}"/>
 
-                </Grid>
-            </GroupBox>
-        </StackPanel>
+                <xl:EnumeratedText Prefix="Source 2"
+                                   Value="{Binding ToneControlSource2}"/>
 
-        <StackPanel Grid.Column="1" Grid.Row="1">
+                <xl:EnumeratedText Prefix="Source 3"
+                                   Value="{Binding ToneControlSource3}"/>
 
-            <GroupBox Header="Tone Control Source" DataContext="{Binding Common}">
+                <xl:EnumeratedText Prefix="Source 4"
+                                   Value="{Binding ToneControlSource4}"/>
 
-                <Grid>
+            </StackPanel>
+        </GroupBox>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="2"
+                    DataContext="{Binding Common}"
+                    Header="Voice Reserves">
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+            <Grid>
 
-                    <xl:EnumeratedText Grid.Column="0" Grid.Row="0"
-                                       HorizontalContentAlignment="Left"
-                                       Prefix="Source 1"
-                                       Value="{Binding ToneControlSource01}"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-                    <xl:EnumeratedText Grid.Column="0" Grid.Row="1"
-                                       HorizontalContentAlignment="Left"
-                                       Prefix="Source 2"
-                                       Value="{Binding ToneControlSource02}"/>
+                <StackPanel Grid.Column="0">
 
-                    <xl:EnumeratedText Grid.Column="0" Grid.Row="2"
-                                       HorizontalContentAlignment="Left"
-                                       Prefix="Source 3"
-                                       Value="{Binding ToneControlSource03}"/>
-
-                    <xl:EnumeratedText Grid.Column="0" Grid.Row="3"
-                                       HorizontalContentAlignment="Left"
-                                       Prefix="Source 4"
-                                       Value="{Binding ToneControlSource04}"/>
-
-                </Grid>
-            </GroupBox>
-        </StackPanel>
-
-        <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="2">
-
-            <GroupBox Header="Voice Reserves" DataContext="{Binding Common}">
-
-                <Grid>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <xl:ListText Grid.Column="0" Grid.Row="0"
-                                 ItemsSource="{Binding VoiceReserveValues}"
-                                 SelectedIndex="{Binding VoiceReserve01}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve1}"
                                  Prefix="Part 1"/>
 
-                    <xl:ListText Grid.Column="0" Grid.Row="1"
-                                 ItemsSource="{Binding VoiceReserveValues}"
-                                 SelectedIndex="{Binding VoiceReserve02}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve2}"
                                  Prefix="Part 2"/>
 
-                    <xl:ListText Grid.Column="0" Grid.Row="2"
-                                 ItemsSource="{Binding VoiceReserveValues}"
-                                 SelectedIndex="{Binding VoiceReserve03}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve3}"
                                  Prefix="Part 3"/>
 
-                    <xl:ListText Grid.Column="0" Grid.Row="3"
-                                 ItemsSource="{Binding VoiceReserveValues}"
-                                 SelectedIndex="{Binding VoiceReserve04}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve4}"
                                  Prefix="Part 4"/>
 
-                    <xl:ListText Grid.Column="0" Grid.Row="4"
-                                 ItemsSource="{Binding VoiceReserveValues}"
-                                 SelectedIndex="{Binding VoiceReserve05}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve5}"
                                  Prefix="Part 5"/>
 
-                    <xl:ListText Grid.Column="0" Grid.Row="5"
-                                 ItemsSource="{Binding VoiceReserveValues}"
-                                 SelectedIndex="{Binding VoiceReserve06}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve6}"
                                  Prefix="Part 6"/>
 
-                    <xl:ListText Grid.Column="0" Grid.Row="6"
-                                 ItemsSource="{Binding VoiceReserveValues}"
-                                 SelectedIndex="{Binding VoiceReserve07}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve7}"
                                  Prefix="Part 7"/>
 
-                    <xl:ListText Grid.Column="0" Grid.Row="7"
-                                 ItemsSource="{Binding VoiceReserveValues}"
-                                 SelectedIndex="{Binding VoiceReserve08}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve8}"
                                  Prefix="Part 8"/>
 
-                    <xl:ListText Grid.Column="1" Grid.Row="0"
-                                 ItemsSource="{Binding VoiceReserveValues}"
-                                 SelectedIndex="{Binding VoiceReserve09}"
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
+                                 SelectedIndex="{Binding VoiceReserve9}"
                                  Prefix="Part 9"/>
 
-                    <xl:ListText Grid.Column="1" Grid.Row="1"
-                                 ItemsSource="{Binding VoiceReserveValues}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
                                  SelectedIndex="{Binding VoiceReserve10}"
                                  Prefix="Part 10"/>
 
-                    <xl:ListText Grid.Column="1" Grid.Row="2"
-                                 ItemsSource="{Binding VoiceReserveValues}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
                                  SelectedIndex="{Binding VoiceReserve11}"
                                  Prefix="Part 11"/>
 
-                    <xl:ListText Grid.Column="1" Grid.Row="3"
-                                 ItemsSource="{Binding VoiceReserveValues}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
                                  SelectedIndex="{Binding VoiceReserve12}"
                                  Prefix="Part 12"/>
 
-                    <xl:ListText Grid.Column="1" Grid.Row="4"
-                                 ItemsSource="{Binding VoiceReserveValues}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
                                  SelectedIndex="{Binding VoiceReserve13}"
                                  Prefix="Part 13"/>
 
-                    <xl:ListText Grid.Column="1" Grid.Row="5"
-                                 ItemsSource="{Binding VoiceReserveValues}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
                                  SelectedIndex="{Binding VoiceReserve14}"
                                  Prefix="Part 14"/>
 
-                    <xl:ListText Grid.Column="1" Grid.Row="6"
-                                 ItemsSource="{Binding VoiceReserveValues}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
                                  SelectedIndex="{Binding VoiceReserve15}"
                                  Prefix="Part 15"/>
 
-                    <xl:ListText Grid.Column="1" Grid.Row="7"
-                                 ItemsSource="{Binding VoiceReserveValues}"
+                    <xl:ListText ItemsSource="{Binding VoiceReserveValues}"
                                  SelectedIndex="{Binding VoiceReserve16}"
                                  Prefix="Part 16"/>
 
-                </Grid>
-            </GroupBox>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
 
-        </StackPanel>
+        <GroupBox Grid.Column="3"
+                  DataContext="{Binding Common}"
+                  Header="Drum Kit Compressor + EQ">
+            
+            <StackPanel>
 
-        <component:PhaseLocks Grid.Column="1" Grid.Row="2"/>
+                <xl:EnumeratedText Prefix="Assign"
+                                   Value="{Binding DrumCompEQPart}"/>
+
+                <xl:EnumeratedText Prefix="Output 1"
+                                   Value="{Binding DrumCompEQOutputAssign1}"/>
+
+                <xl:EnumeratedText Prefix="Output 2"
+                                   Value="{Binding DrumCompEQOutputAssign2}"/>
+
+                <xl:EnumeratedText Prefix="Output 3"
+                                   Value="{Binding DrumCompEQOutputAssign3}"/>
+
+                <xl:EnumeratedText Prefix="Output 4"
+                                   Value="{Binding DrumCompEQOutputAssign4}"/>
+
+                <xl:EnumeratedText Prefix="Output 5"
+                                   Value="{Binding DrumCompEQOutputAssign5}"/>
+
+                <xl:EnumeratedText Prefix="Output 6"
+                                   Value="{Binding DrumCompEQOutputAssign6}"/>
+                
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="4"
+                  DataContext="{Binding Common}"
+                  Header="External Part">
+
+            <StackPanel>
+
+                <xl:EnumeratedText Prefix="Mute"
+                                   Value="{Binding ExtPartMuteSwitch}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Level"
+                             Value="{Binding ExtPartLevel}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Chorus Send Level"
+                             Value="{Binding ExtPartChorusSendLevel}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Reverb Send Level"
+                             Value="{Binding ExtPartReverbSendLevel}"/>
+
+            </StackPanel>
+        </GroupBox>
+        <component:PhaseLocks Grid.Column="0" Grid.Row="1"/>
         
     </Grid>
 </UserControl>
