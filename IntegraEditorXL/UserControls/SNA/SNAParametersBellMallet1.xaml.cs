@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IntegraEditorXL.UserControls.Components
+namespace IntegraEditorXL.UserControls.SNA
 {
     /// <summary>
-    /// Interaction logic for SNAParametersKeys.xaml
+    /// Interaction logic for SNAParametersBellMalletDeadStroke.xaml
     /// </summary>
-    public partial class SNAParametersKeys : UserControl
+    public partial class SNAParametersBellMallet1 : UserControl
     {
-        public SNAParametersKeys()
+        public SNAParametersBellMallet1()
         {
             InitializeComponent();
         }

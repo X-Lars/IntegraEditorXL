@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.SNA.SNAParametersOrgan"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls.Components"
+             xmlns:models="clr-namespace:IntegraXL.Models.Parameters;assembly=IntegraXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="200" Background="White"
+             d:DataContext="{d:DesignInstance Type=models:SNAOrgan}">
+
+    <StackPanel DataContext="{Binding Parameters}">
+
+        <xl:SpinText Min="0" Max="8"
+                     Prefix="Harmonic Bar 16"
+                     Value="{Binding HarmonicBar16}"/>
+
+        <xl:SpinText Min="0" Max="8"
+                     Prefix="Harmonic Bar 5 1/3"
+                     Value="{Binding HarmonicBar513}"/>
+
+        <xl:SpinText Min="0" Max="8"
+                     Prefix="Harmonic Bar 8"
+                     Value="{Binding HarmonicBar8}"/>
+
+        <xl:SpinText Min="0" Max="8"
+                     Prefix="Harmonic Bar 4"
+                     Value="{Binding HarmonicBar4}"/>
+
+        <xl:SpinText Min="0" Max="8"
+                     Prefix="Harmonic Bar 2 2/3"
+                     Value="{Binding HarmonicBar223}"/>
+
+        <xl:SpinText Min="0" Max="8"
+                     Prefix="Harmonic Bar 2"
+                     Value="{Binding HarmonicBar2}"/>
+
+        <xl:SpinText Min="0" Max="8"
+                     Prefix="Harmonic Bar 1 3/5"
+                     Value="{Binding HarmonicBar135}"/>
+
+        <xl:SpinText Min="0" Max="8"
+                     Prefix="Harmonic Bar 1 1/3"
+                     Value="{Binding HarmonicBar113}"/>
+
+        <xl:SpinText Min="0" Max="8"
+                     Prefix="Harmonic Bar 1"
+                     Value="{Binding HarmonicBar1}"/>
+
+        <xl:SpinText Min="0" Max="127"
+                     Prefix="Leakage Level"
+                     Value="{Binding Leakage}"/>
+
+        <xl:EnumeratedText Prefix="Percussion Switch"
+                           Value="{Binding PercSwitch}"/>
+
+        <xl:EnumeratedText Prefix="Percussion Soft"
+                           Value="{Binding PercSoft}"/>
+
+        <xl:SpinText Min="0" Max="15"
+                     Prefix="Percussion Soft Level"
+                     Value="{Binding PercSoftLevel}"/>
+
+        <xl:SpinText Min="0" Max="15"
+                     Prefix="Percussion Normal Level"
+                     Value="{Binding PercNormLevel}"/>
+
+        <xl:EnumeratedText Prefix="Percussion Slow"
+                           Value="{Binding PercSlow}"/>
+
+        <xl:SpinText Min="0" Max="127"
+                     Prefix="Percussion Slow Time"
+                     Value="{Binding PercSlowTime}"/>
+
+        <xl:SpinText Min="0" Max="127"
+                     Prefix="Percussion Fast Time"
+                     Value="{Binding PercFastTime}"/>
+
+        <xl:EnumeratedText Prefix="Percussion Harmonic"
+                           Value="{Binding PercHarmonic}"/>
+
+        <xl:SpinText Min="0" Max="15"
+                     Prefix="Percussion Recharge Time"
+                     Value="{Binding PercRechargeTime}"/>
+
+        <xl:SpinText Min="0" Max="127"
+                     Prefix="Percussion Harmonic Bar Level"
+                     Value="{Binding PercHarmonicBarLevel}"/>
+
+        <xl:SpinText Min="0" Max="31"
+                     Prefix="Key On Click Level"
+                     Value="{Binding KeyOnClickLevel}"/>
+
+        <xl:SpinText Min="0" Max="31"
+                     Prefix="Key Off Click Level"
+                     Value="{Binding KeyOffClickLevel}"/>
+
+    </StackPanel>
+</UserControl>

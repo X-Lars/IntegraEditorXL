@@ -1,25 +1,13 @@
-﻿using IntegraEditorXL.UserControls.Components;
+﻿using IntegraEditorXL.UserControls.SNA;
 using IntegraXL;
 using IntegraXL.Core;
 using IntegraXL.Models;
 using IntegraXL.Models.Parameters;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace IntegraEditorXL.UserControls
 {
@@ -61,11 +49,8 @@ namespace IntegraEditorXL.UserControls
 
             set
             {
-                if(_Component != value)
-                {
-                    _Component = value;
-                    NotifyPropertyChanged();
-                }
+                _Component = value;
+                NotifyPropertyChanged();
             }
         }
 
@@ -78,10 +63,47 @@ namespace IntegraEditorXL.UserControls
         {
             switch(_Parameters)
             {
-                case SNAPiano: CreateComponent(typeof(SNAParametersPiano)); break;
-                case SNAPianoMono: CreateComponent(typeof(SNAParametersPianoMono)); break;
-                case SNAKeys:  CreateComponent(typeof(SNAParametersKeys));  break;
-                //case SNAStringsStaccatoPizzicatoTremolo: CreateComponent(typeof(SNAParametersStringsStaccatoPizzicatoTremolo)); break;
+                case SNAPiano:          CreateComponent(typeof(SNAParametersPiano));          break;
+                case SNAPianoMono:      CreateComponent(typeof(SNAParametersPianoMono));      break;
+                case SNAKeys:           CreateComponent(typeof(SNAParametersKeys));           break;
+                case SNABellMallet1:    CreateComponent(typeof(SNAParametersBellMallet1));    break;
+                case SNABellMallet2:    CreateComponent(typeof(SNAParametersBellMallet1));    break;
+                case SNABellMallet3:    CreateComponent(typeof(SNAParametersBellMallet2));    break;
+                case SNAOrgan:          CreateComponent(typeof(SNAParametersOrgan));          break;
+                case SNAHarmonica:      CreateComponent(typeof(SNAParametersHarmonica));      break;
+                case SNAGuitar1:        CreateComponent(typeof(SNAParametersGuitar1));        break;
+                case SNAGuitar2:        CreateComponent(typeof(SNAParametersGuitar1));        break;
+                case SNAGuitar3:        CreateComponent(typeof(SNAParametersGuitar1));        break;
+                case SNAGuitar4:        CreateComponent(typeof(SNAParametersGuitar2));        break;
+                case SNAMandolin:       CreateComponent(typeof(SNAParametersMandolin));       break;
+                case SNAUkelele:        CreateComponent(typeof(SNAParametersUkelele));        break;
+                case SNAElectricGuitar: CreateComponent(typeof(SNAParametersElectricGuitar)); break;
+                case SNABass1:          CreateComponent(typeof(SNAParametersBass));           break;
+                case SNABass2:          CreateComponent(typeof(SNAParametersBass));           break;
+                case SNABass3:          CreateComponent(typeof(SNAParametersBass));           break;
+                case SNAHarp:           CreateComponent(typeof(SNAParametersHarp));           break;
+                case SNASitar:          CreateComponent(typeof(SNAParametersSitar));          break;
+                case SNAShamisen:       CreateComponent(typeof(SNAParametersShamisen));       break;
+                case SNAKoto1:          CreateComponent(typeof(SNAParametersKoto1));          break;
+                case SNAKoto2:          CreateComponent(typeof(SNAParametersKoto2));          break;
+                case SNAKalimba:        CreateComponent(typeof(SNAParametersKalimba));        break;
+                case SNAStrings1:       CreateComponent(typeof(SNAParametersStrings1));       break;
+                case SNAStrings2:       CreateComponent(typeof(SNAParametersStrings1));       break;
+                case SNAStrings3:       CreateComponent(typeof(SNAParametersStrings2));       break;
+                case SNAChoir:          CreateComponent(typeof(SNAParametersStrings2));       break;
+                case SNABrass1:         CreateComponent(typeof(SNAParametersBrass1));         break;
+                case SNABrass2:         CreateComponent(typeof(SNAParametersBrass1));         break;
+                case SNABrass3:         CreateComponent(typeof(SNAParametersBrass2));         break;
+                case SNAWind1:          CreateComponent(typeof(SNAParametersWind1));          break;
+                case SNAWind2:          CreateComponent(typeof(SNAParametersWind2));          break;
+                case SNAWhistle:        CreateComponent(typeof(SNAParametersWind2));          break;
+                case SNARecorder:       CreateComponent(typeof(SNAParametersWind2));          break;
+                case SNAPanFlute:       CreateComponent(typeof(SNAParametersBrass1));         break;
+                case SNASax:            CreateComponent(typeof(SNAParametersWind1));          break;
+                case SNAPipes:          CreateComponent(typeof(SNAParametersPipes));          break;
+                case SNATimpani:        CreateComponent(typeof(SNAParametersTimpani));        break;
+                case SNASteelDrums:     CreateComponent(typeof(SNAParametersSteelDrums));     break;
+
                 default: ParameterControl = null; break;
             }
         }

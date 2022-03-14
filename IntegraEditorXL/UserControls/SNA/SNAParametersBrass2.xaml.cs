@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IntegraEditorXL.UserControls.Components
+namespace IntegraEditorXL.UserControls.SNA
 {
     /// <summary>
-    /// Interaction logic for SNAParametersStringsStaccatoPizzicatoTremolo.xaml
+    /// Interaction logic for SNAParametersGuitar.xaml
     /// </summary>
-    public partial class SNAParametersStringsStaccatoPizzicatoTremolo : UserControl
+    public partial class SNAParametersBrass2 : UserControl
     {
-        public SNAParametersStringsStaccatoPizzicatoTremolo()
+        public SNAParametersBrass2()
         {
             InitializeComponent();
         }

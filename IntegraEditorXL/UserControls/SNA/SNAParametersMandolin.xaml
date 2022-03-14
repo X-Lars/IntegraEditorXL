@@ -1,14 +1,13 @@
-﻿<UserControl x:Class="IntegraEditorXL.UserControls.Components.SNAParametersKeys"
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.SNA.SNAParametersMandolin"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:IntegraEditorXL.UserControls.Components"
              xmlns:models="clr-namespace:IntegraXL.Models.Parameters;assembly=IntegraXL"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White"
-             d:DataContext="{d:DesignInstance Type=models:SNAKeys}">
+             d:DesignHeight="200" d:DesignWidth="200" Background="White"
+             d:DataContext="{d:DesignInstance Type=models:SNAMandolin}">
 
     <StackPanel DataContext="{Binding Parameters}">
 
@@ -16,5 +15,17 @@
                      Prefix="Noise Level (CC16)"
                      ShowPositiveSign="True"
                      Value="{Binding NoiseLevel}"/>
+
+        <xl:SpinText Min="-64" Max="63"
+                     Prefix="Tremolo Speed (CC17)"
+                     ShowPositiveSign="True"
+                     Value="{Binding TremoloSpeed}"/>
+
+        <xl:EnumeratedText Prefix="Strum Mode (CC19)"
+                           Value="{Binding StrumMode}"/>
+
+        <xl:EnumeratedText Prefix="Variation"
+                           Value="{Binding Variation}"/>
+
     </StackPanel>
 </UserControl>
