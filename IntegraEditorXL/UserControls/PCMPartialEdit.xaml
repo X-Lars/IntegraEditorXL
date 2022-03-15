@@ -40,7 +40,7 @@
                                HorizontalAlignment="Left"
                                Prefix="Partial"
                                Value="{Binding SelectedPartial}"/>
-            <components:WaveFormInfo Grid.Column="1" Grid.ColumnSpan="2"/>
+            <components:PCMWaveForm Grid.Column="1" Grid.ColumnSpan="2"/>
             
         </Grid>
         

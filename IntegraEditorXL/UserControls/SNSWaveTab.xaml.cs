@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IntegraEditorXL.UserControls.Components
+namespace IntegraEditorXL.UserControls
 {
     /// <summary>
-    /// Interaction logic for WaveFormInfo.xaml
+    /// Interaction logic for SNSWaveTab.xaml
     /// </summary>
-    public partial class WaveFormInfo : UserControl
+    public partial class SNSWaveTab : UserControl
     {
-        public WaveFormInfo()
+        public SNSWaveTab()
         {
             InitializeComponent();
         }

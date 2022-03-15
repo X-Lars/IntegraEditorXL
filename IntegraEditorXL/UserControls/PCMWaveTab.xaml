@@ -24,7 +24,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <components:WaveFormInfo Grid.Column="0" Grid.Row="0"/>
+        <components:PCMWaveForm Grid.Column="0" Grid.Row="0"/>
 
         <GroupBox Grid.Column="0" Grid.Row="1"
                   DataContext="{Binding Partial}"

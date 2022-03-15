@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.Components.SNSWaveForm"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="64" d:DesignWidth="320" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthTonePartial}">
+    <Grid>
+        <GroupBox Header="Wave Form"
+              MinWidth="256">
+
+            <Grid DataContext="{Binding Partial}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+
+                <xl:EnumeratedText Grid.Column="0" Grid.Row="0"
+                               Prefix="Wave"
+                               Value="{Binding OSCWave}"/>
+
+                <xl:EnumeratedText Grid.Column="1" Grid.Row="0"
+                               Prefix="Variation"
+                               Value="{Binding OSCWaveVariation}"/>
+
+                <!--WAVEFORM NAMES-->
+                <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                        Orientation="Horizontal">
+
+                    <xl:SpinText Min="0" Max="450"
+                                 Prefix="Wave Number"
+                                 Value="{Binding WaveNumber}"/>
+
+                    <TextBlock Text=": "/>
+                    <TextBlock Text="{Binding WaveForm.Name, FallbackValue='------------'}"/>
+
+                </StackPanel>
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

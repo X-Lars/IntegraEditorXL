@@ -1,0 +1,333 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.SNSSynthTonePartial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:i="clr-namespace:IntegraControlsXL;assembly=IntegraControlsXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:components="clr-namespace:IntegraEditorXL.UserControls.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="960" d:DesignWidth="1280" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthTonePartial}">
+    
+    <Grid DataContext="{Binding TemporaryTone.SuperNATURALSynthTone}"
+          d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthTone}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                    Orientation="Horizontal">
+
+            <xl:EnumeratedText Grid.Column="0"
+                               HorizontalAlignment="Left"
+                               Prefix="Partial"
+                               Value="{Binding SelectedPartial}"/>
+            
+            <components:SNSWaveForm Grid.Column="1" Grid.ColumnSpan="2"/>
+
+        </StackPanel>
+
+        <GroupBox Grid.Column="0" Grid.Row="1"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthTonePartial}"
+                  Header="OSC">
+
+            <StackPanel>
+
+                <xl:SpinText Interval="6"
+                             Min="-6" Max="12"
+                             Prefix="Wave Gain"
+                             ShowPositiveSign="True"
+                             Value="{Binding WaveGain}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Pulse Width Mod Depth"
+                             Value="{Binding OSCPulseWidthModDepth}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Pulse Width"
+                             Value="{Binding OSCPulseWidth}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Pulse Width Shift"
+                             Value="{Binding OSCPulseWidthShift}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Super Saw Detune"
+                             Value="{Binding SuperSawDetune}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Grid.Row="1"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthTonePartial}"
+                  Header="Pitch">
+
+            <StackPanel>
+
+                <xl:SpinText Min="-24" Max="24"
+                             Prefix="OSC Pitch"
+                             ShowPositiveSign="True"
+                             Value="{Binding OSCPitch}"/>
+
+                <xl:SpinText Min="-50" Max="50"
+                             Prefix="OSC Detune"
+                             ShowPositiveSign="True"
+                             Value="{Binding OSCDetune}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Env Attack Time"
+                             Value="{Binding OSCPitchEnvAttack}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Env Decay Time"
+                             Value="{Binding OSCPitchEnvDecay}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Env Depth"
+                             ShowPositiveSign="True"
+                             Value="{Binding OSCPitchEnvDepth}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" Grid.Row="1"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthTonePartial}"
+                  Header="Aftertouch">
+
+            <StackPanel>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Cutoff Sens"
+                             ShowPositiveSign="True"
+                             Value="{Binding CutoffAftertouchSens}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Level Sens"
+                             ShowPositiveSign="True"
+                             Value="{Binding LevelAftertouchSens}"/>
+
+            </StackPanel>
+        </GroupBox>
+        
+        <GroupBox Grid.Column="0" Grid.Row="2"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthTonePartial}"
+                  Header="Filter">
+
+            <StackPanel>
+
+                <xl:EnumeratedText Prefix="Mode"
+                                   Value="{Binding FilterMode}"/>
+
+                <xl:EnumeratedText HorizontalContentAlignment="Right"
+                                   Prefix="Slope"
+                                   Suffix="dB"
+                                   Value="{Binding FilterSlope}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Cutoff"
+                             Value="{Binding FilterCutoff}"/>
+
+                <xl:SpinText Interval="10"
+                             Min="-100" Max="100"
+                             Prefix="Cutoff KF"
+                             ShowPositiveSign="True"
+                             Value="{Binding FilterCutoffKeyFollow}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Resonance"
+                             Value="{Binding FilterResonance}"/>
+                
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Env V-Sens"
+                             ShowPositiveSign="True"
+                             Value="{Binding FilterEnvVelocitySens}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Env Attack"
+                             Value="{Binding FilterEnvAttack}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Env Decay"
+                             Value="{Binding FilterEnvDecay}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Env Sustain"
+                             Value="{Binding FilterEnvSustain}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Env Release"
+                             Value="{Binding FilterEnvRelease}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Env Depth"
+                             ShowPositiveSign="True"
+                             Value="{Binding FilterEnvDepth}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="HPF Cutoff"
+                             Value="{Binding HPFCutoff}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Grid.Row="2"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthTonePartial}"
+                  Header="Amp">
+
+            <StackPanel>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Level"
+                             Value="{Binding AmpLevel}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Level V-Sens"
+                             ShowPositiveSign="True"
+                             Value="{Binding AmpLevelVelocitySens}"/>
+
+                <xl:ListText ItemsSource="{Binding PanValues}"
+                             Prefix="Pan"
+                             SelectedIndex="{Binding AmpPan}"/>
+                
+                <xl:SpinText Interval="10"
+                             Min="-100" Max="100"
+                             Prefix="Level KF"
+                             ShowPositiveSign="True"
+                             Value="{Binding AmpLevelKeyFollow}"/>
+               
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Env Attack"
+                             Value="{Binding AmpEnvAttack}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Env Decay"
+                             Value="{Binding AmpEnvDecay}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Env Sustain"
+                             Value="{Binding AmpEnvSustain}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Env Release"
+                             Value="{Binding AmpEnvRelease}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" Grid.Row="2"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthTonePartial}"
+                  Header="LFO">
+
+            <StackPanel>
+
+                <xl:EnumeratedText Prefix="Shape"
+                                   Value="{Binding LFOShape}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Rate"
+                             Value="{Binding LFORate}"/>
+
+                <xl:EnumeratedText Prefix="Tempo Sync Switch"
+                                   Value="{Binding LFOTempoSyncSwitch}"/>
+
+                <xl:EnumeratedText Prefix="Tempo Sync Note"
+                                   Value="{Binding LFOTempoSyncNote}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Fade Time"
+                             Value="{Binding LFOFadeTime}"/>
+
+                <xl:EnumeratedText Prefix="Key Trigger"
+                                   Value="{Binding LFOKeyTrigger}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Pitch Depth"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOPitchDepth}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Filter Depth"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOFilterDepth}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Amp Depth"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOAmpDepth}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Pan Depth"
+                             ShowPositiveSign="True"
+                             Value="{Binding LFOPanDepth}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="3" Grid.Row="2"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthTonePartial}"
+                  Header="Modulation LFO">
+
+            <StackPanel>
+
+                <xl:EnumeratedText Prefix="Shape"
+                                   Value="{Binding ModLFOShape}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Rate"
+                             Value="{Binding ModLFORate}"/>
+
+                <xl:EnumeratedText Prefix="Tempo Sync Switch"
+                                   Value="{Binding ModLFOTempoSyncSwitch}"/>
+
+                <xl:EnumeratedText Prefix="Tempo Sync Note"
+                                   Value="{Binding ModLFOTempoSyncNote}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Pitch Depth"
+                             ShowPositiveSign="True"
+                             Value="{Binding ModLFOPitchDepth}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Filter Depth"
+                             ShowPositiveSign="True"
+                             Value="{Binding ModLFOFilterDepth}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Amp Depth"
+                             ShowPositiveSign="True"
+                             Value="{Binding ModLFOAmpDepth}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Pan Depth"
+                             ShowPositiveSign="True"
+                             Value="{Binding ModLFOPanDepth}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Rate Control"
+                             ShowPositiveSign="True"
+                             Value="{Binding ModLFORateControl}"/>
+
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</UserControl>

@@ -93,15 +93,29 @@
 
             <!--SUPERNATURAL SYNTH TONE-->
             <TreeViewItem Header="SuperNATURAL Synth Tone"
-                      IsExpanded="True"
-                      d:Visibility="Visible"
-                      Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALSynthTone}, FallbackValue=Collapsed}">
-                <StackPanel>
+                          IsExpanded="True"
+                          d:Visibility="Visible"
+                          Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALSynthTone}, FallbackValue=Collapsed}">
 
-                    <!--SUPERNATURAL SYNTH TONE: COMMON-->
-                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                <!--PCM SYNTH TONE: COMMON-->
+                <TreeViewItem IsExpanded="True">
+
+                    <TreeViewItem.Header>
+
+                        <!--SUPERNATURAL SYNTH TONE: COMMON-->
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
                                    CommandParameter="{x:Type local:SNSCommonTab}"
                                    Content="Common"/>
+
+                    </TreeViewItem.Header>
+
+                    <!--SUPERNATURAL SYNTH TONE: WAVE-->
+                    <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:SNSWaveTab}"
+                                   Content="Wave"/>
+                </TreeViewItem>
+                
+                <StackPanel>
                     
                     <!--SUPERNATURAL SYNTH TONE: MFX-->
                     <StackPanel Orientation="Horizontal">
@@ -114,12 +128,20 @@
                                            Value="{Binding Integra.TemporaryTone.SuperNATURALSynthTone.Common.TFXSwitch}"/>
 
                     </StackPanel>
-                    
-                    <xl:LinkButton>Partial 1</xl:LinkButton>
-                    <xl:LinkButton>Partial 2</xl:LinkButton>
-                    <xl:LinkButton>Partial 3</xl:LinkButton>
+
+                    <!--SUPERNATURAL SYNTH TONE: PARTIAL-->
+                    <StackPanel Orientation="Horizontal">
+
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:SNSSynthTonePartial}"
+                                       Content="Partial: "/>
+
+                        <xl:EnumeratedText Value="{Binding Integra.TemporaryTone.SuperNATURALSynthTone.SelectedPartial}"/>
+
+                    </StackPanel>
                 </StackPanel>
             </TreeViewItem>
+            
             <TreeViewItem Header="SuperNATURAL Drum Kit"
                       IsExpanded="True"
                       d:Visibility="Visible"

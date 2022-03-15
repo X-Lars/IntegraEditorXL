@@ -10,7 +10,7 @@
              d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
              d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthToneCommon}">
 
-    <Grid DataContext="{Binding TemporaryTone.SuperNATURALSynthTone.Common}">
+    <Grid DataContext="{Binding TemporaryTone.SuperNATURALSynthTone}">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -21,9 +21,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        
         <!--TONE-->
-        <GroupBox Grid.Column="0" Header="Tone">
+        <GroupBox Grid.Column="0"
+                  DataContext="{Binding Common}"
+                  Header="Tone">
+            
             <StackPanel>
 
                 <TextBox MaxLength="12" 
@@ -41,6 +46,7 @@
 
         <!--PREVIEW-->
         <GroupBox Grid.Column="0" Grid.Row="1"
+                  DataContext="{Binding Common}"
                   Header="Preview">
 
             <StackPanel>
@@ -57,6 +63,7 @@
 
         <!--COMMON-->
         <GroupBox Grid.Column="1"
+                  DataContext="{Binding Common}"
                   Header="Common">
 
             <StackPanel>
@@ -80,7 +87,9 @@
         </GroupBox>
 
         <GroupBox Grid.Column="2"
-                  Header="">
+                  DataContext="{Binding Common}"
+                  Header="Name?">
+            
             <StackPanel>
                 
                 <xl:EnumeratedText Prefix="RING Switch"
@@ -99,7 +108,9 @@
             </StackPanel>
         </GroupBox>
 
+        
         <GroupBox Grid.Column="1" Grid.Row="1"
+                  DataContext="{Binding Common}"
                   Header="Pitch">
 
             <StackPanel>
@@ -116,6 +127,7 @@
         </GroupBox>
         
         <GroupBox Grid.Column="2" Grid.Row="1"
+                  DataContext="{Binding Common}"
                   Header="Portamento">
 
             <StackPanel>
@@ -133,6 +145,35 @@
             </StackPanel>
         </GroupBox>
         
-    </Grid>
+        <GroupBox Grid.Column="0" Grid.Row="2"
+                  DataContext="{Binding Misc}"
+                  d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthToneMisc}"
+                  Header="Misc">
 
+            <StackPanel>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Attack Time Interval Sens"
+                             Value="{Binding AttackTimeIntervalSens}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Release Time Interval Sens"
+                             Value="{Binding ReleaseTimeIntervalSens}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Portamento Time Interval Sens"
+                             Value="{Binding PortamentoTimeIntervalSens}"/>
+
+                <xl:EnumeratedText Prefix="Envelope Loop Mode"
+                                   Value="{Binding EnvelopeLoopMode}"/>
+
+                <xl:EnumeratedText Prefix="Envelope Loop Sync Note"
+                                   Value="{Binding EnvelopeLoopSyncNote}"/>
+
+                <xl:EnumeratedText Prefix="Chromatic Portamento"
+                                   Value="{Binding ChromaticPortamento}"/>
+                
+            </StackPanel>
+        </GroupBox>
+    </Grid>
 </UserControl>
