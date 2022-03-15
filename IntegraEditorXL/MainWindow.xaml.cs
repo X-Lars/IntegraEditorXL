@@ -47,7 +47,7 @@ namespace IntegraEditorXL
 
             Loaded += MainWindowLoaded;
 
-            StyleManager.StyleChanged += (o, e) => { this.InvalidateVisual(); };
+            StyleManager.StyleChanged += (o, e) => InvalidateVisual();
         }
 
        

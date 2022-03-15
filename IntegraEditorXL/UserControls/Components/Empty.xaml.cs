@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IntegraEditorXL.Views
+namespace IntegraEditorXL.UserControls.Components
 {
     /// <summary>
-    /// Interaction logic for StudioSetCommonReverb.xaml
+    /// Interaction logic for Empty.xaml
     /// </summary>
-    public partial class StudioSetCommonReverb : UserControl
+    public partial class Empty : UserControl
     {
-        public StudioSetCommonReverb()
+        public Empty()
         {
             InitializeComponent();
         }

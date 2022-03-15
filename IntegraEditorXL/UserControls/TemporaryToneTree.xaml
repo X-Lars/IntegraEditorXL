@@ -9,13 +9,15 @@
              xmlns:main="clr-namespace:IntegraEditorXL"
              xmlns:core="clr-namespace:IntegraXL.Core;assembly=IntegraXL"
              xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
+             xmlns:sxl="clr-namespace:StylesXL;assembly=StylesXL"
              mc:Ignorable="d" 
              d:DesignHeight="640" d:DesignWidth="200"
              d:Background="White"
              d:DataContext="{d:DesignInstance Type=core:IntegraTone}">
     
     <UserControl.Resources>
-        <converters:ComparisonVisibilityConverter x:Key="ComparisonConverter" />
+        <converters:ComparisonVisibilityConverter x:Key="ComparisonConverter"/>
+        <converters:MultiCompareConverter x:Key="MultiCompare"/>
         <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
     </UserControl.Resources>
 
@@ -49,7 +51,7 @@
         </GroupBox>
         
         <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-                Visibility="{Binding Integra.SelectedTone.IsEditable, Converter={StaticResource VisibilityConverter}}">
+                    Visibility="{Binding Integra.SelectedTone.IsEditable, Converter={StaticResource VisibilityConverter}}">
 
             <!--SUPERNATURAL ACOUSTIC TONE-->
             <TreeViewItem Header="SuperNATURAL Acoustic Tone"
@@ -164,8 +166,6 @@
                         <xl:EnumeratedText Value="{Binding Integra.TemporaryTone.SuperNATURALDrumKit.Common.TFXSwitch}"/>
 
                     </StackPanel>
-                    
-                    <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
 
                     <!--SUPERNATURAL DRUM KIT: NOTE-->
                     <StackPanel Orientation="Horizontal">
@@ -176,6 +176,26 @@
 
                         <xl:EnumeratedText Value="{Binding Integra.TemporaryTone.SuperNATURALDrumKit.SelectedNote}"/>
                         
+                    </StackPanel>
+
+                    <!--SUPERNATURAL DRUM KIT: COMP/EQ-->
+                    <StackPanel Orientation="Horizontal">
+
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:SNDCompEQ}"
+                                       Content="Comp/EQ">
+
+                            <xl:LinkButton.IsEnabled>
+                                <MultiBinding Converter="{StaticResource MultiCompare}">
+                                    <Binding Path="Integra.StudioSet.Common.DrumCompEQPart"/>
+                                    <Binding Path="Integra.Part"/>
+                                </MultiBinding>
+                            </xl:LinkButton.IsEnabled>
+                        </xl:LinkButton>
+
+                        <xl:EnumeratedText Prefix="Assign"
+                                           Value="{Binding Integra.StudioSet.Common.DrumCompEQPart}"/>
+
                     </StackPanel>
                 </StackPanel>
             </TreeViewItem>
@@ -253,15 +273,39 @@
                           d:Visibility="Visible"
                           Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMDrumkit}, FallbackValue=Collapsed}">
                 <StackPanel>
-                    <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
+
                     <xl:LinkButton>Common</xl:LinkButton>
+
+                    
                     <xl:LinkButton Command="{Binding ShowControlCommand}"
                                 CommandParameter="{x:Type local:MFXEdit}"
                                 Content="MFX"/>
+
+                    
                     <xl:LinkButton Command="{Binding ShowControlCommand}"
                                 CommandParameter="{x:Type local:PCMNotesOverview}"
                                 Content="Notes"/>
                     <xl:LinkButton>Common 2</xl:LinkButton>
+
+                    <!--PCM DRUM KIT: COMP/EQ-->
+                    <StackPanel Orientation="Horizontal">
+
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:PCMCompEQ}"
+                                       Content="Comp/EQ">
+
+                            <xl:LinkButton.IsEnabled>
+                                <MultiBinding Converter="{StaticResource MultiCompare}">
+                                    <Binding Path="Integra.StudioSet.Common.DrumCompEQPart"/>
+                                    <Binding Path="Integra.Part"/>
+                                </MultiBinding>
+                            </xl:LinkButton.IsEnabled>
+                        </xl:LinkButton>
+
+                        <xl:EnumeratedText Prefix="Assign"
+                                           Value="{Binding Integra.StudioSet.Common.DrumCompEQPart}"/>
+
+                    </StackPanel>
 
                 </StackPanel>
             </TreeViewItem>

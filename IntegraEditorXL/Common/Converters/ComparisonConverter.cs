@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 
 namespace IntegraEditorXL.Common.Converters
@@ -20,6 +21,8 @@ namespace IntegraEditorXL.Common.Converters
             return value?.Equals(true) == true ? parameter : Binding.DoNothing;
         }
     }
+
+    
 
     public class InversedComparisonConverter : IMultiValueConverter
     {

@@ -5,38 +5,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              xmlns:dx="clr-namespace:IntegraXL.Models.Parameters;assembly=IntegraXL"
+             xmlns:core="clr-namespace:IntegraXL.Core;assembly=IntegraXL"
              xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="160" d:DesignWidth="320" d:Background="White"
+             d:DesignHeight="160" d:DesignWidth="360" d:Background="White"
              d:DataContext="{d:DesignInstance Type=dx:CommonDelay}">
 
     <UserControl.Resources>
+        <converters:ComparisonVisibilityConverter x:Key="CompareVisibility"/>
         <converters:BoolVisibility x:Key="Visibility"/>
     </UserControl.Resources>
 
     <Grid DataContext="{Binding Parameters}">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="120"/>
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
             
             <Label HorizontalContentAlignment="Center">Left</Label>
             
-            <xl:EnumeratedText Prefix="Switch"
+            <xl:EnumeratedText x:Name="LeftSwitch"
+                               Prefix="Switch"
                                Value="{Binding LeftSwitch}"/>
 
             <xl:SpinText Min="0" Max="1000"
                          Prefix="Delay"
+                         Suffix="ms"
                          Value="{Binding LeftMSec}"
-                         Suffix="Ms"/>
+                         Visibility="{Binding LeftSwitch, Converter={StaticResource CompareVisibility}, ConverterParameter={x:Static core:IntegraRateMSecSwitch.MSec}}"/>
 
             <xl:EnumeratedText HorizontalContentAlignment="Center"
                                Prefix="Delay"
-                               Value="{Binding LeftNote}"/>
+                               Value="{Binding LeftNote}"
+                               Visibility="{Binding LeftSwitch, Converter={StaticResource CompareVisibility}, ConverterParameter={x:Static core:IntegraRateMSecSwitch.Note}}"/>
 
             <xl:SpinText Min="0" Max="127"
                          Prefix="Level"
@@ -52,13 +57,13 @@
 
             <xl:SpinText Min="0" Max="1000"
                          Prefix="Delay"
-                         Suffix="Ms"
+                         Suffix="ms"
                          Value="{Binding CenterMSec}"
-                         />
+                         Visibility="{Binding CenterSwitch, Converter={StaticResource CompareVisibility}, ConverterParameter={x:Static core:IntegraRateMSecSwitch.MSec}}"/>
 
             <xl:EnumeratedText Prefix="Delay"
                                Value="{Binding CenterNote}"
-                               />
+                               Visibility="{Binding CenterSwitch, Converter={StaticResource CompareVisibility}, ConverterParameter={x:Static core:IntegraRateMSecSwitch.Note}}"/>
 
             <xl:SpinText Min="0" Max="127"
                          Prefix="Level"
@@ -69,8 +74,7 @@
                          Prefix="Feedback"
                          ShowPositiveSign="True"
                          Suffix="%"
-                         Value="{Binding CenterFeedback}"
-                         />
+                         Value="{Binding CenterFeedback}"/>
 
             <xl:EnumeratedText Prefix="HF Damp"
                                Value="{Binding HFDamp}"/>
@@ -85,12 +89,13 @@
 
             <xl:SpinText Min="0" Max="1000"
                          Prefix="Delay"
-                         Suffix="Ms"
+                         Suffix="ms"
                          Value="{Binding RightMSec}"
-                         />
+                         Visibility="{Binding RightSwitch, Converter={StaticResource CompareVisibility}, ConverterParameter={x:Static core:IntegraRateMSecSwitch.MSec}}"/>
 
             <xl:EnumeratedText Prefix="Delay"
-                               Value="{Binding RightNote}"/>
+                               Value="{Binding RightNote}"
+                               Visibility="{Binding RightSwitch, Converter={StaticResource CompareVisibility}, ConverterParameter={x:Static core:IntegraRateMSecSwitch.Note}}"/>
 
             <xl:SpinText Min="0" Max="127"
                          Prefix="Level"

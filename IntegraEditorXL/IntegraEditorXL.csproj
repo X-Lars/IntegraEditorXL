@@ -29,6 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="UserControls\Components\CommonChorusGM2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserControls\SNA\SNAParametersBellMallet2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -68,9 +71,16 @@
     <Compile Update="UserControls\SNA\SNAParametersPianoMono.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserControls\PCMCompEQ.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="UserControls\Components\CommonChorusGM2.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UserControls\SNA\SNAParametersBellMallet2.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
@@ -120,6 +130,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserControls\SNA\SNAParametersPianoMono.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\PCMCompEQ.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

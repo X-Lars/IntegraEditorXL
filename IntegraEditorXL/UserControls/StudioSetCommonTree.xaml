@@ -32,7 +32,7 @@
                 
                 <xl:LinkButton Content="Chorus: "
                                Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type view:StudioSetCommonChorus}"/>
+                               CommandParameter="{x:Type view:StudioSetCommonChorusView}"/>
                 
                 <xl:EnumeratedText Value="{Binding Integra.StudioSet.Common.ChorusSwitch}"/>
                 
@@ -43,7 +43,7 @@
                 
                 <xl:LinkButton Content="Reverb: "
                                Command="{Binding ShowControlCommand}"
-                               CommandParameter="{x:Type view:StudioSetCommonReverb}"/>
+                               CommandParameter="{x:Type view:StudioSetCommonReverbView}"/>
                 
                 <xl:EnumeratedText Value="{Binding Integra.StudioSet.Common.ReverbSwitch}"/>
                 

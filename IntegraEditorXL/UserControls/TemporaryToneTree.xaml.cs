@@ -1,4 +1,5 @@
-﻿namespace IntegraEditorXL.UserControls
+﻿
+namespace IntegraEditorXL.UserControls
 {
     public partial class TemporaryToneTree
     {
