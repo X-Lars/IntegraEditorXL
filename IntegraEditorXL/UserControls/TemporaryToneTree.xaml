@@ -51,11 +51,13 @@
         <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                 Visibility="{Binding Integra.SelectedTone.IsEditable, Converter={StaticResource VisibilityConverter}}">
 
+            <!--SUPERNATURAL ACOUSTIC TONE-->
             <TreeViewItem Header="SuperNATURAL Acoustic Tone"
                           IsExpanded="True"
                           d:Visibility="Visible"
                           Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALAcousticTone}, FallbackValue=Collapsed}">
 
+                <!--SUPERNATURAL ACOUSTIC TONE: COMMON-->
                 <TreeViewItem IsExpanded="True">
 
                     <TreeViewItem.Header>
@@ -73,28 +75,46 @@
                     </StackPanel>
                 </TreeViewItem>
                               
-                              
+                <!--SUPERNATURAL ACOUSTIC TONE: MFX-->
                 <StackPanel>
                     
                     <StackPanel Orientation="Horizontal">
+                        
                         <xl:LinkButton Command="{Binding ShowControlCommand}"
-                                   CommandParameter="{x:Type local:MFXEdit}"
-                                   Content="MFX :"/>
+                                       CommandParameter="{x:Type local:MFXEdit}"
+                                       Content="MFX :"/>
+                        
                         <xl:EnumeratedText HorizontalContentAlignment="Left"
-                                               Value="{Binding Integra.TemporaryTone.MFX.Type, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                           Value="{Binding Integra.TemporaryTone.SuperNATURALAcousticTone.Common.TFXSwitch}"/>
+                        
                     </StackPanel>
                 </StackPanel>
             </TreeViewItem>
 
+            <!--SUPERNATURAL SYNTH TONE-->
             <TreeViewItem Header="SuperNATURAL Synth Tone"
                       IsExpanded="True"
                       d:Visibility="Visible"
                       Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALSynthTone}, FallbackValue=Collapsed}">
                 <StackPanel>
-                    <xl:LinkButton>Common</xl:LinkButton>
+
+                    <!--SUPERNATURAL SYNTH TONE: COMMON-->
                     <xl:LinkButton Command="{Binding ShowControlCommand}"
-                                   CommandParameter="{x:Type local:MFXEdit}"
-                                   Content="MFX"/>
+                                   CommandParameter="{x:Type local:SNSCommonTab}"
+                                   Content="Common"/>
+                    
+                    <!--SUPERNATURAL SYNTH TONE: MFX-->
+                    <StackPanel Orientation="Horizontal">
+                        
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:MFXEdit}"
+                                       Content="MFX: "/>
+
+                        <xl:EnumeratedText HorizontalContentAlignment="Left"
+                                           Value="{Binding Integra.TemporaryTone.SuperNATURALSynthTone.Common.TFXSwitch}"/>
+
+                    </StackPanel>
+                    
                     <xl:LinkButton>Partial 1</xl:LinkButton>
                     <xl:LinkButton>Partial 2</xl:LinkButton>
                     <xl:LinkButton>Partial 3</xl:LinkButton>

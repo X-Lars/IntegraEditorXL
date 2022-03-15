@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.SNSCommonTab"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=models:SuperNATURALSynthToneCommon}">
+
+    <Grid DataContext="{Binding TemporaryTone.SuperNATURALSynthTone.Common}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--TONE-->
+        <GroupBox Grid.Column="0" Header="Tone">
+            <StackPanel>
+
+                <TextBox MaxLength="12" 
+                         Text="{Binding ToneName}"/>
+
+                <xl:EnumeratedText Prefix="Category"
+                                   Value="{Binding Category}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Level"
+                             Value="{Binding ToneLevel}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <!--PREVIEW-->
+        <GroupBox Grid.Column="0" Grid.Row="1"
+                  Header="Preview">
+
+            <StackPanel>
+
+                <xl:EnumeratedText Prefix="Phrase Number"
+                                   Value="{Binding PhraseNumber}"/>
+
+                <xl:SpinText Min="-3" Max="3"
+                             Prefix="Phrase Octave Shift"
+                             ShowPositiveSign="True"
+                             Value="{Binding PhraseOctaveShift}"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!--COMMON-->
+        <GroupBox Grid.Column="1"
+                  Header="Common">
+
+            <StackPanel>
+
+                <xl:SpinText Min="-3" Max="3"
+                             Prefix="Octave Shift"
+                             ShowPositiveSign="True"
+                             Value="{Binding OctaveShift}"/>
+
+                <xl:EnumeratedText Prefix="Mono Switch"
+                                   Value="{Binding MonoSwitch}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Analog Feel"
+                             Value="{Binding AnalogFeel}"/>
+
+                <xl:EnumeratedText Prefix="Legato Switch"
+                                   Value="{Binding LegatoSwitch}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2"
+                  Header="">
+            <StackPanel>
+                
+                <xl:EnumeratedText Prefix="RING Switch"
+                                   Value="{Binding RingSwitch}"/>
+                
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Wave Shape"
+                             Value="{Binding WaveShape}"/>
+
+                <xl:EnumeratedText Prefix="Unison Switch"
+                                   Value="{Binding UnisonSwitch}"/>
+
+                <xl:EnumeratedText Prefix="Unison Size"
+                                   Value="{Binding UnisonSize}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Grid.Row="1"
+                  Header="Pitch">
+
+            <StackPanel>
+
+                <xl:SpinText Min="0" Max="48"
+                             Prefix="Bend Range Up"
+                             Value="{Binding PitchBendRangeUp}"/>
+
+                <xl:SpinText Min="0" Max="48"
+                             Prefix="Bend Range Down"
+                             Value="{Binding PitchBendRangeDown}"/>
+
+            </StackPanel>
+        </GroupBox>
+        
+        <GroupBox Grid.Column="2" Grid.Row="1"
+                  Header="Portamento">
+
+            <StackPanel>
+
+                <xl:EnumeratedText Prefix="Switch"
+                                   Value="{Binding PortamentoSwitch}"/>
+
+                <xl:EnumeratedText Prefix="Mode"
+                                   Value="{Binding PortamentoMode}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Time"
+                             Value="{Binding PortamentoTime}"/>
+
+            </StackPanel>
+        </GroupBox>
+        
+    </Grid>
+
+</UserControl>
