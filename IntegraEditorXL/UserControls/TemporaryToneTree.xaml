@@ -124,8 +124,7 @@
                                        CommandParameter="{x:Type local:MFXEdit}"
                                        Content="MFX: "/>
 
-                        <xl:EnumeratedText HorizontalContentAlignment="Left"
-                                           Value="{Binding Integra.TemporaryTone.SuperNATURALSynthTone.Common.TFXSwitch}"/>
+                        <xl:EnumeratedText Value="{Binding Integra.TemporaryTone.SuperNATURALSynthTone.Common.TFXSwitch}"/>
 
                     </StackPanel>
 
@@ -142,20 +141,42 @@
                 </StackPanel>
             </TreeViewItem>
             
+            <!--SUPERNATURAL DRUM KIT-->
             <TreeViewItem Header="SuperNATURAL Drum Kit"
                       IsExpanded="True"
                       d:Visibility="Visible"
                       Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALDrumkit}, FallbackValue=Collapsed}">
 
                 <StackPanel d:DataContext="{d:DesignInstance main:MainWindow}">
-                    <xl:LinkButton>Common</xl:LinkButton>
+
+                    <!--SUPERNATURAL DRUM KIT: COMMON-->
                     <xl:LinkButton Command="{Binding ShowControlCommand}"
-                                   CommandParameter="{x:Type local:MFXEdit}"
-                                   Content="MFX"/>
+                                   CommandParameter="{x:Type local:SNDCommonTab}"
+                                   Content="Common"/>
+
+                    <!--SUPERNATURAL DRUM KIT: MFX-->
+                    <StackPanel Orientation="Horizontal">
+                        
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:MFXEdit}"
+                                       Content="MFX: "/>
+
+                        <xl:EnumeratedText Value="{Binding Integra.TemporaryTone.SuperNATURALDrumKit.Common.TFXSwitch}"/>
+
+                    </StackPanel>
+                    
                     <xl:LinkButton>Common Comp/EQ</xl:LinkButton>
-                    <xl:LinkButton Command="{Binding ShowControlCommand}"
-                                   CommandParameter="{x:Type local:SNDNotesOverview}"
-                                   Content="Notes" />
+
+                    <!--SUPERNATURAL DRUM KIT: NOTE-->
+                    <StackPanel Orientation="Horizontal">
+                        
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:SNDNote}"
+                                       Content="Note: "/>
+
+                        <xl:EnumeratedText Value="{Binding Integra.TemporaryTone.SuperNATURALDrumKit.SelectedNote}"/>
+                        
+                    </StackPanel>
                 </StackPanel>
             </TreeViewItem>
 

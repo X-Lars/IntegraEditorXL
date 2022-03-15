@@ -155,7 +155,6 @@
                             <c:PartSelection/>
                             <uc:VirtualSlots/>
                             <uc:SelectedTone/>
-                            <uc:SelectedNote/>
                         </StackPanel>
                     </xl:SidebarSection>
                 </xl:Sidebar.Sections>
