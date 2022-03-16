@@ -1,0 +1,813 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.PCMDrumKitWaveTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:i="clr-namespace:IntegraControlsXL;assembly=IntegraControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="840" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=models:PCMDrumKitPartial}">
+
+    <Grid DataContext="{Binding TemporaryTone.PCMDrumKit}"
+          d:DataContext="{d:DesignInstance Type=models:PCMDrumKit}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <xl:EnumeratedText Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Prefix="Partial"
+                           Value="{Binding SelectedPartial}"/>
+
+        <GroupBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:PCMDrumKitPartial}"
+                  Header="Common">
+
+            <Grid>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <GroupBox Grid.Column="0"
+                          Header="General">
+                    
+                    <StackPanel Grid.Column="0">
+                    
+                        <TextBox MaxLength="12" 
+                                 Text="{Binding PartialName}"/>
+
+                        <xl:SpinText Min="0" Max="127"
+                                     Prefix="Level"
+                                     Value="{Binding Level}"/>
+
+
+                    </StackPanel>
+                </GroupBox>
+                
+                <!--PITCH-->
+                <GroupBox Grid.Column="1" Grid.ColumnSpan="2"
+                          Header="Options">
+
+                    <Grid>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            
+
+                            <xl:EnumeratedText Prefix="WMT Velocity Control"
+                                           Value="{Binding WMTVelocityControl}"/>
+
+                            <xl:EnumeratedText Prefix="Envelope Mode"
+                                       Value="{Binding EnvMode}"/>
+
+                            <xl:EnumeratedText Prefix="One Shot Mode"
+                                           Value="{Binding OneShotMode}"/>
+
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+
+                            <xl:EnumeratedText Prefix="Assign Type"
+                                           Value="{Binding AssignType}"/>
+
+                            <xl:EnumeratedText Prefix="Mute Group"
+                                           Value="{Binding MuteGroup}"/>
+
+
+                            <xl:EnumeratedText Prefix="Rx Expression"
+                                           Value="{Binding ReceiveExpression}"/>
+
+                            <xl:EnumeratedText Prefix="Rx Hold"
+                                           Value="{Binding ReceiveHold}"/>
+
+                        </StackPanel>
+
+                    </Grid>
+                </GroupBox>
+                    
+                <GroupBox Grid.Column="3"
+                          Header="Output">
+
+                    <StackPanel>
+                        
+                        <xl:EnumeratedText Prefix="Output Assign"
+                                           Value="{Binding OutputAssign}"/>
+
+                        <xl:SpinText Min="0" Max="127"
+                                     Prefix="Output Level"
+                                     Value="{Binding OutputLevel}"/>
+
+                        <xl:SpinText Min="0" Max="127"
+                                     Prefix="Chorus Send Level"
+                                     Value="{Binding ChorusSendLevel}"/>
+
+                        <xl:SpinText Min="0" Max="127"
+                                     Prefix="Reverb Send Level"
+                                     Value="{Binding ReverbSendLevel}"/>
+
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+
+        <!--PARTIAL 1-->
+        <GroupBox Grid.Column="0" Grid.Row="2"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:PCMDrumKitPartial}"
+                  Width="420">
+
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Partial 1 "/>
+                    <xl:EnumeratedText Value="{Binding WMT1Switch}"/>
+                </StackPanel>
+            </GroupBox.Header>
+
+            <Grid >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+
+                <xl:EnumeratedText Grid.Column="0" Grid.Row="0"
+                               Prefix="Type"
+                               Value="{Binding WMT1WaveGroupType}"/>
+
+                <xl:EnumeratedText Grid.Column="1" Grid.Row="0"
+                               Prefix="Group"
+                               Value="{Binding WMT1WaveGroupID}"/>
+
+                <!--PARTIAL 1: WAVEFORM-->
+                <StackPanel Grid.Column="0" Grid.Row="1"
+                        Orientation="Horizontal">
+
+                    <xl:SpinText Min="0" Max="1083"
+                            Prefix="L"
+                            Value="{Binding WMT1WaveLeft}"/>
+
+                    <TextBlock Text=": "/>
+                    <TextBlock Text="{Binding Wave1Left.Name, FallbackValue='------------'}"/>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1"
+                        Orientation="Horizontal">
+
+                    <xl:SpinText Min="0" Max="1083"
+                                Prefix="R"
+                                Value="{Binding WMT1WaveRight}"/>
+
+                    <TextBlock Text=": "/>
+                    <TextBlock Text="{Binding Wave1Right.Name, FallbackValue='------------'}"/>
+
+                </StackPanel>
+
+                <!--PARTIAL 1: WAVE-->
+                <GroupBox Grid.Column="0" Grid.Row="2"
+                          Header="Wave">
+                    <StackPanel Grid.Column="0" Grid.Row="2">
+
+                        <xl:SpinText Min="0" Max="127"
+                                     Prefix="Level"
+                                     Value="{Binding WMT1Level}"/>
+
+                        <xl:ListText ItemsSource="{Binding PanValues}"
+                                     Prefix="Pan"
+                                     SelectedIndex="{Binding WMT1Pan}"/>
+
+                        <xl:SpinText Interval="6"
+                                     Min="-6" Max="12"
+                                     Prefix="Gain"
+                                     ShowPositiveSign="True"
+                                     Value="{Binding WMT1Gain}"/>
+
+                        <xl:EnumeratedText Prefix="Tempo Sync"
+                                           Value="{Binding WMT1TempoSync}"/>
+                        
+                        <xl:SpinText Min="-48" Max="48"
+                                 Prefix="Coarse Tune"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding WMT1CoarseTune}"/>
+
+                        <xl:SpinText Min="-50" Max="50"
+                                 Prefix="Fine Tune"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding WMT1FineTune}"/>
+
+                        <xl:EnumeratedText Prefix="Random Pan"
+                                           Value="{Binding WMT1RandomPanSwitch}"/>
+
+                        <xl:EnumeratedText Prefix="Alternate Pan"
+                                           Value="{Binding WMT1AlternatePanSwitch}"/>
+
+                    </StackPanel>
+                </GroupBox>
+
+                <!--PARTIAL 1: FXM-->
+                <GroupBox Grid.Column="1" Grid.Row="2">
+
+                    <GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="FXM "/>
+                            <xl:EnumeratedText Value="{Binding WMT1FXMSwitch}"/>
+                        </StackPanel>
+                    </GroupBox.Header>
+                    
+                    <StackPanel Grid.Column="0" Grid.Row="2">
+
+                        <xl:SpinText Min="1" Max="4"
+                                     Prefix="Color"
+                                     Value="{Binding WMT1FXMColor}"/>
+
+                        <xl:SpinText Min="0" Max="16"
+                                     Prefix="Depth"
+                                     Value="{Binding WMT1FXMDepth}"/>
+
+                    </StackPanel>
+                </GroupBox>
+
+                <!--PARTIAL 1: WMT-->
+                <GroupBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                          Header="WMT">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Center" 
+                                   Text="Velocity Range"/>
+                        
+                        <i:RangeSlider Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                                       Min="1" Max="127"
+                                       ValueLower="{Binding WMT1VelocityRangeLower}"
+                                       ValueUpper="{Binding WMT1VelocityRangeUpper}"/>
+                        
+                        <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Center"
+                                   Text="Lower Fade Upper"/>
+
+                        <i:KeyFadeSlider Grid.Column="0" Grid.Row="3"
+                                         Min="0" Max="127"
+                                         Value="{Binding WMT1VelocityFadeLower}"/>
+                        
+                        <i:KeyFadeSlider Grid.Column="1" Grid.Row="3"
+                                         Min="127" Max="0"
+                                         Value="{Binding WMT1VelocityFadeUpper}"/>
+                    </Grid>
+                    
+                </GroupBox>
+            </Grid>
+
+        </GroupBox>
+
+        <!--PARTIAL 2-->
+        <GroupBox Grid.Column="1" Grid.Row="2"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:PCMDrumKitPartial}"
+                  Width="420">
+
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Partial 2 "/>
+                    <xl:EnumeratedText Value="{Binding WMT2Switch}"/>
+                </StackPanel>
+            </GroupBox.Header>
+
+            <Grid >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+
+                <xl:EnumeratedText Grid.Column="0" Grid.Row="0"
+                               Prefix="Type"
+                               Value="{Binding WMT2WaveGroupType}"/>
+
+                <xl:EnumeratedText Grid.Column="1" Grid.Row="0"
+                               Prefix="Group"
+                               Value="{Binding WMT2WaveGroupID}"/>
+
+                <!--PARTIAL 2: WAVEFORM-->
+                <StackPanel Grid.Column="0" Grid.Row="1"
+                        Orientation="Horizontal">
+
+                    <xl:SpinText Min="0" Max="1083"
+                            Prefix="L"
+                            Value="{Binding WMT2WaveLeft}"/>
+
+                    <TextBlock Text=": "/>
+                    <TextBlock Text="{Binding Wave2Left.Name, FallbackValue='------------'}"/>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1"
+                        Orientation="Horizontal">
+
+                    <xl:SpinText Min="0" Max="1083"
+                                Prefix="R"
+                                Value="{Binding WMT2WaveRight}"/>
+
+                    <TextBlock Text=": "/>
+                    <TextBlock Text="{Binding Wave2Right.Name, FallbackValue='------------'}"/>
+
+                </StackPanel>
+
+                <!--PARTIAL 2: WAVE-->
+                <GroupBox Grid.Column="0" Grid.Row="2"
+                          Header="Wave">
+                    <StackPanel Grid.Column="0" Grid.Row="2">
+
+                        <xl:SpinText Min="0" Max="127"
+                                     Prefix="Level"
+                                     Value="{Binding WMT2Level}"/>
+
+                        <xl:ListText ItemsSource="{Binding PanValues}"
+                                     Prefix="Pan"
+                                     SelectedIndex="{Binding WMT2Pan}"/>
+
+                        <xl:SpinText Interval="6"
+                                     Min="-6" Max="12"
+                                     Prefix="Gain"
+                                     ShowPositiveSign="True"
+                                     Value="{Binding WMT2Gain}"/>
+
+                        <xl:EnumeratedText Prefix="Tempo Sync"
+                                           Value="{Binding WMT2TempoSync}"/>
+
+                        <xl:SpinText Min="-48" Max="48"
+                                 Prefix="Coarse Tune"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding WMT2CoarseTune}"/>
+
+                        <xl:SpinText Min="-50" Max="50"
+                                 Prefix="Fine Tune"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding WMT2FineTune}"/>
+
+                        <xl:EnumeratedText Prefix="Random Pan"
+                                           Value="{Binding WMT2RandomPanSwitch}"/>
+
+                        <xl:EnumeratedText Prefix="Alternate Pan"
+                                           Value="{Binding WMT2AlternatePanSwitch}"/>
+
+                    </StackPanel>
+                </GroupBox>
+
+                <!--PARTIAL 2: FXM-->
+                <GroupBox Grid.Column="1" Grid.Row="2">
+
+                    <GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="FXM "/>
+                            <xl:EnumeratedText Value="{Binding WMT2FXMSwitch}"/>
+                        </StackPanel>
+                    </GroupBox.Header>
+
+                    <StackPanel Grid.Column="0" Grid.Row="2">
+
+                        <xl:SpinText Min="1" Max="4"
+                                     Prefix="Color"
+                                     Value="{Binding WMT2FXMColor}"/>
+
+                        <xl:SpinText Min="0" Max="16"
+                                     Prefix="Depth"
+                                     Value="{Binding WMT2FXMDepth}"/>
+
+                    </StackPanel>
+                </GroupBox>
+
+                <!--PARTIAL 2: WMT-->
+                <GroupBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                          Header="WMT">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Center" 
+                                   Text="Velocity Range"/>
+
+                        <i:RangeSlider Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                                       Min="1" Max="127"
+                                       ValueLower="{Binding WMT2VelocityRangeLower}"
+                                       ValueUpper="{Binding WMT2VelocityRangeUpper}"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Center"
+                                   Text="Lower Fade Upper"/>
+
+                        <i:KeyFadeSlider Grid.Column="0" Grid.Row="3"
+                                         Min="0" Max="127"
+                                         Value="{Binding WMT2VelocityFadeLower}"/>
+
+                        <i:KeyFadeSlider Grid.Column="1" Grid.Row="3"
+                                         Min="127" Max="0"
+                                         Value="{Binding WMT2VelocityFadeUpper}"/>
+                    </Grid>
+
+                </GroupBox>
+            </Grid>
+
+        </GroupBox>
+
+        <!--PARTIAL 3-->
+        <GroupBox Grid.Column="0" Grid.Row="3"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:PCMDrumKitPartial}"
+                  Width="420">
+
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Partial 3 "/>
+                    <xl:EnumeratedText Value="{Binding WMT3Switch}"/>
+                </StackPanel>
+            </GroupBox.Header>
+
+            <Grid >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+
+                <xl:EnumeratedText Grid.Column="0" Grid.Row="0"
+                               Prefix="Type"
+                               Value="{Binding WMT3WaveGroupType}"/>
+
+                <xl:EnumeratedText Grid.Column="1" Grid.Row="0"
+                               Prefix="Group"
+                               Value="{Binding WMT3WaveGroupID}"/>
+
+                <!--PARTIAL 3: WAVEFORM-->
+                <StackPanel Grid.Column="0" Grid.Row="1"
+                        Orientation="Horizontal">
+
+                    <xl:SpinText Min="0" Max="1083"
+                            Prefix="L"
+                            Value="{Binding WMT3WaveLeft}"/>
+
+                    <TextBlock Text=": "/>
+                    <TextBlock Text="{Binding Wave3Left.Name, FallbackValue='------------'}"/>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1"
+                        Orientation="Horizontal">
+
+                    <xl:SpinText Min="0" Max="1083"
+                                Prefix="R"
+                                Value="{Binding WMT3WaveRight}"/>
+
+                    <TextBlock Text=": "/>
+                    <TextBlock Text="{Binding Wave3Right.Name, FallbackValue='------------'}"/>
+
+                </StackPanel>
+
+                <!--PARTIAL 3: WAVE-->
+                <GroupBox Grid.Column="0" Grid.Row="2"
+                          Header="Wave">
+                    <StackPanel Grid.Column="0" Grid.Row="2">
+
+                        <xl:SpinText Min="0" Max="127"
+                                     Prefix="Level"
+                                     Value="{Binding WMT3Level}"/>
+
+                        <xl:ListText ItemsSource="{Binding PanValues}"
+                                     Prefix="Pan"
+                                     SelectedIndex="{Binding WMT3Pan}"/>
+
+                        <xl:SpinText Interval="6"
+                                     Min="-6" Max="12"
+                                     Prefix="Gain"
+                                     ShowPositiveSign="True"
+                                     Value="{Binding WMT3Gain}"/>
+
+                        <xl:EnumeratedText Prefix="Tempo Sync"
+                                           Value="{Binding WMT3TempoSync}"/>
+
+                        <xl:SpinText Min="-48" Max="48"
+                                 Prefix="Coarse Tune"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding WMT3CoarseTune}"/>
+
+                        <xl:SpinText Min="-50" Max="50"
+                                 Prefix="Fine Tune"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding WMT3FineTune}"/>
+
+                        <xl:EnumeratedText Prefix="Random Pan"
+                                           Value="{Binding WMT3RandomPanSwitch}"/>
+
+                        <xl:EnumeratedText Prefix="Alternate Pan"
+                                           Value="{Binding WMT3AlternatePanSwitch}"/>
+
+                    </StackPanel>
+                </GroupBox>
+
+                <!--PARTIAL 3: FXM-->
+                <GroupBox Grid.Column="1" Grid.Row="2">
+
+                    <GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="FXM "/>
+                            <xl:EnumeratedText Value="{Binding WMT3FXMSwitch}"/>
+                        </StackPanel>
+                    </GroupBox.Header>
+
+                    <StackPanel Grid.Column="0" Grid.Row="2">
+
+                        <xl:SpinText Min="1" Max="4"
+                                     Prefix="Color"
+                                     Value="{Binding WMT3FXMColor}"/>
+
+                        <xl:SpinText Min="0" Max="16"
+                                     Prefix="Depth"
+                                     Value="{Binding WMT3FXMDepth}"/>
+
+                    </StackPanel>
+                </GroupBox>
+
+                <!--PARTIAL 3: WMT-->
+                <GroupBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                          Header="WMT">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Center" 
+                                   Text="Velocity Range"/>
+
+                        <i:RangeSlider Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                                       Min="1" Max="127"
+                                       ValueLower="{Binding WMT3VelocityRangeLower}"
+                                       ValueUpper="{Binding WMT3VelocityRangeUpper}"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Center"
+                                   Text="Lower Fade Upper"/>
+
+                        <i:KeyFadeSlider Grid.Column="0" Grid.Row="3"
+                                         Min="0" Max="127"
+                                         Value="{Binding WMT3VelocityFadeLower}"/>
+
+                        <i:KeyFadeSlider Grid.Column="1" Grid.Row="3"
+                                         Min="127" Max="0"
+                                         Value="{Binding WMT3VelocityFadeUpper}"/>
+                    </Grid>
+
+                </GroupBox>
+            </Grid>
+
+        </GroupBox>
+
+        <!--PARTIAL 4-->
+        <GroupBox Grid.Column="1" Grid.Row="3"
+                  DataContext="{Binding Partial}"
+                  d:DataContext="{d:DesignInstance Type=models:PCMDrumKitPartial}"
+                  Width="420">
+
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Partial 4 "/>
+                    <xl:EnumeratedText Value="{Binding WMT4Switch}"/>
+                </StackPanel>
+            </GroupBox.Header>
+
+            <Grid >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+
+                <xl:EnumeratedText Grid.Column="0" Grid.Row="0"
+                               Prefix="Type"
+                               Value="{Binding WMT4WaveGroupType}"/>
+
+                <xl:EnumeratedText Grid.Column="1" Grid.Row="0"
+                               Prefix="Group"
+                               Value="{Binding WMT4WaveGroupID}"/>
+
+                <!--PARTIAL 4: WAVEFORM-->
+                <StackPanel Grid.Column="0" Grid.Row="1"
+                        Orientation="Horizontal">
+
+                    <xl:SpinText Min="0" Max="1083"
+                            Prefix="L"
+                            Value="{Binding WMT4WaveLeft}"/>
+
+                    <TextBlock Text=": "/>
+                    <TextBlock Text="{Binding Wave4Left.Name, FallbackValue='------------'}"/>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1"
+                        Orientation="Horizontal">
+
+                    <xl:SpinText Min="0" Max="1083"
+                                Prefix="R"
+                                Value="{Binding WMT4WaveRight}"/>
+
+                    <TextBlock Text=": "/>
+                    <TextBlock Text="{Binding Wave4Right.Name, FallbackValue='------------'}"/>
+
+                </StackPanel>
+
+                <!--PARTIAL 4: WAVE-->
+                <GroupBox Grid.Column="0" Grid.Row="2"
+                          Header="Wave">
+                    <StackPanel Grid.Column="0" Grid.Row="2">
+
+                        <xl:SpinText Min="0" Max="127"
+                                     Prefix="Level"
+                                     Value="{Binding WMT4Level}"/>
+
+                        <xl:ListText ItemsSource="{Binding PanValues}"
+                                     Prefix="Pan"
+                                     SelectedIndex="{Binding WMT4Pan}"/>
+
+                        <xl:SpinText Interval="6"
+                                     Min="-6" Max="12"
+                                     Prefix="Gain"
+                                     ShowPositiveSign="True"
+                                     Value="{Binding WMT4Gain}"/>
+
+                        <xl:EnumeratedText Prefix="Tempo Sync"
+                                           Value="{Binding WMT4TempoSync}"/>
+
+                        <xl:SpinText Min="-48" Max="48"
+                                 Prefix="Coarse Tune"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding WMT4CoarseTune}"/>
+
+                        <xl:SpinText Min="-50" Max="50"
+                                 Prefix="Fine Tune"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding WMT4FineTune}"/>
+
+                        <xl:EnumeratedText Prefix="Random Pan"
+                                           Value="{Binding WMT4RandomPanSwitch}"/>
+
+                        <xl:EnumeratedText Prefix="Alternate Pan"
+                                           Value="{Binding WMT4AlternatePanSwitch}"/>
+
+                    </StackPanel>
+                </GroupBox>
+
+                <!--PARTIAL 4: FXM-->
+                <GroupBox Grid.Column="1" Grid.Row="2">
+
+                    <GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="FXM "/>
+                            <xl:EnumeratedText Value="{Binding WMT4FXMSwitch}"/>
+                        </StackPanel>
+                    </GroupBox.Header>
+
+                    <StackPanel Grid.Column="0" Grid.Row="2">
+
+                        <xl:SpinText Min="1" Max="4"
+                                     Prefix="Color"
+                                     Value="{Binding WMT4FXMColor}"/>
+
+                        <xl:SpinText Min="0" Max="16"
+                                     Prefix="Depth"
+                                     Value="{Binding WMT4FXMDepth}"/>
+
+                    </StackPanel>
+                </GroupBox>
+
+                <!--PARTIAL 4: WMT-->
+                <GroupBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                          Header="WMT">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Center" 
+                                   Text="Velocity Range"/>
+
+                        <i:RangeSlider Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                                       Min="1" Max="127"
+                                       ValueLower="{Binding WMT4VelocityRangeLower}"
+                                       ValueUpper="{Binding WMT4VelocityRangeUpper}"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Center"
+                                   Text="Lower Fade Upper"/>
+
+                        <i:KeyFadeSlider Grid.Column="0" Grid.Row="3"
+                                         Min="0" Max="127"
+                                         Value="{Binding WMT4VelocityFadeLower}"/>
+
+                        <i:KeyFadeSlider Grid.Column="1" Grid.Row="3"
+                                         Min="127" Max="0"
+                                         Value="{Binding WMT4VelocityFadeUpper}"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

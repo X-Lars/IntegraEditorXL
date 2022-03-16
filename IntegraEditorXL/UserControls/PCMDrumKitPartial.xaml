@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.PCMDrumKitPartial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:i="clr-namespace:IntegraControlsXL;assembly=IntegraControlsXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:components="clr-namespace:IntegraEditorXL.UserControls.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="960" d:DesignWidth="1280" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=models:PCMDrumKitPartial}">
+    
+    <Grid DataContext="{Binding TemporaryTone.PCMDrumKit}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="0"
+                    Orientation="Horizontal">
+            
+            <xl:EnumeratedText HorizontalAlignment="Left"
+                               Prefix="Partial"
+                               Value="{Binding SelectedPartial}"/>
+
+            <TextBlock Text="{Binding Partial.PartialName}"/>
+            
+        </StackPanel>
+
+        <components:PCMDrumKitPitchTab Grid.Column="0" Grid.Row="1"/>
+        <components:PCMDrumKitTVFTab Grid.Column="0" Grid.Row="2"/>
+        <components:PCMDrumKitTVATab Grid.Column="0" Grid.Row="3"/>
+    </Grid>
+</UserControl>

@@ -272,20 +272,48 @@
                           IsExpanded="True"
                           d:Visibility="Visible"
                           Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMDrumkit}, FallbackValue=Collapsed}">
+
+                <!--PCM DRUM KIT: COMMON-->
+                <TreeViewItem IsExpanded="True">
+
+                    <TreeViewItem.Header>
+                        <xl:LinkButton Content="Common"
+                                   Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:PCMDrumKitCommonTab}"/>
+
+                    </TreeViewItem.Header>
+
+                    <StackPanel>
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                   CommandParameter="{x:Type local:PCMDrumKitWaveTab}"
+                                   Content="Wave"/>
+
+                    </StackPanel>
+                </TreeViewItem>
+                
                 <StackPanel>
 
-                    <xl:LinkButton>Common</xl:LinkButton>
+                    <!--PCM DRUM KIT: MFX-->
+                    <StackPanel Orientation="Horizontal">
 
-                    
-                    <xl:LinkButton Command="{Binding ShowControlCommand}"
-                                CommandParameter="{x:Type local:MFXEdit}"
-                                Content="MFX"/>
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:MFXEdit}"
+                                       Content="MFX: "/>
 
-                    
-                    <xl:LinkButton Command="{Binding ShowControlCommand}"
-                                CommandParameter="{x:Type local:PCMNotesOverview}"
-                                Content="Notes"/>
-                    <xl:LinkButton>Common 2</xl:LinkButton>
+                        <xl:EnumeratedText Value="{Binding Integra.TemporaryTone.PCMDrumKit.Common02.TFXSwitch}"/>
+
+                    </StackPanel>
+
+                    <!--PCM DRUM KIT: PARTIAL-->
+                    <StackPanel Orientation="Horizontal">
+
+                        <xl:LinkButton Command="{Binding ShowControlCommand}"
+                                       CommandParameter="{x:Type local:PCMDrumKitPartial}"
+                                       Content="Partial: "/>
+
+                        <xl:EnumeratedText Value="{Binding Integra.TemporaryTone.PCMDrumKit.SelectedPartial}"/>
+
+                    </StackPanel>
 
                     <!--PCM DRUM KIT: COMP/EQ-->
                     <StackPanel Orientation="Horizontal">

@@ -32,6 +32,12 @@
     <Compile Update="UserControls\Components\CommonChorusGM2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserControls\Components\PCMDrumKitPitchTab.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\Components\PCMDrumKitTVATab.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserControls\SNA\SNAParametersBellMallet2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -78,6 +84,14 @@
 
   <ItemGroup>
     <Page Update="UserControls\Components\CommonChorusGM2.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\Components\PCMDrumKitPitchTab.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\Components\PCMDrumKitTVATab.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

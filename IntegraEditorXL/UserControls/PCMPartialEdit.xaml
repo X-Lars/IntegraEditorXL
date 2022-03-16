@@ -63,7 +63,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" Content="OIUTPUT"/>
+            <Label Grid.Column="0" Grid.Row="0" Content="OUTPUT"/>
             
             <StackPanel Grid.Column="0" Grid.Row="1">
 

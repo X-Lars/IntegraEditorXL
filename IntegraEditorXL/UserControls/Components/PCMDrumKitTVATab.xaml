@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.Components.PCMDrumKitTVATab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls.Components"
+             xmlns:i="clr-namespace:IntegraControlsXL;assembly=IntegraControlsXL"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="White">
+
+    <Grid DataContext="{Binding Partial}"
+          d:DataContext="{d:DesignInstance Type=models:PCMDrumKitPartial}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0"
+               Content="TVA"/>
+
+        <Label Grid.Column="1" Grid.Row="0"
+               Content="TVA ENVELOPE"/>
+
+        <StackPanel Grid.Column="0" Grid.Row="1">
+
+            <xl:SpinText Min="0" Max="127"
+                         Prefix="Partial Level"
+                         Value="{Binding Level}"/>
+
+            <xl:EnumeratedText Prefix="Level V-Curve"
+                               Value="{Binding TVALevelVelocityCurve}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="Level V-Sens"
+                         ShowPositiveSign="True"
+                         Value="{Binding TVALevelVelocitySens}"/>
+
+            <xl:ListText ItemsSource="{Binding PanValues}"
+                         Prefix="Partial Pan"
+                         SelectedIndex="{Binding Pan}"/>
+
+            <xl:SpinText Min="0" Max="63"
+                         Prefix="Random Pan Depth"
+                         Value="{Binding RandomPanDepth}"/>
+
+            <xl:ListText ItemsSource="{Binding PanValues}"
+                         Prefix="Alternate Pan Dept"
+                         SelectedIndex="{Binding AlternatePanDepth}"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="TVA Env T1 V-Sens"
+                         ShowPositiveSign="True"
+                         Value="{Binding TVAEnvTime1VelocitySens}"/>
+
+            <xl:SpinText Min="-63" Max="63"
+                         Prefix="TVA Env T4 V-Sens"
+                         ShowPositiveSign="True"
+                         Value="{Binding TVAEnvTime4VelocitySens}"/>
+
+        </StackPanel>
+
+        <i:TVAEnvelope Grid.Column="2" Grid.Row="1"
+                       Height="100"
+                       Level1="{Binding TVAEnvLevel1}"
+                       Level2="{Binding TVAEnvLevel2}"
+                       Level3="{Binding TVAEnvLevel3}"
+                       Time1="{Binding TVAEnvTime1}"
+                       Time2="{Binding TVAEnvTime2}"
+                       Time3="{Binding TVAEnvTime3}"
+                       Time4="{Binding TVAEnvTime4}"
+                       VerticalAlignment="Top"
+                       Width="200"/>
+
+        <Grid Grid.Column="4" Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Level 1"
+                             Value="{Binding TVAEnvLevel1}"/>
+                
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Level 2"
+                             Value="{Binding TVAEnvLevel2}"/>
+                
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Level 3"
+                             Value="{Binding TVAEnvLevel3}"/>
+                
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Time 1"
+                             Value="{Binding TVAEnvTime1}"/>
+                
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Time 2"
+                             Value="{Binding TVAEnvTime2}"/>
+                
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Time 3"
+                             Value="{Binding TVAEnvTime3}"/>
+                
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Time 4"
+                             Value="{Binding TVAEnvTime4}"/>
+                
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.PCMDrumKitCommonTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=models:PCMDrumKitCommon}">
+
+    <Grid DataContext="{Binding TemporaryTone.PCMDrumKit}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <GroupBox Grid.Column="0" Grid.Row="0"
+                  DataContext="{Binding Common}"
+                  Header="Drum Kit">
+            
+            <StackPanel>
+
+                <TextBox MaxLength="12" 
+                         Text="{Binding KitName}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Level"
+                             Value="{Binding KitLevel}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="0" Grid.Row="1"
+                  DataContext="{Binding Common02}"
+                  Header="Preview">
+
+            <StackPanel>
+
+                <xl:EnumeratedText Prefix="Phrase Number"
+                                   Value="{Binding PhraseNumber}"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</UserControl>
