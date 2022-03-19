@@ -14,7 +14,7 @@
       <HintPath>..\..\IntegraControlsXL\IntegraControlsXL\IntegraControlsXL\bin\Debug\net6.0-windows\IntegraControlsXL.dll</HintPath>
     </Reference>
     <Reference Include="IntegraXL">
-      <HintPath>..\..\Integra - Copy\IntegraXL\IntegraXL\bin\Debug\net6.0\IntegraXL.dll</HintPath>
+      <HintPath>..\..\Integra\IntegraXL\IntegraXL\bin\Debug\net6.0\IntegraXL.dll</HintPath>
     </Reference>
     <Reference Include="MidiXL">
       <HintPath>D:\MidiXL\MidiXL\MidiXL\bin\Release\MidiXL.dll</HintPath>
@@ -78,6 +78,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserControls\PCMCompEQ.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\StudioSetMastertEQ.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -148,6 +151,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserControls\PCMCompEQ.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\StudioSetMastertEQ.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

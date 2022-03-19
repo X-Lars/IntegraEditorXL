@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              xmlns:view="clr-namespace:IntegraEditorXL.Views"
-             xmlns:uc="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:controls="clr-namespace:IntegraEditorXL.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200" d:Background="White"
              DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
@@ -19,15 +19,21 @@
                        Command="{Binding ShowControlCommand}"
                        CommandParameter="{x:Type view:StudioSetCommon}"/>
 
+        <!--STUDIOSET: MASTER EQ-->
         <StackPanel Orientation="Horizontal">
-            <xl:LinkButton Content="Master EQ: "/>
+            
+            <xl:LinkButton Content="Master EQ: "
+                           Command="{Binding ShowControlCommand}"
+                           CommandParameter="{x:Type controls:StudioSetMasterEQ}"/>
+            
             <xl:EnumeratedText Value="{Binding Integra.StudioSet.Common.MasterEQSwitch}"
                                VerticalAlignment="Center"/>
+            
         </StackPanel>
 
         <TreeViewItem Header="Effects" IsExpanded="True">
 
-            <!--STUDIO SET: COMMON CHORUS-->
+            <!--STUDIOSET: COMMON CHORUS-->
             <StackPanel Orientation="Horizontal">
                 
                 <xl:LinkButton Content="Chorus: "
@@ -38,7 +44,7 @@
                 
             </StackPanel>
             
-            <!--STUDIO SET: COMMON REVERB-->
+            <!--STUDIOSET: COMMON REVERB-->
             <StackPanel Orientation="Horizontal">
                 
                 <xl:LinkButton Content="Reverb: "
@@ -49,7 +55,7 @@
                 
             </StackPanel>
             
-            <!--STUDIO SET: COMMON MOTIONAL SURROUND-->
+            <!--STUDIOSET: COMMON MOTIONAL SURROUND-->
             <StackPanel Orientation="Horizontal">
                 
                 <xl:LinkButton Content="Motional Surround: "/>
@@ -71,11 +77,11 @@
             </TreeViewItem.Header>
             
             <xl:LinkButton Command="{Binding ShowControlCommand}"
-                           CommandParameter="{x:Type uc:StudioSetPart}"
+                           CommandParameter="{x:Type controls:StudioSetPart}"
                            Content="View"/>
             
             <xl:LinkButton Command="{Binding ShowControlCommand}"
-                           CommandParameter="{x:Type uc:StudioSetPartEQ}"
+                           CommandParameter="{x:Type controls:StudioSetPartEQ}"
                            Content="EQ"/>
             
             <xl:LinkButton Content="MIDI"/>

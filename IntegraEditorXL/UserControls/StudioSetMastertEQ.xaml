@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="IntegraEditorXL.UserControls.StudioSetPartEQ"
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.StudioSetMasterEQ"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,10 +7,10 @@
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="420" d:Background="White"
-             DataContext="{Binding StudioSet.PartEQ}"
-             d:DataContext="{d:DesignInstance models:StudioSetPartEQ}">
-
-    <Grid Height="100" Width="420">
+             d:DataContext="{d:DesignInstance models:StudioSetMasterEQ}">
+    
+    <Grid DataContext="{Binding StudioSet}"
+          Height="100" Width="420">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".5*"/>
@@ -25,18 +25,21 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                    DataContext="{Binding Common}"
+                    d:DataContext="{d:DesignInstance models:StudioSetCommon}" 
                     HorizontalAlignment="Center" VerticalAlignment="Center">
-
-            <TextBlock Text="SW"/>
-            <CheckBox IsChecked="{Binding EQSwitch}"/>
-
+                
+            <xl:EnumeratedText Prefix="Switch"
+                               Value="{Binding MasterEQSwitch}"/>
+                
         </StackPanel>
-
+        
         <Label Grid.Column="1" Grid.Row="0"
                Content="LOW"
                HorizontalAlignment="Center"/>
-
-        <StackPanel Grid.Column="1" Grid.Row="1">
+        
+        <StackPanel Grid.Column="1" Grid.Row="1"
+                    DataContext="{Binding MasterEQ}" >
 
             <xl:EnumeratedText HorizontalContentAlignment="Right"
                                Suffix="Hz"
@@ -48,12 +51,13 @@
                          Value="{Binding EQLowGain}"/>
 
         </StackPanel>
-
+        
         <Label Grid.Column="2" Grid.Row="0"
                Content="MID"
                HorizontalAlignment="Center"/>
 
-        <StackPanel Grid.Column="2" Grid.Row="1">
+        <StackPanel Grid.Column="2" Grid.Row="1"
+                    DataContext="{Binding MasterEQ}">
 
             <xl:EnumeratedText HorizontalContentAlignment="Right"
                                Suffix="Hz"
@@ -74,8 +78,9 @@
         <Label Grid.Column="3" Grid.Row="0"
                Content="HIGH"
                HorizontalAlignment="Center"/>
-
-        <StackPanel Grid.Column="3" Grid.Row="1">
+        
+        <StackPanel Grid.Column="3" Grid.Row="1"
+                    DataContext="{Binding MasterEQ}">
 
             <xl:EnumeratedText HorizontalContentAlignment="Right"
                                Suffix="Hz"
