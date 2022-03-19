@@ -3,14 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
              xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" d:Background="White">
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
+             d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
     
-    <Grid DataContext="{Binding TemporaryTone.PCMSynthTone}"
-          d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
+    <Grid DataContext="{Binding TemporaryTone.PCMSynthTone}">
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -35,7 +34,7 @@
                     <!--SOURCE-->
                     <xl:EnumeratedText HorizontalContentAlignment="Left"
                                        Prefix="Source"
-                                       Value="{Binding MatrixControl01Source}"/>
+                                       Value="{Binding MatrixControl1Source}"/>
 
                     <Grid>
                         
@@ -47,27 +46,26 @@
                         <!--DESTINATION-->
                         <StackPanel Grid.Column="0">
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 1" Value="{Binding MatrixControl01Destination01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 2" Value="{Binding MatrixControl01Destination02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 3" Value="{Binding MatrixControl01Destination03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 4" Value="{Binding MatrixControl01Destination04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 1" Value="{Binding MatrixControl1Destination1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 2" Value="{Binding MatrixControl1Destination2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 3" Value="{Binding MatrixControl1Destination3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 4" Value="{Binding MatrixControl1Destination4}"/>
                         </StackPanel>
 
                         <!--SENS-->
                         <StackPanel Grid.Column="1">
                             
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 1" Value="{Binding MatrixControl01Sens01}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 2" Value="{Binding MatrixControl01Sens02}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 3" Value="{Binding MatrixControl01Sens03}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 4" Value="{Binding MatrixControl01Sens04}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 1" Value="{Binding MatrixControl1Sens1}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 2" Value="{Binding MatrixControl1Sens2}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 3" Value="{Binding MatrixControl1Sens3}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 4" Value="{Binding MatrixControl1Sens4}"/>
                             
                         </StackPanel>
                     </Grid>
                 </StackPanel>
                 
                 <!--PARTIAL-->
-                <StackPanel Grid.Column="0" Grid.Row="2"
-                            d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
+                <StackPanel Grid.Column="0" Grid.Row="2">
                     
                     <Grid>
                         
@@ -88,54 +86,58 @@
                         </StackPanel>
                         
                         <StackPanel Grid.Column="1"
-                                    DataContext="{Binding Partials[0]}">
+                                    DataContext="{Binding Partials[0]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
                             
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 1"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="2"
-                                    DataContext="{Binding Partials[1]}">
+                                    DataContext="{Binding Partials[1]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 2"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="3"
-                                    DataContext="{Binding Partials[2]}">
+                                    DataContext="{Binding Partials[2]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 3"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="4"
-                                    DataContext="{Binding Partials[3]}">
+                                    DataContext="{Binding Partials[3]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 4"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control01Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control1Switch4}"/>
 
                         </StackPanel>
                     </Grid>
@@ -156,7 +158,7 @@
                     <!--SOURCE-->
                     <xl:EnumeratedText HorizontalContentAlignment="Left"
                                        Prefix="Source"
-                                       Value="{Binding MatrixControl02Source}"/>
+                                       Value="{Binding MatrixControl2Source}"/>
 
                     <Grid>
 
@@ -168,27 +170,26 @@
                         <!--DESTINATION-->
                         <StackPanel Grid.Column="0">
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 1" Value="{Binding MatrixControl02Destination01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 2" Value="{Binding MatrixControl02Destination02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 3" Value="{Binding MatrixControl02Destination03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 4" Value="{Binding MatrixControl02Destination04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 1" Value="{Binding MatrixControl2Destination1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 2" Value="{Binding MatrixControl2Destination2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 3" Value="{Binding MatrixControl2Destination3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 4" Value="{Binding MatrixControl2Destination4}"/>
                         </StackPanel>
 
                         <!--SENS-->
                         <StackPanel Grid.Column="1">
 
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 1" Value="{Binding MatrixControl02Sens01}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 2" Value="{Binding MatrixControl02Sens02}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 3" Value="{Binding MatrixControl02Sens03}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 4" Value="{Binding MatrixControl02Sens04}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 1" Value="{Binding MatrixControl2Sens1}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 2" Value="{Binding MatrixControl2Sens2}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 3" Value="{Binding MatrixControl2Sens3}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 4" Value="{Binding MatrixControl2Sens4}"/>
 
                         </StackPanel>
                     </Grid>
                 </StackPanel>
 
                 <!--PARTIAL-->
-                <StackPanel Grid.Column="0" Grid.Row="2"
-                            d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
+                <StackPanel Grid.Column="0" Grid.Row="2">
 
                     <Grid>
 
@@ -209,54 +210,58 @@
                         </StackPanel>
 
                         <StackPanel Grid.Column="1"
-                                    DataContext="{Binding Partials[0]}">
+                                    DataContext="{Binding Partials[0]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 1"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="2"
-                                    DataContext="{Binding Partials[1]}">
+                                    DataContext="{Binding Partials[1]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 2"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="3"
-                                    DataContext="{Binding Partials[2]}">
+                                    DataContext="{Binding Partials[2]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 3"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="4"
-                                    DataContext="{Binding Partials[3]}">
+                                    DataContext="{Binding Partials[3]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 4"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control02Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control2Switch4}"/>
 
                         </StackPanel>
                     </Grid>
@@ -277,7 +282,7 @@
                     <!--SOURCE-->
                     <xl:EnumeratedText HorizontalContentAlignment="Left"
                                        Prefix="Source"
-                                       Value="{Binding MatrixControl03Source}"/>
+                                       Value="{Binding MatrixControl3Source}"/>
 
                     <Grid>
 
@@ -289,27 +294,26 @@
                         <!--DESTINATION-->
                         <StackPanel Grid.Column="0">
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 1" Value="{Binding MatrixControl03Destination01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 2" Value="{Binding MatrixControl03Destination02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 3" Value="{Binding MatrixControl03Destination03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 4" Value="{Binding MatrixControl03Destination04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 1" Value="{Binding MatrixControl3Destination1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 2" Value="{Binding MatrixControl3Destination2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 3" Value="{Binding MatrixControl3Destination3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 4" Value="{Binding MatrixControl3Destination4}"/>
                         </StackPanel>
 
                         <!--SENS-->
                         <StackPanel Grid.Column="1">
 
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 1" Value="{Binding MatrixControl03Sens01}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 2" Value="{Binding MatrixControl03Sens02}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 3" Value="{Binding MatrixControl03Sens03}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 4" Value="{Binding MatrixControl03Sens04}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 1" Value="{Binding MatrixControl3Sens1}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 2" Value="{Binding MatrixControl3Sens2}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 3" Value="{Binding MatrixControl3Sens3}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 4" Value="{Binding MatrixControl3Sens4}"/>
 
                         </StackPanel>
                     </Grid>
                 </StackPanel>
 
                 <!--PARTIAL-->
-                <StackPanel Grid.Column="0" Grid.Row="2"
-                            d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
+                <StackPanel Grid.Column="0" Grid.Row="2">
 
                     <Grid>
 
@@ -330,54 +334,58 @@
                         </StackPanel>
 
                         <StackPanel Grid.Column="1"
-                                    DataContext="{Binding Partials[0]}">
+                                    DataContext="{Binding Partials[0]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 1"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="2"
-                                    DataContext="{Binding Partials[1]}">
+                                    DataContext="{Binding Partials[1]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 2"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="3"
-                                    DataContext="{Binding Partials[2]}">
+                                    DataContext="{Binding Partials[2]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 3"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="4"
-                                    DataContext="{Binding Partials[3]}">
+                                    DataContext="{Binding Partials[3]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 4"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control03Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control3Switch4}"/>
 
                         </StackPanel>
                     </Grid>
@@ -398,7 +406,7 @@
                     <!--SOURCE-->
                     <xl:EnumeratedText HorizontalContentAlignment="Left"
                                        Prefix="Source"
-                                       Value="{Binding MatrixControl04Source}"/>
+                                       Value="{Binding MatrixControl4Source}"/>
 
                     <Grid>
 
@@ -410,27 +418,26 @@
                         <!--DESTINATION-->
                         <StackPanel Grid.Column="0">
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 1" Value="{Binding MatrixControl04Destination01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 2" Value="{Binding MatrixControl04Destination02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 3" Value="{Binding MatrixControl04Destination03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 4" Value="{Binding MatrixControl04Destination04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 1" Value="{Binding MatrixControl4Destination1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 2" Value="{Binding MatrixControl4Destination2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 3" Value="{Binding MatrixControl4Destination3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Left" Prefix="Destination 4" Value="{Binding MatrixControl4Destination4}"/>
                         </StackPanel>
 
                         <!--SENS-->
                         <StackPanel Grid.Column="1">
 
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 1" Value="{Binding MatrixControl04Sens01}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 2" Value="{Binding MatrixControl04Sens02}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 3" Value="{Binding MatrixControl04Sens03}"/>
-                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 4" Value="{Binding MatrixControl04Sens04}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 1" Value="{Binding MatrixControl4Sens1}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 2" Value="{Binding MatrixControl4Sens2}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 3" Value="{Binding MatrixControl4Sens3}"/>
+                            <xl:SpinText Min="-63" Max="63" Prefix="Sens 4" Value="{Binding MatrixControl4Sens4}"/>
 
                         </StackPanel>
                     </Grid>
                 </StackPanel>
 
                 <!--PARTIAL-->
-                <StackPanel Grid.Column="0" Grid.Row="2"
-                            d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
+                <StackPanel Grid.Column="0" Grid.Row="2">
 
                     <Grid>
 
@@ -451,61 +458,63 @@
                         </StackPanel>
 
                         <StackPanel Grid.Column="1"
-                                    DataContext="{Binding Partials[0]}">
+                                    DataContext="{Binding Partials[0]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 1"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="2"
-                                    DataContext="{Binding Partials[1]}">
+                                    DataContext="{Binding Partials[1]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 2"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="3"
-                                    DataContext="{Binding Partials[2]}">
+                                    DataContext="{Binding Partials[2]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 3"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch4}"/>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="4"
-                                    DataContext="{Binding Partials[3]}">
+                                    DataContext="{Binding Partials[3]}"
+                                    d:DataContext="{d:DesignInstance Type=models:PCMSynthTonePartial}">
 
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Partial 4"/>
 
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch01}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch02}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch03}"/>
-                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control04Switch04}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch1}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch2}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch3}"/>
+                            <xl:EnumeratedText HorizontalContentAlignment="Center" Value="{Binding Control4Switch4}"/>
 
                         </StackPanel>
                     </Grid>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-
     </Grid>
-    
 </UserControl>

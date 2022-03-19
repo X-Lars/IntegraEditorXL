@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
-             xmlns:dx="clr-namespace:IntegraXL.Models.Parameters;assembly=IntegraXL"
+             xmlns:dx="clr-namespace:IntegraXL.Models.Providers;assembly=IntegraXL"
              xmlns:converters="clr-namespace:IntegraEditorXL.Common.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="210" d:DesignWidth="200" d:Background="White"

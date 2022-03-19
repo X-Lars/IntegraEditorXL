@@ -72,12 +72,12 @@
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Pitch Env T1 V-Sens"
                          ShowPositiveSign="True"
-                         Value="{Binding PitchEnvTime01VelocitySens}"/>
+                         Value="{Binding PitchEnvTime1VelocitySens}"/>
 
             <xl:SpinText Min="-63" Max="63"
                          Prefix="Pitch Env T4 V-Sens"
                          ShowPositiveSign="True"
-                         Value="{Binding PitchEnvTime04VelocitySens}"/>
+                         Value="{Binding PitchEnvTime4VelocitySens}"/>
 
             <xl:SpinText Interval="10"
                          Min="-100" Max="100"

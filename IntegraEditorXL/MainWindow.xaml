@@ -63,7 +63,7 @@
 
 
                 <StatusBarItem>
-
+                    <TextBlock Text="{Binding Tone.Name}"/>
                 </StatusBarItem>
             </StatusBar>
 

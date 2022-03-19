@@ -1,7 +1,7 @@
 ﻿using IntegraXL;
 using IntegraXL.Core;
 using IntegraXL.Models;
-using IntegraXL.Models.Parameters;
+using IntegraXL.Models.Providers;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -16,7 +16,7 @@ namespace IntegraEditorXL.Views
     public partial class StudioSetCommonReverbView : UserControl, INotifyPropertyChanged
     {
         private StudioSetCommonReverb _Context;
-        private IntegraMFXMapper _Parameters;
+        private IntegraMFXProvider _Parameters;
         private object _Component;
 
         public StudioSetCommonReverbView()
@@ -29,9 +29,9 @@ namespace IntegraEditorXL.Views
         private void StudioSetCommonReverbViewLoaded(object sender, RoutedEventArgs e)
         {
             _Context = ((Integra)DataContext).StudioSet.CommonReverb;
-            _Context.TypeChanged += ContextTypeChanged;
+            _Context.ParametersChanged += ParametersChanged;
 
-            _Parameters = (IntegraMFXMapper)_Context.Parameters;
+            _Parameters = (IntegraMFXProvider)_Context.Parameters;
             SetComponent();
         }
 
@@ -45,9 +45,9 @@ namespace IntegraEditorXL.Views
             }
         }
 
-        private void ContextTypeChanged(object sender, IntegraTypeChangedEventArgs e)
+        private void ParametersChanged(object sender, IntegraParametersChangedEventArgs e)
         {
-            _Parameters = (IntegraMFXMapper)_Context.Parameters;
+            _Parameters = (IntegraMFXProvider)_Context.Parameters;
             SetComponent();
         }
 

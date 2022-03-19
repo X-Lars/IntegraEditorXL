@@ -14,7 +14,7 @@
       <HintPath>..\..\IntegraControlsXL\IntegraControlsXL\IntegraControlsXL\bin\Debug\net6.0-windows\IntegraControlsXL.dll</HintPath>
     </Reference>
     <Reference Include="IntegraXL">
-      <HintPath>..\..\Integra\IntegraXL\IntegraXL\bin\Debug\net6.0\IntegraXL.dll</HintPath>
+      <HintPath>..\..\Integra - Copy\IntegraXL\IntegraXL\bin\Debug\net6.0\IntegraXL.dll</HintPath>
     </Reference>
     <Reference Include="MidiXL">
       <HintPath>D:\MidiXL\MidiXL\MidiXL\bin\Release\MidiXL.dll</HintPath>
@@ -38,43 +38,43 @@
     <Compile Update="UserControls\Components\PCMDrumKitTVATab.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersBellMallet2.xaml.cs">
+    <Compile Update="UserControls\SNA\BellMallet2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersBrass2.xaml.cs">
+    <Compile Update="UserControls\SNA\Brass2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersSteelDrums.xaml.cs">
+    <Compile Update="UserControls\SNA\SteelDrums.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersTimpani.xaml.cs">
+    <Compile Update="UserControls\SNA\Timpani.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersPipes.xaml.cs">
+    <Compile Update="UserControls\SNA\Pipes.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersWind2.xaml.cs">
+    <Compile Update="UserControls\SNA\Wind2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersWind1.xaml.cs">
+    <Compile Update="UserControls\SNA\Wind1.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersElectricGuitar.xaml.cs">
+    <Compile Update="UserControls\SNA\Guitar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersBrass1.xaml.cs">
+    <Compile Update="UserControls\SNA\Brass1.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersStrings2.xaml.cs">
+    <Compile Update="UserControls\SNA\Strings2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersUkelele.xaml.cs">
+    <Compile Update="UserControls\SNA\Ukelele.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersGuitar2.xaml.cs">
+    <Compile Update="UserControls\SNA\Guitar2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SNA\SNAParametersPianoMono.xaml.cs">
+    <Compile Update="UserControls\SNA\PianoMono.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserControls\PCMCompEQ.xaml.cs">
@@ -95,55 +95,55 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersBellMallet2.xaml">
+    <Page Update="UserControls\SNA\BellMallet2.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersBrass2.xaml">
+    <Page Update="UserControls\SNA\Brass2.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersSteelDrums.xaml">
+    <Page Update="UserControls\SNA\SteelDrums.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersTimpani.xaml">
+    <Page Update="UserControls\SNA\Timpani.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersPipes.xaml">
+    <Page Update="UserControls\SNA\Pipes.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersWind2.xaml">
+    <Page Update="UserControls\SNA\Wind2.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersWind1.xaml">
+    <Page Update="UserControls\SNA\Wind1.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersElectricGuitar.xaml">
+    <Page Update="UserControls\SNA\Guitar.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersBrass1.xaml">
+    <Page Update="UserControls\SNA\Brass1.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersStrings2.xaml">
+    <Page Update="UserControls\SNA\Strings2.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersUkelele.xaml">
+    <Page Update="UserControls\SNA\Ukelele.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersGuitar2.xaml">
+    <Page Update="UserControls\SNA\Guitar2.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SNA\SNAParametersPianoMono.xaml">
+    <Page Update="UserControls\SNA\PianoMono.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

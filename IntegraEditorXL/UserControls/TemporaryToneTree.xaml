@@ -12,8 +12,7 @@
              xmlns:sxl="clr-namespace:StylesXL;assembly=StylesXL"
              mc:Ignorable="d" 
              d:DesignHeight="640" d:DesignWidth="200"
-             d:Background="White"
-             d:DataContext="{d:DesignInstance Type=core:IntegraTone}">
+             d:Background="White">
     
     <UserControl.Resources>
         <converters:ComparisonVisibilityConverter x:Key="ComparisonConverter"/>
@@ -32,7 +31,7 @@
             <StackPanel>
                 
                 <TextBlock HorizontalAlignment="Center"
-                           Text="{Binding SelectedTone.ToneBank}"/>
+                           Text="{Binding Integra.Tone.ToneBank, RelativeSource={RelativeSource AncestorType=Window}}"/>
                 
                 <TextBlock HorizontalAlignment="Center"
                            Text="Cannot Edit"/>
@@ -41,7 +40,7 @@
             <GroupBox.Style>
                 <Style TargetType="GroupBox">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding SelectedTone.IsEditable}" Value="True">
+                        <DataTrigger Binding="{Binding TemporaryTone.IsEditable}" Value="True">
                             <Setter Property="Visibility" Value="Collapsed"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -51,13 +50,13 @@
         </GroupBox>
         
         <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-                    Visibility="{Binding Integra.SelectedTone.IsEditable, Converter={StaticResource VisibilityConverter}}">
+                    Visibility="{Binding Integra.TemporaryTone.IsEditable, Converter={StaticResource VisibilityConverter}}">
 
             <!--SUPERNATURAL ACOUSTIC TONE-->
             <TreeViewItem Header="SuperNATURAL Acoustic Tone"
                           IsExpanded="True"
                           d:Visibility="Visible"
-                          Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALAcousticTone}, FallbackValue=Collapsed}">
+                          Visibility="{Binding Integra.TemporaryTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALAcousticTone}, FallbackValue=Collapsed}">
 
                 <!--SUPERNATURAL ACOUSTIC TONE: COMMON-->
                 <TreeViewItem IsExpanded="True">
@@ -97,7 +96,7 @@
             <TreeViewItem Header="SuperNATURAL Synth Tone"
                           IsExpanded="True"
                           d:Visibility="Visible"
-                          Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALSynthTone}, FallbackValue=Collapsed}">
+                          Visibility="{Binding Integra.TemporaryTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALSynthTone}, FallbackValue=Collapsed}">
 
                 <!--PCM SYNTH TONE: COMMON-->
                 <TreeViewItem IsExpanded="True">
@@ -147,7 +146,7 @@
             <TreeViewItem Header="SuperNATURAL Drum Kit"
                       IsExpanded="True"
                       d:Visibility="Visible"
-                      Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALDrumkit}, FallbackValue=Collapsed}">
+                      Visibility="{Binding Integra.TemporaryTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.SuperNATURALDrumkit}, FallbackValue=Collapsed}">
 
                 <StackPanel d:DataContext="{d:DesignInstance main:MainWindow}">
 
@@ -204,7 +203,7 @@
             <TreeViewItem Header="PCM Synth Tone"
                           IsExpanded="True"
                           d:Visibility="Visible"
-                          Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMSynthTone}, FallbackValue=Collapsed}">
+                          Visibility="{Binding Integra.TemporaryTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMSynthTone}, FallbackValue=Collapsed}">
             
                 <!--PCM SYNTH TONE: COMMON-->
                 <TreeViewItem IsExpanded="True">
@@ -271,7 +270,7 @@
             <TreeViewItem Header="PCM Drum Kit"
                           IsExpanded="True"
                           d:Visibility="Visible"
-                          Visibility="{Binding Integra.SelectedTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMDrumkit}, FallbackValue=Collapsed}">
+                          Visibility="{Binding Integra.TemporaryTone.Type, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:IntegraToneTypes.PCMDrumkit}, FallbackValue=Collapsed}">
 
                 <!--PCM DRUM KIT: COMMON-->
                 <TreeViewItem IsExpanded="True">
@@ -340,7 +339,7 @@
         </StackPanel>
         
         <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-                Visibility="{Binding Integra.SelectedTone.IsEditable, Converter={StaticResource VisibilityConverter}}">
+                Visibility="{Binding Integra.TemporaryTone.IsEditable, Converter={StaticResource VisibilityConverter}}">
             <GroupBox Header="File">
                 <StackPanel>
                     <xl:LinkButton Command="{Binding LoadToneCommand}"

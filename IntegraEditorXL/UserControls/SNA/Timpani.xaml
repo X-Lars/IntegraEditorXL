@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.SNA.Timpani"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:models="clr-namespace:IntegraXL.Models.Providers;assembly=IntegraXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="200" Background="White"
+             d:DataContext="{d:DesignInstance Type=models:SNATimpani}">
+
+    <StackPanel DataContext="{Binding Parameters}">
+
+        <xl:SpinText Min="-64" Max="63"
+                     Prefix="Roll Speed (CC17)"
+                     ShowPositiveSign="True"
+                     Value="{Binding RollSpeed}"/>
+
+        <xl:EnumeratedText Prefix="Variation"
+                           Value="{Binding Variation}"/>
+
+    </StackPanel>
+</UserControl>
