@@ -4,17 +4,297 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IntegraEditorXL.UserControls"
+             xmlns:i="clr-namespace:IntegraControlsXL;assembly=IntegraControlsXL"
              xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
              xmlns:components="clr-namespace:IntegraEditorXL.UserControls.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" d:Background="White">
-    <Grid DataContext="{Binding StudioSet.Part}">
-        <StackPanel>
-        <TextBlock Text="{Binding Tone.PC}"/>
-            <StackPanel>
-        <components:PartOffset/>
+             d:DesignHeight="640" d:DesignWidth="800" d:Background="White">
+    
+    <Grid DataContext="{Binding StudioSet.Part}"
+          d:DataContext="{d:DesignInstance models:StudioSetPart}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Column="0" Grid.Row="0"
+                  Header="Level / Channel">
+
+            <StackPanel>
+                
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Level"
+                             Value="{Binding Level}"/>
+
+                <xl:ListText ItemsSource="{Binding PanValues}"
+                             Prefix="Pan"
+                             SelectedIndex="{Binding Pan}"/>
+
+                <xl:EnumeratedText Prefix="Mono/Poly"
+                                   Value="{Binding MonoPolySwitch}"/>
+
+                <xl:EnumeratedText Prefix="Legato"
+                                   Value="{Binding LegatoSwitch}"/>
+
             </StackPanel>
-        </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Grid.Row="0"
+                  Header="Pitch">
+
+            <StackPanel>
+
+                <xl:SpinText Min="-3" Max="3"
+                             Prefix="Octave Shift"
+                             ShowPositiveSign="True"
+                             Value="{Binding OctaveShift}"/>
+
+                <xl:SpinText Min="-48" Max="48"
+                             Prefix="Coarse Tune"
+                             ShowPositiveSign="True"
+                             Value="{Binding CoarseTune}"/>
+
+                <xl:SpinText Min="-50" Max="50"
+                             Prefix="Fine Tune"
+                             ShowPositiveSign="True"
+                             Value="{Binding FineTune}"/>
+
+                <xl:ListText ItemsSource="{Binding PitchBendRanges}"
+                             Prefix="Bend Range"
+                             SelectedIndex="{Binding PitchBendRange}"/>
+
+                <xl:EnumeratedText Prefix="Portamento Switch"
+                                   Value="{Binding PortamentoSwitch}"/>
+
+                <xl:ListText ItemsSource="{Binding PortamentoTimes}"
+                             Prefix="Portamento Time"
+                             SelectedIndex="{Binding PortamentoTime}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" Grid.Row="0"
+                  Header="Velocity">
+
+            <StackPanel>
+
+                <xl:EnumeratedText Prefix="Velocity Curve Type"
+                                   Value="{Binding VelocityCurveType}"/>
+
+                <xl:SpinText Min="-63" Max="63"
+                             Prefix="Velocity Sens Offset"
+                             ShowPositiveSign="True"
+                             Value="{Binding VelocitySensOffset}"/>
+
+            </StackPanel>
+        </GroupBox>
+        
+        <GroupBox Grid.Column="3" Grid.Row="0"
+                  Header="Output">
+
+            <StackPanel>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Chorus Send Level"
+                             Value="{Binding ChorusSendLevel}"/>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Reverb Send Level"
+                             Value="{Binding ReverbSendLevel}"/>
+
+                <xl:EnumeratedText Prefix="Output Assign"
+                                   Value="{Binding OutputAssign}"/>
+
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                  Header="Offset">
+
+            <Grid>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+
+                    <xl:SpinText Min="-64" Max="63"
+                                 Prefix="Cuttof"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding CutoffOffset}"/>
+
+                    <xl:SpinText Min="-64" Max="63"
+                                 Prefix="Resonance"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding ResonanceOffset}"/>
+
+                    <xl:SpinText Min="-64" Max="63"
+                                 Prefix="Attack"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding AttackTimeOffset}"/>
+
+                    <xl:SpinText Min="-64" Max="63"
+                                 Prefix="Decay"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding DecayTimeOffset}"/>
+
+                    <xl:SpinText Min="-64" Max="63"
+                                 Prefix="Release"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding ReleaseTimeOffset}"/>
+
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1">
+                    
+                    <xl:SpinText Min="-64" Max="63"
+                                 Prefix="Vibrato Rate"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding VibratoRate}"/>
+
+                    <xl:SpinText Min="-64" Max="63"
+                                 Prefix="Vibrato Depth"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding VibratoDepth}"/>
+
+                    <xl:SpinText Min="-64" Max="63"
+                                 Prefix="Vibrato Delay"
+                                 ShowPositiveSign="True"
+                                 Value="{Binding VibratoDelay}"/>
+
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">
+
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Rx: "/>
+                    <xl:EnumeratedText Value="{Binding ReceiveSwitch}"/>
+                </StackPanel>
+            </GroupBox.Header>
+
+            <StackPanel>
+
+                <xl:EnumeratedText Prefix="Rx Channel"
+                                   Value="{Binding ReceiveChannel}"/>
+
+                <Grid>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+
+                        <xl:EnumeratedText Prefix="Rx Program Change"
+                                           Value="{Binding ReceiveProgramChange}"/>
+
+                        <xl:EnumeratedText Prefix="Rx Bank Select"
+                                           Value="{Binding ReceiveBankSelect}"/>
+
+                        <xl:EnumeratedText Prefix="Rx Volume"
+                                           Value="{Binding ReceiveVolume}"/>
+
+                        <xl:EnumeratedText Prefix="Rx Pan"
+                                           Value="{Binding ReceivePan}"/>
+
+                        <xl:EnumeratedText Prefix="Rx Pitch Bend"
+                                           Value="{Binding ReceivePitchBend}"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1">
+
+                        <xl:EnumeratedText Prefix="Rx Key Pressure"
+                                           Value="{Binding ReceiveKeyPressure}"/>
+
+                        <xl:EnumeratedText Prefix="Rx Channel Pressure"
+                                           Value="{Binding ReceiveChannelPressure}"/>
+
+                        <xl:EnumeratedText Prefix="Rx Expression"
+                                           Value="{Binding ReceiveExpression}"/>
+
+                        <xl:EnumeratedText Prefix="Rx Modulation"
+                                           Value="{Binding ReceiveModulation}"/>
+
+                        <xl:EnumeratedText Prefix="Rx Hold"
+                                           Value="{Binding ReceiveHold}"/>
+
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                  Header="Keyboard">
+
+            <StackPanel>
+
+                <TextBlock HorizontalAlignment="Center" Text="Keyboard Range"/>
+                
+                <i:KeyRangeSlider ValueLower="{Binding KeyRangeLower}"
+                                  ValueUpper="{Binding KeyRangeUpper}"/>
+                
+                <TextBlock HorizontalAlignment="Center" Text="Lower Fade Upper"/>
+                
+                <Grid>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <i:KeyFadeSlider Grid.Column="0" Min="0" Max="127"
+                                     Value="{Binding KeyFadeLower}"/>
+                    
+                    <i:KeyFadeSlider Grid.Column="1" Min="127" Max="0"
+                                     Value="{Binding KeyFadeLower}"/>
+                </Grid>
+                
+                <TextBlock HorizontalAlignment="Center" Text="Velocity Range"/>
+                
+                <i:RangeSlider Min="1" Max="127"
+                               ValueLower="{Binding VelocityRangeLower}"
+                               ValueUpper="{Binding VelocityRangeUpper}"/>
+                
+                <TextBlock HorizontalAlignment="Center" Text="Lower Fade Upper"/>
+                
+                <Grid>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <i:KeyFadeSlider Grid.Column="0" Min="0" Max="127"
+                                     Value="{Binding VelocityFadeLower}"/>
+                    
+                    <i:KeyFadeSlider Grid.Column="1" Min="127" Max="0"
+                                     Value="{Binding VelocityFadeUpper}"/>
+                </Grid>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+                  Header="Scale">
+            TODO SCALE CONROL
+        </GroupBox>
     </Grid>
 </UserControl>
