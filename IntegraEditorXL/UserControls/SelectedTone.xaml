@@ -12,8 +12,16 @@
         <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
     </UserControl.Resources>
 
-    <GroupBox Header="Selected Tone"
-              DataContext="{Binding Tone}">
+    <GroupBox DataContext="{Binding Tone}">
+
+        <GroupBox.Header>
+            <StackPanel Orientation="Horizontal">
+
+                <TextBlock Text="Selected Tone"/>
+                <TextBlock Text=" *"
+                           Visibility="{Binding DataContext.TemporaryTone.IsDirty, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource VisibilityConverter}}"/>
+            </StackPanel>
+        </GroupBox.Header>
 
         <StackPanel>
 

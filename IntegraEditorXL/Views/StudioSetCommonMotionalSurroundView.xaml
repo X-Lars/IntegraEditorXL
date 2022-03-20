@@ -1,0 +1,209 @@
+﻿<UserControl x:Class="IntegraEditorXL.Views.StudioSetCommonMotionalSurroundView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntegraEditorXL.Views"
+             xmlns:models="clr-namespace:IntegraXL.Models;assembly=IntegraXL"
+             xmlns:i="clr-namespace:IntegraControlsXL;assembly=IntegraControlsXL"
+             xmlns:xl="clr-namespace:ControlsXL;assembly=ControlsXL"
+             mc:Ignorable="d" 
+             d:DesignHeight="640" d:DesignWidth="800" d:Background="White"
+             d:DataContext="{d:DesignInstance models:StudioSetCommonMotionalSurround}">
+
+    <Grid DataContext="{Binding StudioSet}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--COMMON-->
+        <GroupBox Grid.Column="0" Grid.Row="0"
+                  DataContext="{Binding CommonMotionalSurround}">
+
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock Text="Motional Surround "/>
+                    <xl:EnumeratedText Value="{Binding Switch}"/>
+                    
+                </StackPanel>
+            </GroupBox.Header>
+
+            <StackPanel>
+
+                <xl:EnumeratedText Prefix="Room Type"
+                                   Value="{Binding RoomType}"/>
+
+                <xl:EnumeratedText Prefix="Room Size"
+                                   Value="{Binding RoomSize}"/>
+
+                <xl:SpinText Min="0" Max="100"
+                             Prefix="Depth"
+                             Value="{Binding MotionalSurroundDepth}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <!--AMBIENCE-->
+        <GroupBox Grid.Column="1" Grid.Row="0"
+                  DataContext="{Binding CommonMotionalSurround}"
+                  Header="Ambience">
+
+            <StackPanel>
+
+                <xl:SpinText Min="0" Max="127"
+                             Prefix="Level"
+                             Value="{Binding AmbienceLevel}"/>
+
+                <xl:SpinText Min="0" Max="100"
+                             Prefix="Time"
+                             Value="{Binding AmbienceTime}"/>
+
+                <xl:SpinText Min="0" Max="100"
+                             Prefix="Density"
+                             Value="{Binding AmbienceDensity}"/>
+
+                <xl:SpinText Min="0" Max="100"
+                             Prefix="HF Damp"
+                             Value="{Binding AmbienceHFDamp}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <!--EXT PART-->
+        <GroupBox Grid.Column="2" Grid.Row="0"
+                  DataContext="{Binding CommonMotionalSurround}"
+                  Header="Ext Part">
+
+            <StackPanel>
+
+                <xl:EnumeratedText Prefix="Control Channel"
+                                   Value="{Binding ExtPartControlChannel}"/>
+                
+                <xl:SpinText Grid.Column="0"
+                                 Min="0" Max="32"
+                                 Prefix="Surround Width"
+                                 Value="{Binding ExtPartWidth}"/>
+
+                <xl:SpinText Grid.Column="1"
+                                 Min="0" Max="127"
+                                 Prefix="Ambience Send Level"
+                                 Value="{Binding ExtPartAmbienceSendLevel}"/>
+
+
+            </StackPanel>
+        </GroupBox>
+
+        <!--MOTIONAL SURROUND CONTROL-->
+        <i:MotionalSurroundCommon Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                                  LR1="{Binding Parts[0].MotionalSurroundLR}" FB1="{Binding Parts[0].MotionalSurroundFB}"
+                                  LR2="{Binding Parts[1].MotionalSurroundLR}" FB2="{Binding Parts[1].MotionalSurroundFB}"
+                                  LR3="{Binding Parts[2].MotionalSurroundLR}" FB3="{Binding Parts[2].MotionalSurroundFB}"
+                                  LR4="{Binding Parts[3].MotionalSurroundLR}" FB4="{Binding Parts[3].MotionalSurroundFB}"
+                                  LR5="{Binding Parts[4].MotionalSurroundLR}" FB5="{Binding Parts[4].MotionalSurroundFB}"
+                                  LR6="{Binding Parts[5].MotionalSurroundLR}" FB6="{Binding Parts[5].MotionalSurroundFB}"
+                                  LR7="{Binding Parts[6].MotionalSurroundLR}" FB7="{Binding Parts[6].MotionalSurroundFB}"
+                                  LR8="{Binding Parts[7].MotionalSurroundLR}" FB8="{Binding Parts[7].MotionalSurroundFB}"
+                                  LR9="{Binding Parts[8].MotionalSurroundLR}" FB9="{Binding Parts[8].MotionalSurroundFB}"
+                                  LR10="{Binding Parts[9].MotionalSurroundLR}" FB10="{Binding Parts[9].MotionalSurroundFB}"
+                                  LR11="{Binding Parts[10].MotionalSurroundLR}" FB11="{Binding Parts[10].MotionalSurroundFB}"
+                                  LR12="{Binding Parts[11].MotionalSurroundLR}" FB12="{Binding Parts[11].MotionalSurroundFB}"
+                                  LR13="{Binding Parts[12].MotionalSurroundLR}" FB13="{Binding Parts[12].MotionalSurroundFB}"
+                                  LR14="{Binding Parts[13].MotionalSurroundLR}" FB14="{Binding Parts[13].MotionalSurroundFB}"
+                                  LR15="{Binding Parts[14].MotionalSurroundLR}" FB15="{Binding Parts[14].MotionalSurroundFB}"
+                                  LR16="{Binding Parts[15].MotionalSurroundLR}" FB16="{Binding Parts[15].MotionalSurroundFB}"
+                                  LRExt="{Binding CommonMotionalSurround.ExtPartLR}"
+                                  FBExt="{Binding CommonMotionalSurround.ExtPartFB}"
+                                  MinHeight="320" MaxHeight="320"
+                                  MinWidth="480" MaxWidth="480"/>
+        
+        <!--PARTS LR-->
+        <GroupBox Grid.Column="0" Grid.Row="2"
+                  Header="Left/Right">
+
+            <Grid>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 1" Value="{Binding Parts[0].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 2" Value="{Binding Parts[1].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 3" Value="{Binding Parts[2].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 4" Value="{Binding Parts[3].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 5" Value="{Binding Parts[4].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 6" Value="{Binding Parts[5].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 7" Value="{Binding Parts[6].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 8" Value="{Binding Parts[7].MotionalSurroundLR}"/>
+
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1">
+
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 9" Value="{Binding Parts[8].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 10" Value="{Binding Parts[9].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 11" Value="{Binding Parts[10].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 12" Value="{Binding Parts[11].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 13" Value="{Binding Parts[12].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 14" Value="{Binding Parts[13].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 15" Value="{Binding Parts[14].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 16" Value="{Binding Parts[15].MotionalSurroundLR}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Ext Part" Value="{Binding CommonMotionalSurround.ExtPartLR}"/>
+
+                </StackPanel>
+
+            </Grid>
+            
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Grid.Row="2"
+                  Header="Front/Back">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 1" Value="{Binding Parts[0].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 2" Value="{Binding Parts[1].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 3" Value="{Binding Parts[2].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 4" Value="{Binding Parts[3].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 5" Value="{Binding Parts[4].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 6" Value="{Binding Parts[5].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 7" Value="{Binding Parts[6].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 8" Value="{Binding Parts[7].MotionalSurroundFB}"/>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 9" Value="{Binding Parts[8].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 10" Value="{Binding Parts[9].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 11" Value="{Binding Parts[10].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 12" Value="{Binding Parts[11].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 13" Value="{Binding Parts[12].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 14" Value="{Binding Parts[13].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 15" Value="{Binding Parts[14].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Part 16" Value="{Binding Parts[15].MotionalSurroundFB}"/>
+                    <xl:SpinText Min="-64" Max="63" Prefix="Ext Part" Value="{Binding CommonMotionalSurround.ExtPartFB}"/>
+
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

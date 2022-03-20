@@ -61,7 +61,6 @@
                                  Width="100"/>
                 </StatusBarItem>
 
-
                 <StatusBarItem>
                     <TextBlock Text="{Binding Tone.Name}"/>
                 </StatusBarItem>
@@ -81,6 +80,7 @@
 
                 <xl:Sidebar.Sections>
 
+                    <!--STUDIO SET-->
                     <xl:SidebarSection Header="Studio Set">
                         <StackPanel>
 
@@ -88,11 +88,12 @@
                                            CommandParameter="{x:Type uc:StudioSetOverview}"
                                            Content="Overview"/>
 
-                            <uc:StudioSetCommonTree/>
+                            <uc:StudioSetTree/>
 
                         </StackPanel>
                     </xl:SidebarSection>
 
+                    <!--TEMPORARY TONE-->
                     <xl:SidebarSection Header="Temporary Tone">
                         <StackPanel>
                             <!--<xl:LinkButton Command="{Binding ShowControlCommand, RelativeSource={RelativeSource AncestorType=Window}}"
@@ -103,10 +104,12 @@
                         </StackPanel>
                     </xl:SidebarSection>
 
+                    <!--TONE BANKS-->
                     <xl:SidebarSection Header="Tone Banks">
                         <uc:ToneBankTree/>
                     </xl:SidebarSection>
 
+                    <!--SYSTEM-->
                     <xl:SidebarSection Header="System"
                                        Vector="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm8.036-4.024a.75.75 0 00-1.06 1.06L10.939 12l-2.963 2.963a.75.75 0 101.06 1.06L12 13.06l2.963 2.964a.75.75 0 001.061-1.06L13.061 12l2.963-2.964a.75.75 0 10-1.06-1.06L12 10.939 9.036 7.976z">
                         <uc:SystemTree/>

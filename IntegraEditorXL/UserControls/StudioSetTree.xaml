@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="IntegraEditorXL.UserControls.StudioSetCommonTree"
+﻿<UserControl x:Class="IntegraEditorXL.UserControls.StudioSetTree"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -17,7 +17,7 @@
         
         <xl:LinkButton Content="Common"
                        Command="{Binding ShowControlCommand}"
-                       CommandParameter="{x:Type view:StudioSetCommon}"/>
+                       CommandParameter="{x:Type view:StudioSetCommonView}"/>
 
         <!--STUDIOSET: MASTER EQ-->
         <StackPanel Orientation="Horizontal">
@@ -58,7 +58,9 @@
             <!--STUDIOSET: COMMON MOTIONAL SURROUND-->
             <StackPanel Orientation="Horizontal">
                 
-                <xl:LinkButton Content="Motional Surround: "/>
+                <xl:LinkButton Content="Motional Surround: "
+                               Command="{Binding ShowControlCommand}"
+                               CommandParameter="{x:Type view:StudioSetCommonMotionalSurroundView}"/>
                 
                 <xl:EnumeratedText Value="{Binding Integra.StudioSet.CommonMotionalSurround.Switch}"/>
                 
